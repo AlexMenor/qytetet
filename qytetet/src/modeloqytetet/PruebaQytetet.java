@@ -17,13 +17,12 @@ public class PruebaQytetet {
      * @param args the command line arguments
      */
     
-    private static ArrayList<Sorpresa> sorpresaMayorQueCero (){
-        
-        ArrayList<Sorpresa> cartas = juego.getMazo();
+    private static ArrayList<Sorpresa> 
+        sorpresaMayorQueCero (ArrayList<Sorpresa> mazo){
         
         ArrayList<Sorpresa> aDevolver = new ArrayList<>();
         
-        for (Sorpresa carta :cartas){
+        for (Sorpresa carta :mazo){
             if (carta.getValor() > 0){
                 aDevolver.add(carta);
             }
@@ -33,20 +32,20 @@ public class PruebaQytetet {
         
     }
     
-    private static ArrayList<Sorpresa> esDeIrACasilla (){
+    private static ArrayList<Sorpresa> 
+        esDeIrACasilla (ArrayList<Sorpresa> mazo){
         
         
-        return esDeTipo(TipoSorpresa.IRACASILLA);
+        return esDeTipo(TipoSorpresa.IRACASILLA, mazo);
         
     }
     
-    private static ArrayList<Sorpresa> esDeTipo (TipoSorpresa tipo){
-        
-        ArrayList<Sorpresa> cartas = juego.getMazo();
+    private static ArrayList<Sorpresa> 
+        esDeTipo (TipoSorpresa tipo, ArrayList<Sorpresa> mazo){
         
         ArrayList<Sorpresa> aDevolver = new ArrayList<>();
         
-        for (Sorpresa carta :cartas){
+        for (Sorpresa carta :mazo){
             if (carta.getTipo() == tipo){
                 aDevolver.add(carta);
             }
@@ -59,11 +58,12 @@ public class PruebaQytetet {
     public static void main(String[] args) {
         
         juego = new Qytetet();
+        ArrayList<Sorpresa> mayoresQueCero;
         juego.inicializarCartasSorpresa();
         
         System.out.println(juego.getMazo().toString());
         
-        
+        mayoresQueCero = sorpresaMayorQueCero();
     }
     
 }
