@@ -11,11 +11,18 @@ package modeloqytetet;
  */
 public class PruebaQytetet {
 
+    static Qytetet juego;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("hey");
+        
+        juego = new Qytetet();
+        juego.inicializarCartasSorpresa();
+        
+        System.out.println(juego.getMazo().toString());
+        
+        
     }
     
 }
