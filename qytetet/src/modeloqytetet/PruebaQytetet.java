@@ -58,12 +58,25 @@ public class PruebaQytetet {
     public static void main(String[] args) {
         
         juego = new Qytetet();
-        ArrayList<Sorpresa> mayoresQueCero;
+        ArrayList<Sorpresa> mayoresQueCero, irACasilla, tipos;
         juego.inicializarCartasSorpresa();
         
         System.out.println(juego.getMazo().toString());
         
-        mayoresQueCero = sorpresaMayorQueCero();
+        mayoresQueCero = sorpresaMayorQueCero(juego.getMazo());
+        irACasilla = esDeIrACasilla(juego.getMazo());
+        
+        
+        System.out.println(mayoresQueCero.toString());
+        System.out.println(irACasilla.toString());
+        
+        
+        for (TipoSorpresa sorp : TipoSorpresa.values()){
+            tipos = esDeTipo(sorp, juego.getMazo());
+            
+            System.out.println(tipos.toString());
+        }
+        
     }
     
 }
