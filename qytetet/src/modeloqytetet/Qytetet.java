@@ -18,7 +18,7 @@ public class Qytetet {
     void inicializarCartasSorpresa (){
         
         mazo.add (new Sorpresa ("Te encuentras un billete por la calle, cobra"
-                + "500 euros", 500, TipoSorpresa.PAGARCOBRAR));
+                + " 500 euros", 500, TipoSorpresa.PAGARCOBRAR));
         
         mazo.add (new Sorpresa ("Te han pillado superando el límite de velociedad"
                 , -200, TipoSorpresa.PAGARCOBRAR));
