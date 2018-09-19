@@ -17,7 +17,7 @@ public class PruebaQytetet {
      * @param args the command line arguments
      */
     
-    private static ArrayList<Sorpresa> Metodo1 (){
+    private static ArrayList<Sorpresa> sorpresaMayorQueCero (){
         
         ArrayList<Sorpresa> cartas = juego.getMazo();
         
@@ -33,23 +33,14 @@ public class PruebaQytetet {
         
     }
     
-    private static ArrayList<Sorpresa> Metodo2 (){
+    private static ArrayList<Sorpresa> esDeIrACasilla (){
         
-        ArrayList<Sorpresa> cartas = juego.getMazo();
         
-        ArrayList<Sorpresa> aDevolver = new ArrayList<>();
-        
-        for (Sorpresa carta :cartas){
-            if (carta.getTipo() == TipoSorpresa.IRACASILLA){
-                aDevolver.add(carta);
-            }
-        }
-        
-        return aDevolver;
+        return esDeTipo(TipoSorpresa.IRACASILLA);
         
     }
     
-    private static ArrayList<Sorpresa> Metodo3 (TipoSorpresa tipo){
+    private static ArrayList<Sorpresa> esDeTipo (TipoSorpresa tipo){
         
         ArrayList<Sorpresa> cartas = juego.getMazo();
         
