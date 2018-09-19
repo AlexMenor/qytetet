@@ -9,6 +9,9 @@ package modeloqytetet;
  *
  * @author escaleranm
  */
-public class Sorpresa {
+class Sorpresa {
+    private string texto;
+    private TipoSorpresa tipo;
+    private int valor;
     
 }
