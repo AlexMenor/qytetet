@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modeloqytetet;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,55 @@ public class PruebaQytetet {
     /**
      * @param args the command line arguments
      */
+    
+    private static ArrayList<Sorpresa> Metodo1 (){
+        
+        ArrayList<Sorpresa> cartas = juego.getMazo();
+        
+        ArrayList<Sorpresa> aDevolver = new ArrayList<>();
+        
+        for (Sorpresa carta :cartas){
+            if (carta.getValor() > 0){
+                aDevolver.add(carta);
+            }
+        }
+        
+        return aDevolver;
+        
+    }
+    
+    private static ArrayList<Sorpresa> Metodo2 (){
+        
+        ArrayList<Sorpresa> cartas = juego.getMazo();
+        
+        ArrayList<Sorpresa> aDevolver = new ArrayList<>();
+        
+        for (Sorpresa carta :cartas){
+            if (carta.getTipo() == TipoSorpresa.IRACASILLA){
+                aDevolver.add(carta);
+            }
+        }
+        
+        return aDevolver;
+        
+    }
+    
+    private static ArrayList<Sorpresa> Metodo3 (TipoSorpresa tipo){
+        
+        ArrayList<Sorpresa> cartas = juego.getMazo();
+        
+        ArrayList<Sorpresa> aDevolver = new ArrayList<>();
+        
+        for (Sorpresa carta :cartas){
+            if (carta.getTipo() == tipo){
+                aDevolver.add(carta);
+            }
+        }
+        
+        return aDevolver;
+        
+    }
+    
     public static void main(String[] args) {
         
         juego = new Qytetet();
