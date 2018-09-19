@@ -10,8 +10,34 @@ package modeloqytetet;
  * @author escaleranm
  */
 class Sorpresa {
-    private string texto;
+    private String texto;
     private TipoSorpresa tipo;
     private int valor;
+    
+    public Sorpresa (String text, int val, TipoSorpresa tip){
+        texto = text;
+        tipo = tip;
+        valor = val;
+    }
+    
+    String getTexto (){
+        return (texto);
+    }
+    
+    TipoSorpresa getTipo (){
+        return (tipo);
+    }
+    
+    int getValor (){
+        return (valor);
+    }
+    
+    @Override
+    public String toString (){
+        return "Sorpresa{" + "texto=" + texto + ", valor= " +
+                Integer.toString(valor) + ", tipo=" + tipo + "}";
+    }
+    
+    
     
 }
