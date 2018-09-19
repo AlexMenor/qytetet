@@ -58,21 +58,33 @@ public class PruebaQytetet {
     public static void main(String[] args) {
         
         juego = new Qytetet();
-        ArrayList<Sorpresa> mayoresQueCero, irACasilla, tipos;
         juego.inicializarCartasSorpresa();
         
-        System.out.println(juego.getMazo().toString());
+            // Declarados para probar los métodos de esta clase
         
-        mayoresQueCero = sorpresaMayorQueCero(juego.getMazo());
-        irACasilla = esDeIrACasilla(juego.getMazo());
+        ArrayList<Sorpresa> mayoresQueCero, irACasilla, 
+                tipos, mazoCompleto;
         
+        mazoCompleto = juego.getMazo();
         
-        System.out.println(mayoresQueCero.toString());
-        System.out.println(irACasilla.toString());
+            /* 
+            * El método println automáticamente
+            * hace uso de toString() en ArrayList 
+            */
+        System.out.println("Mazo completo: ");
+        System.out.println(mazoCompleto);
         
+        mayoresQueCero = sorpresaMayorQueCero(mazoCompleto);
+        System.out.println("Mazo mayores de cero: ");
+        System.out.println(mayoresQueCero);
         
+        irACasilla = esDeIrACasilla(mazoCompleto);
+        System.out.println("Mazo de ir a casilla: ");
+        System.out.println(irACasilla);
+        
+        System.out.println("Mazos de cada tipo: ");
         for (TipoSorpresa sorp : TipoSorpresa.values()){
-            tipos = esDeTipo(sorp, juego.getMazo());
+            tipos = esDeTipo(sorp, mazoCompleto);
             
             System.out.println(tipos.toString());
         }

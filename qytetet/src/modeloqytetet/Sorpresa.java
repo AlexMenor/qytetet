@@ -14,30 +14,21 @@ class Sorpresa {
     private TipoSorpresa tipo;
     private int valor;
     
-    public Sorpresa (String text, int val, TipoSorpresa tip){
-        texto = text;
-        tipo = tip;
-        valor = val;
+    public Sorpresa (String texto, int valor, TipoSorpresa tipo){
+        this.texto = texto;
+        this.tipo = tipo;
+        this.valor = valor;
     }
     
-    String getTexto (){
-        return (texto);
-    }
+    String getTexto (){return (texto);} 
     
-    TipoSorpresa getTipo (){
-        return (tipo);
-    }
+    TipoSorpresa getTipo (){return (tipo);}
     
-    int getValor (){
-        return (valor);
-    }
+    int getValor (){return (valor);}
     
     @Override
     public String toString (){
         return "Sorpresa{" + "texto=" + texto + ", valor= " +
                 Integer.toString(valor) + ", tipo=" + tipo + "}";
     }
-    
-    
-    
 }
