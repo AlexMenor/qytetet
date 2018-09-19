@@ -10,5 +10,5 @@ package modeloqytetet;
  * @author alex
  */
 public enum TipoSorpresa {
-    
+    PAGARCOBRAR,IRACASILLA,PORCASAHOTEL,PORJUGADOR,SALIRCARCEL
 }
