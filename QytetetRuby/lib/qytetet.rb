@@ -5,5 +5,10 @@
 #encoding: utf8
 
 module ModeloQytetet
-  
+  class Qytetet
+    attr_accessor:mazo
+    def inicializarCartasSorpresa
+      @mazo
+    end
+  end
 end
