@@ -6,5 +6,4 @@ para la clase de PDOO en el segundo curso.
 Qytetet es un juego similar al Monopoly y lo programaremos en java
 y en ruby.
 
-Noelia Escalera
-Alejandro Menor
+Alumnos: Noelia Escalera y Alejandro Menor
