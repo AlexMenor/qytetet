@@ -5,4 +5,12 @@
 
 module ModeloQytetet
   
+  class PruebaQytetet
+    attr_accessor:juego
+    
+    def initialize
+      @juego = Qytetet.new
+      @juego.inicializarCartasSorpresa
+    end  
+  end
 end

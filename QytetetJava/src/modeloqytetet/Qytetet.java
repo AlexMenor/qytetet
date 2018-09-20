@@ -20,7 +20,7 @@ public class Qytetet {
         mazo.add (new Sorpresa ("Te encuentras un billete por la calle, cobra"
                 + " 500 euros", 500, TipoSorpresa.PAGARCOBRAR));
         
-        mazo.add (new Sorpresa ("Te han pillado superando el límite de velociedad"
+        mazo.add (new Sorpresa ("Te han pillado superando el límite de velocidad"
                 , -200, TipoSorpresa.PAGARCOBRAR));
         
         mazo.add (new Sorpresa ("Ve a la cárcel", 9, TipoSorpresa.IRACASILLA));
