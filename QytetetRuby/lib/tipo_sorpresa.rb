@@ -5,6 +5,10 @@
 
 module ModeloQytetet
   
+  # Simplemente contiene los tipos
+  # que pueden tener las cartas
+  # sorpresa del juego
+  
   module TipoSorpresa
       PAGARCOBRAR = :Pagar_cobrar
       IRACASILLA =:Ir_A_Casilla

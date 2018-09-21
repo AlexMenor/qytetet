@@ -3,14 +3,31 @@
 # and open the template in the editor.
 #encoding: utf8
 
+# Imprescindibles para crear
+# clases definidas en otros
+# archivos del proyecto
+
+require_relative "sorpresa"
+require_relative "tipo_sorpresa"
+
 module ModeloQytetet
+  
+  # Esta clase crea un mazo de cartas
+  # sorpresa e implementa el método
+  # que lo inicializa
   
   class Qytetet
     attr_accessor:mazo
     
+    # Constructor que crea un
+    # mazo vacío
+    
     def initialize
       @mazo = Array.new
     end
+    
+    # Método para inicializar 
+    # el mazo con cartas definidas
     
     def inicializarCartasSorpresa
       @mazo << Sorpresa.new("Te encuentras un billete por la calle, cobra 500 euros", 

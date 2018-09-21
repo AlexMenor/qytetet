@@ -5,6 +5,9 @@
 
 module ModeloQytetet
   
+  # Esta clase representa una "carta sorpresa"
+  # de Qytetet
+  
   class Sorpresa
     attr_accessor:texto
     attr_accessor:valor
