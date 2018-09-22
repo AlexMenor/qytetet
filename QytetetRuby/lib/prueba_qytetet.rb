@@ -1,7 +1,5 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
-#encoding: utf-8
+# encoding: utf-8
+
 
 # Imprescindibles para crear
 # clases definidas en otros
@@ -15,12 +13,12 @@ module ModeloQytetet
   
   class PruebaQytetet
     
-    # Variable de clase, pues main es
-    # un método de clase también
-    @@juego
+    # Variable de instancia de clase, pues main es
+    # un método de instancia de clase también
+    @juego
     
     
-    # Método de clase que crea, a partir
+    # Método de instancia de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de valor siempre mayor que cero
     
@@ -37,7 +35,7 @@ module ModeloQytetet
       a_devolver
     end
     
-    # Método de clase que crea, a partir
+    # Método de instancia de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de un tipo específico
     
@@ -54,7 +52,7 @@ module ModeloQytetet
       a_devolver
     end
     
-    # Método de clase que crea, a partir
+    # Método de instancia de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de tipo "ir a casilla" 
     # (aprovechamos el general)
@@ -63,7 +61,8 @@ module ModeloQytetet
       es_de_tipo(mazo, TipoSorpresa::IRACASILLA)
     end
     
-    # Método de clase Main para probar el juego
+    # Método de instancia de clase Main 
+    # para probar el juego
     
     def self.main
       @@juego = Qytetet.new
