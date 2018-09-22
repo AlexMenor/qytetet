@@ -1,12 +1,5 @@
 # encoding: utf-8
 
-# Imprescindibles para crear
-# clases definidas en otros
-# archivos del proyecto
-
-require_relative "sorpresa"
-require_relative "tipo_sorpresa"
-
 module ModeloQytetet
   
   # Esta clase crea un mazo de cartas

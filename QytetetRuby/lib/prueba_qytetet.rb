@@ -2,8 +2,8 @@
 
 
 # Imprescindibles para crear
-# clases definidas en otros
-# archivos del proyecto
+# instancias clases definidas 
+# en otros archivos del proyecto
 
 require_relative "sorpresa"
 require_relative "qytetet"
