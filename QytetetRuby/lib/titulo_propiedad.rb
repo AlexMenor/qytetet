@@ -1,9 +1,18 @@
 # encoding: utf-8
 module ModeloQytetet
+  
+  # Esta clase representa los distintos títulos de propiedad
+  # y sus características
 
   class TituloPropiedad
     
+    attr_reader:nombre
     attr_accessor:hipotecada
+    attr_reader:factor_revalorizacion
+    attr_reader:hipoteca_base
+    attr_reader:precio_edificar
+    
+    # Constructor que crea un título de propiedad a partir de 5 argumentos
     
     def initialize (nombre, alquiler_base, factor_revalorizacion, hipoteca_base,
                     precio_edificar)
@@ -17,25 +26,7 @@ module ModeloQytetet
       @num_casas= 0
     end
     
-    def nombre
-      @nombre
-    end
-    
-    def alquiler_base
-      @alquiler_base
-    end
-    
-    def factor_revalorizacion
-      @factor_revalorizacion
-    end
-    
-    def hipoteca_base
-      @hipoteca_base
-    end
-    
-    def precio_edificar
-      @precio_edificar
-    end
+    # Método que imprime por pantalla los atributos de un título de propiedad
     
     def to_s()
       "TituloPropiedad; #{@nombre} \n hipotecada: #{@hipotecada} 
