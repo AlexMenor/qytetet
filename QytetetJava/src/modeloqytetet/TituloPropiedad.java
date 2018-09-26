@@ -37,7 +37,7 @@ public class TituloPropiedad {
         // Constructor
     public TituloPropiedad
         (String nombre, int precioCompra, int alquilerBase,
-         int factorRevalorizacion, int hipotecaBase, 
+         float factorRevalorizacion, int hipotecaBase, 
          int precioEdificar)
         {
             this.nombre = nombre;
