@@ -6,9 +6,9 @@ module ModeloQytetet
   # de Qytetet
   
   class Sorpresa
-    attr_accessor:texto
-    attr_accessor:valor
-    attr_accessor:tipo
+    attr_reader:texto
+    attr_reader:valor
+    attr_reader:tipo
 
     # Constructor que crea una carta sorpesa a partir de 3 argumentos
     
