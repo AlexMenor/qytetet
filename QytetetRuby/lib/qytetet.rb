@@ -7,7 +7,7 @@ module ModeloQytetet
   # que lo inicializa
   
   class Qytetet
-    attr_accessor:mazo
+    attr_reader:mazo
     
     # Constructor que crea un
     # mazo vacío
