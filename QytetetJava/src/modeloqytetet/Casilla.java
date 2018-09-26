@@ -56,21 +56,21 @@ public class Casilla {
         this.tipo = tipo;
     }
     
-    public int getNumeroCasilla(){
-        return numeroCasilla;
-    }
+        // Consultores
     
-    public int getCoste(){
-        return coste;
-    }
+    public int getNumeroCasilla(){return numeroCasilla;}
     
-    public TipoCasilla getTipo(){
-        return tipo;
-    }
+    public int getCoste(){return coste;}
     
-    public TituloPropiedad getTitulo(){
-        return titulo;
-    }
+    public TipoCasilla getTipo(){return tipo;}
+    
+    public TituloPropiedad getTitulo(){return titulo;}
+    
+        /* 
+        Casilla toString() solo devuelve las características
+        de título propiedad, si la casilla es de tipo
+        calle y por tanto, tiene título
+        */
 
     @Override
     public String toString() {

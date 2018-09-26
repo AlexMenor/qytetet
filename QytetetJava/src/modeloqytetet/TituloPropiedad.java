@@ -10,7 +10,8 @@ package modeloqytetet;
  * @author alex
  */
 public class TituloPropiedad {
-    // Campos privados asociados a la propiedad
+    
+// Campos privados asociados a la propiedad
     
         // Nombre de la calle
     private String nombre;
@@ -48,7 +49,7 @@ public class TituloPropiedad {
             this.precioEdificar = precioEdificar;
         }
         
-        // Consultores
+// Consultores
 
     public String getNombre() {return nombre;}
 

@@ -11,12 +11,24 @@ import java.util.ArrayList;
  * @author alex
  */
 public class Qytetet {
+
+// Atributos privados
+    
+        // Mazo con las cartas sorpresa
     private ArrayList <Sorpresa> mazo = new ArrayList <> ();
+        // Tablero con las casillas del juego
     private Tablero tablero;
+    
+// Consultores
     
     public Tablero getTablero (){return tablero;}
     
     public ArrayList <Sorpresa> getMazo () {return mazo;}
+    
+        /*
+        Inicializa las cartas sopresa con las
+        características que hemos decidido
+        */
     
     void inicializarCartasSorpresa (){
         
@@ -51,10 +63,8 @@ public class Qytetet {
         
     }
     
-    void inicializarTablero (){
+        // Inicialización del atributo tablero
     
-        tablero = new Tablero ();
-    
-    }
+    void inicializarTablero (){tablero = new Tablero ();}
     
 }
