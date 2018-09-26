@@ -10,21 +10,45 @@ package modeloqytetet;
  * @author escaleranm
  */
 public class Casilla {
+    
+    // Atributos privados de casilla
+    
+        // El número de la casilla
     private int numeroCasilla;
+        // El coste de la casilla
     private int coste;
+        // El tipo de la casilla
     private TipoCasilla tipo;
+        /* 
+        Si la casilla es una calle
+        tendra titulo de propiedad
+        sino, este atributo será null
+        */
     private TituloPropiedad titulo;
+    
+        // Modificador privado de titulo
     
     private void setTitulo(TituloPropiedad titulo){
         this.titulo = titulo;
     }
+        
+        /* 
+        Constructor para calles, por defecto
+        inicializa el tipo de casilla a calle
+        */
     
-    public Casilla (int numeroCasilla, int coste, TituloPropiedad titulo){
+    public Casilla (int numeroCasilla, TituloPropiedad titulo){
         this.numeroCasilla = numeroCasilla;
-        this.coste = coste;
-        this.tipo = TipoCasilla.CALLE;
         setTitulo (titulo);
+        this.coste = titulo.getPrecioCompra();
+        this.tipo = TipoCasilla.CALLE;
+        
     }
+        
+        /* 
+        Constructor para el resto de tipos, 
+        por defecto inicializa coste a 0
+        */
     
     public Casilla (int numeroCasilla, TipoCasilla tipo){
         this.numeroCasilla = numeroCasilla;
