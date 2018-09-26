@@ -13,9 +13,6 @@ import java.util.ArrayList;
 public class PruebaQytetet {
 
     static Qytetet juego;
-    /**
-     * @param args the command line arguments
-     */
     
     private static ArrayList<Sorpresa> 
         sorpresaMayorQueCero (ArrayList<Sorpresa> mazo){
@@ -59,6 +56,7 @@ public class PruebaQytetet {
         
         juego = new Qytetet();
         juego.inicializarCartasSorpresa();
+        juego.inicializarTablero();
         
             // Declarados para probar los métodos de esta clase
         
@@ -88,6 +86,8 @@ public class PruebaQytetet {
             
             System.out.println(tipos.toString());
         }
+        
+        System.out.println(juego.getTablero().toString());
         
     }
     
