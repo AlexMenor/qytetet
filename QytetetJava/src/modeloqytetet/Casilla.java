@@ -47,11 +47,20 @@ public class Casilla {
     public TituloPropiedad getTitulo(){
         return titulo;
     }
-    
-    public String toString(){
-        return "Número: " + Integer.toString (numeroCasilla) + " \nCoste: " + 
-                Integer.toBinaryString(coste) + "\nTipo: " + tipo + "\nTitulo: " 
-                + titulo;
+
+    @Override
+    public String toString() {
+        String toReturn = "Casilla{" 
+                + "numeroCasilla=" + numeroCasilla 
+                + ", coste=" + coste 
+                + ", tipo=" + tipo;
+        
+        if (titulo != null)
+            toReturn += titulo.toString();
+        
+        return toReturn + '}';
     }
+    
+    
     
 }
