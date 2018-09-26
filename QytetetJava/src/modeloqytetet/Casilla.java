@@ -77,7 +77,7 @@ public class Casilla {
         String toReturn = "Casilla{" 
                 + "numeroCasilla=" + numeroCasilla 
                 + ", coste=" + coste 
-                + ", tipo=" + tipo;
+                + ", tipo=" + tipo + "\n";
         
         if (titulo != null)
             toReturn += titulo.toString();
