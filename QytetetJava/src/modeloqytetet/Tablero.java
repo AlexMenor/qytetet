@@ -10,8 +10,16 @@ import java.util.ArrayList;
  * @author escaleranm
  */
 public class Tablero {
-    private ArrayList<Casilla> casillas;
-    private Casilla carcel;
+    
+    // Atributos privados
+    
+    private ArrayList<Casilla> casillas; // Vector de casillas del tablero
+    private Casilla carcel; // Casilla que contiene la cárcel
+    
+    /* 
+        Método privado que inicializa el tablero con las características 
+        que hemos decidido
+    */
     
     private void inicializar(){
         casillas = new ArrayList<>();
@@ -51,10 +59,13 @@ public class Tablero {
                 100, (float)1.95, 1000, 700)));
     }
 
+    // Constructor sin argumentos
     
     public Tablero(){
         inicializar();
     }
+    
+    // Consultores públicos
     
     public ArrayList<Casilla> getCasillas(){
         return casillas;
@@ -63,6 +74,8 @@ public class Tablero {
     public Casilla getCarcel(){
         return carcel;
     }
+    
+    // Método toString, que muestra las casillas de un tablero
     
     @Override
     public String toString(){
