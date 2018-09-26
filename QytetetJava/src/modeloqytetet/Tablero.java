@@ -31,7 +31,8 @@ public class Tablero {
         casillas.add (new Casilla (7, TipoCasilla.SORPRESA));
         casillas.add (new Casilla (8, new TituloPropiedad ("Rana de la "
                 + "Universidad", 500, 70, (float)1.5, 475, 400)));
-        casillas.add (new Casilla (9, TipoCasilla.CARCEL));
+        carcel = new Casilla(9, TipoCasilla.CARCEL);
+        casillas.add (carcel);
         casillas.add (new Casilla (10, new TituloPropiedad ("Palacio de "
                 + "Monterrey", 600, 75, (float)1.6, 500, 450)));
         casillas.add (new Casilla (11, new TituloPropiedad ("Plaza de "
@@ -52,7 +53,7 @@ public class Tablero {
 
     
     public Tablero(){
-        carcel = new Casilla(9, TipoCasilla.CARCEL);
+        inicializar();
     }
     
     public ArrayList<Casilla> getCasillas(){
@@ -63,8 +64,9 @@ public class Tablero {
         return carcel;
     }
     
+    @Override
     public String toString(){
-        return "Casillas";
+        return "Casillas: " + casillas.toString();
     }
     
 }
