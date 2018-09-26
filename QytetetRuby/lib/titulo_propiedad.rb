@@ -3,14 +3,7 @@ module ModeloQytetet
 
   class TituloPropiedad
     
-    attr_accessor:nombre
     attr_accessor:hipotecada
-    attr_accessor:alquiler_base
-    attr_accessor:factor_revalorizacion
-    attr_accessor:hipoteca_base
-    attr_accessor:precio_edificar
-    attr_accessor:num_casas
-    attr_accessor:num_hoteles
     
     def initialize (nombre, alquiler_base, factor_revalorizacion, hipoteca_base,
                     precio_edificar)
@@ -22,6 +15,26 @@ module ModeloQytetet
       @precio_edificar = precio_edificar
       @num_hoteles = 0
       @num_casas= 0
+    end
+    
+    def nombre
+      @nombre
+    end
+    
+    def alquiler_base
+      @alquiler_base
+    end
+    
+    def factor_revalorizacion
+      @factor_revalorizacion
+    end
+    
+    def hipoteca_base
+      @hipoteca_base
+    end
+    
+    def precio_edificar
+      @precio_edificar
     end
     
     def to_s()
