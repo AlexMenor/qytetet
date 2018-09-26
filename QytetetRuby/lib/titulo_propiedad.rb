@@ -1,6 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: utf-8
 module ModeloQytetet
 
   class TituloPropiedad
@@ -18,12 +16,20 @@ module ModeloQytetet
                     precio_edificar)
       @nombre = nombre
       @hipotecada = false
-      @alquilerBase = alquiler_base
-      @factorRevalorizacion = factor_revalorizacion
-      @hipotecaBase = hipoteca_base
-      @precioEdificar = precio_edificar
+      @alquiler_base = alquiler_base
+      @factor_revalorizacion = factor_revalorizacion
+      @hipoteca_base = hipoteca_base
+      @precio_edificar = precio_edificar
       @num_hoteles = 0
       @num_casas= 0
+    end
+    
+    def to_s()
+      "TituloPropiedad; #{@nombre} \n hipotecada: #{@hipotecada} 
+      \n alquiler_base: #{@alquiler_base} \n factor_revalorizacion: 
+      #{@factor_revalorizacion} \n hipoteca_base: #{@hipoteca_base} 
+      \n precio_edificar: #{@precio_edificar} \n num_hoteles: #{@num_hoteles}
+      \n num_casas: #{@num_casas}"
     end
     
   end
