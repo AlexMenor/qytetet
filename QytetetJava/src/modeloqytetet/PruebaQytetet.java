@@ -55,8 +55,9 @@ public class PruebaQytetet {
     public static void main(String[] args) {
         
         juego = new Qytetet();
-        juego.inicializarCartasSorpresa();
         juego.inicializarTablero();
+        juego.inicializarCartasSorpresa();
+        
         
             // Declarados para probar los métodos de esta clase
         
