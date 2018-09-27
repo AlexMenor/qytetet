@@ -35,7 +35,7 @@ public class Tablero {
         casillas.add (new Casilla (5, new TituloPropiedad ("Calle Cuarta", 
                 425, 62, (float)1.4, 400, 325)));
         casillas.add (new Casilla (6, new TituloPropiedad ("Avda Vicente del"
-                + "bosque", 460, 67, (float)1.43, 450, 350)));
+                + "Bosque", 460, 67, (float)1.43, 450, 350)));
         casillas.add (new Casilla (7, TipoCasilla.SORPRESA));
         casillas.add (new Casilla (8, new TituloPropiedad ("Rana de la "
                 + "Universidad", 500, 70, (float)1.5, 475, 400)));

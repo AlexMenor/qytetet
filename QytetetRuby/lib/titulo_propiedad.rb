@@ -9,6 +9,8 @@ module ModeloQytetet
     attr_reader:nombre
     attr_accessor:hipotecada
     attr_reader:factor_revalorizacion
+    attr_reader:alquiler_base
+    attr_reader:precio_compra
     attr_reader:hipoteca_base
     attr_reader:precio_edificar
     attr_reader:num_hoteles
@@ -30,6 +32,8 @@ module ModeloQytetet
     end
     
     # Método que imprime por pantalla los atributos de un título de propiedad
+    
+    #pendiente modificar to_s para precio_compra
     
     def to_s()
       "TituloPropiedad; #{@nombre} \n hipotecada: #{@hipotecada} 
