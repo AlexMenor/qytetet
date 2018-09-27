@@ -19,7 +19,7 @@ public class PruebaQytetet {
         
         ArrayList<Sorpresa> aDevolver = new ArrayList<>();
         
-        for (Sorpresa carta :mazo){
+        for (Sorpresa carta : mazo){
             if (carta.getValor() > 0){
                 aDevolver.add(carta);
             }
@@ -42,7 +42,7 @@ public class PruebaQytetet {
         
         ArrayList<Sorpresa> aDevolver = new ArrayList<>();
         
-        for (Sorpresa carta :mazo){
+        for (Sorpresa carta : mazo){
             if (carta.getTipo() == tipo){
                 aDevolver.add(carta);
             }

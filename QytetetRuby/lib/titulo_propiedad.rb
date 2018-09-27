@@ -14,9 +14,10 @@ module ModeloQytetet
     
     # Constructor que crea un título de propiedad a partir de 5 argumentos
     
-    def initialize (nombre, alquiler_base, factor_revalorizacion, hipoteca_base,
-                    precio_edificar)
+    def initialize (nombre, precio_compra, alquiler_base, factor_revalorizacion, 
+          hipoteca_base,precio_edificar)
       @nombre = nombre
+      @precio_compra = precio_compra
       @hipotecada = false
       @alquiler_base = alquiler_base
       @factor_revalorizacion = factor_revalorizacion
