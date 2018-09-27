@@ -11,6 +11,8 @@ module ModeloQytetet
     attr_reader:factor_revalorizacion
     attr_reader:hipoteca_base
     attr_reader:precio_edificar
+    attr_reader:num_hoteles
+    attr_reader:num_casas
     
     # Constructor que crea un título de propiedad a partir de 5 argumentos
     
