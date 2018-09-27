@@ -19,6 +19,13 @@ public class Qytetet {
         // Tablero con las casillas del juego
     private Tablero tablero;
     
+// Constructor sin argumentos
+    
+    public Qytetet (){
+        inicializarTablero ();
+        inicializarCartasSorpresa ();
+    }
+    
 // Consultores
     
     public Tablero getTablero (){return tablero;}
@@ -65,6 +72,6 @@ public class Qytetet {
     
         // Inicialización del atributo tablero
     
-    void inicializarTablero (){tablero = new Tablero ();}
+    private void inicializarTablero (){tablero = new Tablero ();}
     
 }
