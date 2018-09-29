@@ -17,12 +17,13 @@ module ModeloQytetet
   
   class PruebaQytetet
     
-    # Variable de instancia de clase, pues main es
-    # un método de instancia de clase también
-    @juego
+    # Variable de clase, pues main es
+    # un método de clase también
+    
+    @@juego
     
     
-    # Método de instancia de clase que crea, a partir
+    # Método de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de valor siempre mayor que cero
     
@@ -39,7 +40,7 @@ module ModeloQytetet
       a_devolver
     end
     
-    # Método de instancia de clase que crea, a partir
+    # Método de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de un tipo específico
     
@@ -56,7 +57,7 @@ module ModeloQytetet
       a_devolver
     end
     
-    # Método de instancia de clase que crea, a partir
+    # Método de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de tipo "ir a casilla" 
     # (aprovechamos el general)
@@ -65,16 +66,16 @@ module ModeloQytetet
       es_de_tipo(mazo, TipoSorpresa::IRACASILLA)
     end
     
-    # Método de instancia de clase Main 
+    # Método de clase Main 
     # para probar el juego
     
     def self.main
-      @juego = Qytetet.new
+      @@juego = Qytetet.new
       
-      mazo_completo = @juego.mazo
+      mazo_completo = @@juego.mazo
       
       mazo_mayor_que_cero = sorpresa_mayor_que_cero(mazo_completo)
-      puts "///////////////////////////////////////////////////"
+      puts "\n\n///////////////////////////////////////////////////"
       puts "Prueba del método de mazo con valor mayor que cero:"
       puts "///////////////////////////////////////////////////\n\n"
       puts mazo_mayor_que_cero
@@ -82,13 +83,16 @@ module ModeloQytetet
       
       TipoSorpresa::constants.each do |constante|
         tipo = TipoSorpresa.const_get(constante)
-        puts "///////////////////////////////////////////////////"
+        puts "\n\n///////////////////////////////////////////////////"
         puts "  Prueba del método de mazo con tipo #{tipo}"
         puts "///////////////////////////////////////////////////\n\n"
         puts es_de_tipo(mazo_completo, tipo)
       end
       
-      tablero = @juego.tablero
+      puts "\n\n///////////////////////////////////////////////////"
+      puts "  Prueba del tablero to_s"
+      puts "///////////////////////////////////////////////////\n\n"
+      tablero = @@juego.tablero
       
       puts tablero.to_s
       

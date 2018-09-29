@@ -1,6 +1,9 @@
-# encoding = utf-8
+# encoding: utf-8
 
 module ModeloQytetet
+  
+  # Esta clase representa cada casilla 
+  # de nuestro Qytetet
   
   class Casilla
     attr_reader:numero_casilla, :coste, :tipo

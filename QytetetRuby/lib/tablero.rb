@@ -1,4 +1,4 @@
-# encoding = utf-8
+# encoding: utf-8
 
 module ModeloQytetet
   class Tablero
@@ -49,7 +49,7 @@ module ModeloQytetet
     
     def to_s
       
-      to_return = "Casillas: \n" 
+      to_return = "\nCasillas: \n" 
 
       @casillas.each do |casilla|
         to_return << casilla.to_s

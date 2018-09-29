@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 module ModeloQytetet
   
   # Esta clase representa los distintos títulos de propiedad
