@@ -5,6 +5,7 @@ module ModeloQytetet
     attr_reader:casillas, :carcel
     
     def initialize
+      @casillas = Array.new
       self.inicializar
     end
     
@@ -47,8 +48,15 @@ module ModeloQytetet
     end
     
     def to_s
-      "Casillas: " + @casillas.to_s
+      
+      to_return = "Casillas: \n" 
+
+      @casillas.each do |casilla|
+        to_return << casilla.to_s
+      end
+
+      to_return 
     end
-    
   end
 end
+

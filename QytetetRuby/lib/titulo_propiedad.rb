@@ -36,11 +36,14 @@ module ModeloQytetet
     #pendiente modificar to_s para precio_compra
     
     def to_s()
-      "TituloPropiedad; #{@nombre} \n hipotecada: #{@hipotecada} 
-      \n alquiler_base: #{@alquiler_base} \n factor_revalorizacion: 
-      #{@factor_revalorizacion} \n hipoteca_base: #{@hipoteca_base} 
-      \n precio_edificar: #{@precio_edificar} \n num_hoteles: #{@num_hoteles}
-      \n num_casas: #{@num_casas}"
+       
+      to_return = "TituloPropiedad; #{@nombre} \nhipotecada: #{@hipotecada}" 
+      to_return << "\nalquiler_base: #{@alquiler_base}\nfactor_revalorizacion: " 
+      to_return << "#{@factor_revalorizacion}\nhipoteca_base: #{@hipoteca_base}" 
+      to_return << "\nprecio_edificar: #{@precio_edificar}\nnum_hoteles: #{@num_hoteles}"
+      to_return << "\nnum_casas: #{@num_casas}"
+      
+      to_return
     end
     
   end

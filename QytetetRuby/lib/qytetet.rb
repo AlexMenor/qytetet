@@ -16,6 +16,7 @@ module ModeloQytetet
     def initialize
       @mazo = Array.new
       self.inicializarTablero
+      self.inicializarCartasSorpresa
     end
     
     # Método para inicializar 
@@ -27,7 +28,7 @@ module ModeloQytetet
       @mazo << Sorpresa.new("Te han pillado superando el límite de velocidad", 
        -200, TipoSorpresa::PAGARCOBRAR) 
       @mazo << Sorpresa.new("Ve a la cárcel", 
-        tablero.carcel.numero_casilla, TipoSorpresa::IRACASILLA) 
+        @tablero.carcel.numero_casilla, TipoSorpresa::IRACASILLA) 
       @mazo << Sorpresa.new("Parking gratuito", 
         4, TipoSorpresa::IRACASILLA) 
       @mazo << Sorpresa.new("Ve a la casilla número 10", 

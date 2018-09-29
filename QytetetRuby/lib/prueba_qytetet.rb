@@ -8,6 +8,7 @@
 require_relative "sorpresa"
 require_relative "qytetet"
 require_relative "tipo_sorpresa"
+require_relative "tipo_casilla"
 require_relative "casilla"
 require_relative "titulo_propiedad"
 require_relative "tablero"
@@ -68,10 +69,9 @@ module ModeloQytetet
     # para probar el juego
     
     def self.main
-      @@juego = Qytetet.new
-      @@juego.inicializarCartasSorpresa
+      @juego = Qytetet.new
       
-      mazo_completo = @@juego.mazo
+      mazo_completo = @juego.mazo
       
       mazo_mayor_que_cero = sorpresa_mayor_que_cero(mazo_completo)
       puts "///////////////////////////////////////////////////"
@@ -88,7 +88,7 @@ module ModeloQytetet
         puts es_de_tipo(mazo_completo, tipo)
       end
       
-      tablero = @@juego.tablero
+      tablero = @juego.tablero
       
       puts tablero.to_s
       

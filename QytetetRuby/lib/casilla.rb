@@ -20,15 +20,15 @@ module ModeloQytetet
       @numero_casilla = numero_casilla
     end
     
-    def to_s()
-      to_return = "Número de casilla: #{@numero_casilla} \n coste: #{@coste} 
-      \n tipo: #{@tipo}"
+    def to_s
+      to_return = "\nNúmero de casilla: #{@numero_casilla} \ncoste: #{@coste}\ntipo: #{@tipo}" 
+      
       
       if !titulo.nil?
-        to_return += ("\n titulo: " + titulo.to_s)
+        to_return += ("\ntitulo: " + titulo.to_s)
       end
       
-      to_return += '}'
+      to_return += "\n"
     end
   end
 end
