@@ -8,12 +8,14 @@ module ModeloQytetet
   
   class Qytetet
     attr_reader:mazo
+    attr_reader:tablero
     
     # Constructor que crea un
     # mazo vacío
     
     def initialize
       @mazo = Array.new
+      self.inicializarTablero
     end
     
     # Método para inicializar 
@@ -25,7 +27,7 @@ module ModeloQytetet
       @mazo << Sorpresa.new("Te han pillado superando el límite de velocidad", 
        -200, TipoSorpresa::PAGARCOBRAR) 
       @mazo << Sorpresa.new("Ve a la cárcel", 
-        9, TipoSorpresa::IRACASILLA) 
+        tablero.carcel.numero_casilla, TipoSorpresa::IRACASILLA) 
       @mazo << Sorpresa.new("Parking gratuito", 
         4, TipoSorpresa::IRACASILLA) 
       @mazo << Sorpresa.new("Ve a la casilla número 10", 
@@ -41,5 +43,10 @@ module ModeloQytetet
       @mazo << Sorpresa.new("Quedas libres de la cárcel, puedes guardar esto para luego", 
         0, TipoSorpresa::SALIRCARCEL) 
     end
+    
+    def inicializarTablero
+      @tablero = Tablero.new
+    end
+    
   end
 end
