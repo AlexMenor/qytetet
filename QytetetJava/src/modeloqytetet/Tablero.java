@@ -79,7 +79,7 @@ public class Tablero {
     
     @Override
     public String toString(){
-        return "Casillas: " + casillas.toString();
+        return "\nCasillas: " + casillas.toString();
     }
     
 }

@@ -74,15 +74,15 @@ public class Casilla {
 
     @Override
     public String toString() {
-        String toReturn = "Casilla{" 
-                + "numeroCasilla=" + numeroCasilla 
-                + ", coste=" + coste 
-                + ", tipo=" + tipo + "\n";
+        String toReturn = "\nCasilla{" 
+                + "\nnumeroCasilla=" + numeroCasilla 
+                + "\ncoste=" + coste 
+                + "\ntipo=" + tipo;
         
         if (titulo != null)
             toReturn += titulo.toString();
         
-        return toReturn + '}';
+        return toReturn + "\n}";
     }
     
     
