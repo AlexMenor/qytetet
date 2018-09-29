@@ -8,6 +8,9 @@
 require_relative "sorpresa"
 require_relative "qytetet"
 require_relative "tipo_sorpresa"
+require_relative "casilla"
+require_relative "titulo_propiedad"
+require_relative "tablero"
 
 module ModeloQytetet
   
@@ -84,6 +87,11 @@ module ModeloQytetet
         puts "///////////////////////////////////////////////////\n\n"
         puts es_de_tipo(mazo_completo, tipo)
       end
+      
+      tablero = @@juego.tablero
+      
+      tablero.to_s
+      
     end
   end
   
