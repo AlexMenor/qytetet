@@ -90,7 +90,7 @@ module ModeloQytetet
       
       tablero = @@juego.tablero
       
-      tablero.to_s
+      puts tablero.to_s
       
     end
   end
