@@ -94,7 +94,7 @@ module ModeloQytetet
       
       tablero = @@juego.tablero
       
-      puts tablero.to_s
+      puts tablero
       
     end
   end
