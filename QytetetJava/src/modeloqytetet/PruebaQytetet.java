@@ -80,10 +80,10 @@ public class PruebaQytetet {
         for (TipoSorpresa sorp : TipoSorpresa.values()){
             tipos = esDeTipo(sorp, mazoCompleto);
             
-            System.out.println(tipos.toString());
+            System.out.println(tipos);
         }
         
-        System.out.println(juego.getTablero().toString());
+        System.out.println(juego.getTablero());
         
     }
     
