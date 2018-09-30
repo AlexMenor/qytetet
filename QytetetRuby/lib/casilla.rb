@@ -12,7 +12,7 @@ module ModeloQytetet
     
     def initialize (numero_casilla, titulo_o_tipo)
       if titulo_o_tipo.instance_of?(ModeloQytetet::TituloPropiedad)
-        self.titulo = titulo_o_tipo
+        @titulo = titulo_o_tipo
         @coste = titulo_o_tipo.precio_compra
         @tipo = TipoCasilla::CALLE
       else
@@ -28,10 +28,10 @@ module ModeloQytetet
       
       
       if !titulo.nil?
-        to_return += ("\ntitulo: " + titulo.to_s)
+        to_return << ("\ntitulo: " + @titulo.to_s)
       end
       
-      to_return += "\n"
+      to_return << "\n"
     end
   end
 end

@@ -28,9 +28,9 @@ public class Qytetet {
     
 // Consultores
     
-    public Tablero getTablero (){return tablero;}
+    Tablero getTablero (){return tablero;}
     
-    public ArrayList <Sorpresa> getMazo () {return mazo;}
+    ArrayList <Sorpresa> getMazo () {return mazo;}
     
         /*
         Inicializa las cartas sopresa con las

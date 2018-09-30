@@ -51,29 +51,29 @@ public class TituloPropiedad {
         
 // Consultores
 
-    public String getNombre() {return nombre;}
+    String getNombre() {return nombre;}
 
-    public boolean isHipotecada() {return hipotecada;}
+    boolean isHipotecada() {return hipotecada;}
 
-    public int getPrecioCompra() {return precioCompra;}
+    int getPrecioCompra() {return precioCompra;}
 
-    public int getAlquilerBase() {return alquilerBase;}
+    int getAlquilerBase() {return alquilerBase;}
 
-    public float getFactorRevalorizacion() {
+    float getFactorRevalorizacion() {
         return factorRevalorizacion;
     }
     
-    public int getHipotecaBase() {return hipotecaBase;}
+    int getHipotecaBase() {return hipotecaBase;}
 
-    public int getPrecioEdificar() {return precioEdificar;}
+    int getPrecioEdificar() {return precioEdificar;}
 
-    public int getNumCasas() {return numCasas;}
+    int getNumCasas() {return numCasas;}
 
-    public int getNumHoteles() {return numHoteles;}
+    int getNumHoteles() {return numHoteles;}
     
         // Modificador hipotecada
     
-    public void setHipotecada (boolean hipotecada){
+    void setHipotecada (boolean hipotecada){
         this.hipotecada = hipotecada;
     }
     
@@ -81,22 +81,13 @@ public class TituloPropiedad {
 
     @Override
     public String toString() {
-        return "\nTituloPropiedad{" 
-                + "\nnombre=" + nombre 
-                + "\nhipotecada=" + hipotecada 
-                + "\nprecioCompra=" + precioCompra 
-                + "\nalquilerBase=" + alquilerBase 
-                + "\nfactorRevalorizacion=" + factorRevalorizacion 
-                + "\nhipotecaBase=" + hipotecaBase 
-                + "\nprecioEdificar=" + precioEdificar 
-                + "\nnumCasas=" + numCasas 
-                + "\nnumHoteles=" + numHoteles;
-    }
-    
-    
-    
-        
-    
-    
+        return "TituloPropiedad{" + "nombre=" + nombre + ", hipotecada=" 
+                + hipotecada + ", precioCompra=" 
+                + precioCompra + ", alquilerBase=" + alquilerBase 
+                + ", factorRevalorizacion=" + factorRevalorizacion 
+                + ", hipotecaBase=" + hipotecaBase + ", precioEdificar=" 
+                + precioEdificar + ", numCasas=" + numCasas + ", numHoteles=" 
+                + numHoteles + '}';
+    }  
     
 }

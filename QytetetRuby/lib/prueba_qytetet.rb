@@ -20,7 +20,7 @@ module ModeloQytetet
     # Variable de clase, pues main es
     # un método de clase también
     
-    @juego
+    @@juego = Qytetet.new
     
     
     # Método de clase que crea, a partir
@@ -70,9 +70,8 @@ module ModeloQytetet
     # para probar el juego
     
     def self.main
-      @juego = Qytetet.new
       
-      mazo_completo = @juego.mazo
+      mazo_completo = @@juego.mazo
       
       mazo_mayor_que_cero = sorpresa_mayor_que_cero(mazo_completo)
       puts "\n\n///////////////////////////////////////////////////"
@@ -92,7 +91,8 @@ module ModeloQytetet
       puts "\n\n///////////////////////////////////////////////////"
       puts "  Prueba del tablero to_s"
       puts "///////////////////////////////////////////////////\n\n"
-      tablero = @juego.tablero
+      
+      tablero = @@juego.tablero
       
       puts tablero.to_s
       

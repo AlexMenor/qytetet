@@ -65,21 +65,23 @@ public class Tablero {
         inicializar();
     }
     
-    // Consultores públicos
+    // Consultores
     
-    public ArrayList<Casilla> getCasillas(){
+    ArrayList<Casilla> getCasillas(){
         return casillas;
     }
     
-    public Casilla getCarcel(){
+    Casilla getCarcel(){
         return carcel;
     }
     
-    // Método toString, que muestra las casillas de un tablero
-    
+    // Método toString, que muestra las casillas de un tablero 
+
     @Override
-    public String toString(){
-        return "\nCasillas: " + casillas.toString();
+    public String toString() {
+        return "Tablero{" + "casillas=" + casillas + '}';
     }
+    
+    
     
 }

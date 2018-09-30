@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class PruebaQytetet {
 
-    static Qytetet juego;
+    static Qytetet juego = new Qytetet();
     
     private static ArrayList<Sorpresa> 
         sorpresaMayorQueCero (ArrayList<Sorpresa> mazo){
@@ -53,9 +53,6 @@ public class PruebaQytetet {
     }
     
     public static void main(String[] args) {
-        
-        juego = new Qytetet();
-        
         
             // Declarados para probar los métodos de esta clase
         

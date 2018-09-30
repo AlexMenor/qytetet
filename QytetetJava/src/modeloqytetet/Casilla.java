@@ -58,13 +58,13 @@ public class Casilla {
     
         // Consultores
     
-    public int getNumeroCasilla(){return numeroCasilla;}
+    int getNumeroCasilla(){return numeroCasilla;}
     
-    public int getCoste(){return coste;}
+    int getCoste(){return coste;}
     
-    public TipoCasilla getTipo(){return tipo;}
+    TipoCasilla getTipo(){return tipo;}
     
-    public TituloPropiedad getTitulo(){return titulo;}
+    TituloPropiedad getTitulo(){return titulo;}
     
         /* 
         Casilla toString() solo devuelve las características
@@ -74,15 +74,15 @@ public class Casilla {
 
     @Override
     public String toString() {
-        String toReturn = "\nCasilla{" 
-                + "\nnumeroCasilla=" + numeroCasilla 
-                + "\ncoste=" + coste 
-                + "\ntipo=" + tipo;
+        String toReturn = "Casilla{" 
+                + "numeroCasilla=" + numeroCasilla 
+                + "coste=" + coste 
+                + "tipo=" + tipo;
         
         if (titulo != null)
-            toReturn += titulo.toString();
+            toReturn += ("titulo=" + titulo.toString());
         
-        return toReturn + "\n}";
+        return toReturn + '}';
     }
     
     
