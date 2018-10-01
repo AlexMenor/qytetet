@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modeloqytetet;
 
-/**
- *
- * @author alex
- */
+    /* 
+     Esta clase representa
+     el conjunto de características
+     que se asocian a la propiedad
+     de una casilla de tipo calle
+     en qytetet
+    */
+
 public class TituloPropiedad {
     
 // Campos privados asociados a la propiedad

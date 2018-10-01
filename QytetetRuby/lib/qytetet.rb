@@ -2,25 +2,15 @@
 
 module ModeloQytetet
   
-  # Esta clase crea un mazo de cartas
-  # sorpresa e implementa el método
-  # que lo inicializa
-  
   class Qytetet
     attr_reader:mazo
     attr_reader:tablero
-    
-    # Constructor que crea un
-    # mazo vacío
     
     def initialize
       @mazo = Array.new
       self.inicializarTablero
       self.inicializarCartasSorpresa
     end
-    
-    # Método para inicializar 
-    # el mazo con cartas definidas
     
     def inicializarCartasSorpresa
       @mazo << Sorpresa.new("Te encuentras un billete por la calle, cobra 500 euros", 
