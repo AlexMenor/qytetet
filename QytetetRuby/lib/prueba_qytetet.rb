@@ -17,13 +17,12 @@ module ModeloQytetet
   
   class PruebaQytetet
     
-    # Variable de clase, pues main es
-    # un método de clase también
+    # Variable de clase
     
     @@juego = Qytetet.new
     
     
-    # Método de clase que crea, a partir
+    # Método de instancia de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de valor siempre mayor que cero
     
@@ -40,7 +39,7 @@ module ModeloQytetet
       a_devolver
     end
     
-    # Método de clase que crea, a partir
+    # Método de instancia de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de un tipo específico
     
@@ -57,7 +56,7 @@ module ModeloQytetet
       a_devolver
     end
     
-    # Método de clase que crea, a partir
+    # Método de instancia de clase que crea, a partir
     # de un mazo, otro mazo con sorpresas
     # de tipo "ir a casilla" 
     # (aprovechamos el general)
@@ -66,7 +65,7 @@ module ModeloQytetet
       es_de_tipo(mazo, TipoSorpresa::IRACASILLA)
     end
     
-    # Método de clase Main 
+    # Método de instancia de clase Main 
     # para probar el juego
     
     def self.main
