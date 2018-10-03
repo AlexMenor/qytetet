@@ -1,5 +1,6 @@
 package modeloqytetet;
 import java.util.ArrayList;
+import java.util.Scanner;
     
     /* 
      Esta clase la usamos
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 public class PruebaQytetet {
 
-    static Qytetet juego = new Qytetet();
+    static Qytetet juego;
     
     private static ArrayList<Sorpresa> 
         sorpresaMayorQueCero (ArrayList<Sorpresa> mazo){
@@ -48,10 +49,30 @@ public class PruebaQytetet {
         return aDevolver;
         
     }
+        
+    private static final Scanner in = new Scanner (System.in);
+        
+    private static ArrayList<String> getNombreJugadores (){
+        System.out.println("Introduce el número de jugadores: ");
+        int n_jugadores = in.nextInt ();
+        ArrayList<String> nombres = new ArrayList <> (); 
+        
+        for (int i = 1; i <= n_jugadores; i++){
+            System.out.println("Introduce el jugador " + i);
+            String s = in.nextLine ();
+            nombres.add(s);
+        }
+        
+        return nombres;
+    }
     
     public static void main(String[] args) {
         
             // Declarados para probar los métodos de esta clase
+            
+        ArrayList<String> nombres = getNombreJugadores ();
+        
+        juego = Qytetet.getInstance(nombres);
         
         ArrayList<Sorpresa> mayoresQueCero, irACasilla, 
                 tipos, mazoCompleto;
@@ -81,6 +102,15 @@ public class PruebaQytetet {
         }
         
         System.out.println(juego.getTablero());
+        
+        System.out.println("Jugadores: ");
+        
+        for (Jugador jugador : juego.getJugadores()){
+            System.out.println(jugador.toString());
+        }
+               
+        System.out.println("Juego: ");
+        System.out.println(juego);
         
     }
     
