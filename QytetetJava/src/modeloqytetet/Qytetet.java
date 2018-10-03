@@ -31,14 +31,26 @@ public class Qytetet {
     
     private Jugador jugadorActual;
     
+    private MetodoSalirCarcel metodo;
+    
     
     
     
 // Constructor sin argumentos
     
-    public Qytetet (String nombres){
-        inicializarJuego (String nombres);
+    private static final Qytetet instance = new Qytetet ();
+    
+    private Qytetet (){
+        ArrayList<String> nombres = new ArrayList<>();
+        
+        for (Jugador jugador : jugadores){
+            nombres.add (jugador.getNombre());
+        }
+        
+        inicializarJuego (nombres);
     }
+    
+    public static Qytetet getInstance (ArrayList<String> nombres) {return instance;}
     
 // Consultores
     
@@ -46,7 +58,7 @@ public class Qytetet {
     
     ArrayList <Sorpresa> getMazo () {return mazo;}
     
-   public Sorpresa getCartaActual () {return cartaActual;}
+    public Sorpresa getCartaActual () {return cartaActual;}
     
     Dado getDado() {return dado;}
     
@@ -55,9 +67,9 @@ public class Qytetet {
     public ArrayList <Jugador> getJugadores () {return jugadores;}
     
     
-    public void inicializarJugadores (String nombres){
+    public void inicializarJugadores (ArrayList<String> nombres){
         for (String nombre : nombres){
-            jugadores.add (new Jugador(nombre, false, 7500));
+            jugadores.add (new Jugador(nombre));
         }
     }  
         /*
@@ -106,7 +118,7 @@ public class Qytetet {
     
     private void inicializarTablero (){tablero = new Tablero ();}
     
-    private void inicializarJuego (String nombres){
+    private void inicializarJuego (ArrayList<String> nombres){
         inicializarTablero();
         inicializarCartasSorpresa();
         inicializarJugadores (nombres);
@@ -123,16 +135,50 @@ public class Qytetet {
                 "\nPRECIO_LIBERTAD: "+ PRECIO_LIBERTAD +
                 "\nSALDO_SALIDA: "+ SALDO_SALIDA +
                 "\nMazo: " + mazo +
-                "\nTablero: " + tablero + 
-                "\nDado: " + dado;
+                "\nTablero: " + tablero;
+        
+                if (dado != null){
+                    aDevolver += "\nDado: " + dado;
+                }
         
                 if (cartaActual != null){
                     aDevolver += "\nCarta actual: " + cartaActual;
                 }
+                
+                if (jugadorActual != null){
+                    aDevolver += "\nJugador actual: " + jugadorActual;
+                }
+                
+                aDevolver += jugadores;
                 
                 aDevolver += "}";
                 
                 return aDevolver;
     }
     
+    /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
+    void actuarSiEnCasillaEdificable ();
+    void actuarSiEnCasillaNoEdificable ();
+    public void aplicarSorpresa ();
+    public boolean cancelarHipoteca (int numeroCasilla);
+    public boolean comprarTituloPropiedad (int numeroCasilla);
+    public boolean edificarCasa (int numeroCasilla);
+    public boolean edificarHotel (int numeroCasilla);
+    private void encarcelarJugador ();
+    public int getValorDado ();
+    public void hipotecarPropiedad (int numeroCasilla);
+    public boolean intentarSalirCarcel (MetodoSalirCArcel metodo);
+    public void jugar ();
+    void mover (int numCasillaDestino);
+    public Casilla obtenerCasillaJugadorActual ();
+    public ArrayList<Casilla> obtenerCasillasTablero ();
+    public ArrayList<int> obtenerPropiedadesJugador ();
+    public ArrayList<int> obtenerPropiedadesJugadorSegunEstadoHipoteca (boolean estadoHipoteca);
+    public void obtenerRanking ();
+    public int obtenerSaldoJugadorActual ();
+    private void salidaJugadores ();
+    public void siguienteJugador ();
+    int tirarDado ();
+    public boolean venderPropiedad (int numeroCasilla);
+    */
 }
