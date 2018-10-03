@@ -25,13 +25,19 @@ public class Qytetet {
     
     private Dado dado;
     
+    private Sorpresa cartaActual;
+    
+    private ArrayList<Jugador> jugadores = new ArrayList <> ();
+    
+    private Jugador jugadorActual;
+    
+    
     
     
 // Constructor sin argumentos
     
-    public Qytetet (){
-        inicializarTablero ();
-        inicializarCartasSorpresa ();
+    public Qytetet (String nombres){
+        inicializarJuego (String nombres);
     }
     
 // Consultores
@@ -40,16 +46,28 @@ public class Qytetet {
     
     ArrayList <Sorpresa> getMazo () {return mazo;}
     
-    //public Sorpresa getCartaActual () {return mazo.get}
+   public Sorpresa getCartaActual () {return cartaActual;}
     
     Dado getDado() {return dado;}
     
-    //public getJugadores
+    Jugador getJugadorActual () {return jugadorActual;}
     
+    public ArrayList <Jugador> getJugadores () {return jugadores;}
+    
+    
+    public void inicializarJugadores (String nombres){
+        for (String nombre : nombres){
+            jugadores.add (new Jugador(nombre, false, 7500));
+        }
+    }  
         /*
         Inicializa las cartas sopresa con las
         características que hemos decidido
         */
+    
+    private void setCartaActual (Sorpresa carta){
+        cartaActual = carta;
+    }
     
     void inicializarCartasSorpresa (){
         
@@ -88,16 +106,33 @@ public class Qytetet {
     
     private void inicializarTablero (){tablero = new Tablero ();}
     
+    private void inicializarJuego (String nombres){
+        inicializarTablero();
+        inicializarCartasSorpresa();
+        inicializarJugadores (nombres);
+    }
+    
     @Override
     public String toString(){
-        return "Qytetet{MAX_JUGADORES: "+ MAX_JUGADORES + 
+        
+        String aDevolver;
+        
+        aDevolver =  "Qytetet{MAX_JUGADORES: "+ MAX_JUGADORES + 
                 "\nNUM_SORPRESAS: " + NUM_SORPRESAS + 
                 "\nNUM_CASILLAS: " + NUM_CASILLAS +
                 "\nPRECIO_LIBERTAD: "+ PRECIO_LIBERTAD +
                 "\nSALDO_SALIDA: "+ SALDO_SALIDA +
                 "\nMazo: " + mazo +
                 "\nTablero: " + tablero + 
-                "\nDado: " + dado + "}";
+                "\nDado: " + dado;
+        
+                if (cartaActual != null){
+                    aDevolver += "\nCarta actual: " + cartaActual;
+                }
+                
+                aDevolver += "}";
+                
+                return aDevolver;
     }
     
 }
