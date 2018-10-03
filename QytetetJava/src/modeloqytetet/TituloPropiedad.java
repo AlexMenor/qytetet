@@ -34,6 +34,9 @@ public class TituloPropiedad {
         // Número de hoteles edificados
     private int numHoteles = 0;
     
+        // Propietario de del titulo
+    private Jugador propietario;
+    
         // Constructor
     public TituloPropiedad
         (String nombre, int precioCompra, int alquilerBase,
@@ -69,6 +72,12 @@ public class TituloPropiedad {
     int getNumCasas() {return numCasas;}
 
     int getNumHoteles() {return numHoteles;}
+    
+    Jugador getPropietario () {return propietario;}
+    
+    void setPropietario (Jugador propietario){
+        this.propietario = propietario;
+    }
     
         // Modificador hipotecada
     

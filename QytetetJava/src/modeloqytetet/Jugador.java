@@ -12,6 +12,13 @@ public class Jugador {
     private Casilla casillaActual;
     private ArrayList <TituloPropiedad> propiedades;
     
+        // Posiblemente declaremos por defecto casillaActual a la de salida
+
+    Jugador(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
     boolean cancelarHipoteca (TituloPropiedad titulo){
     
         return true;
@@ -130,6 +137,17 @@ public class Jugador {
     
     boolean venderPropiedad (Casilla casilla){
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" 
+                + "encarcelado=" + encarcelado 
+                + ", nombre=" + nombre 
+                + ", saldo=" + saldo 
+                + ", cartaLibertad=" + cartaLibertad 
+                + ", casillaActual=" + casillaActual 
+                + ", propiedades=" + propiedades + '}';
     }
     
     
