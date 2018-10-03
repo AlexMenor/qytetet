@@ -123,10 +123,6 @@ public class Jugador {
         this.encarcelado = encarcelado;
     }
     
-    void setSaldo (int saldo){
-        this.saldo = saldo;
-    }
-    
     boolean tengoCartaLibertad (){
         return true;
     }
