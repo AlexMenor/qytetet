@@ -9,6 +9,12 @@ import java.util.ArrayList;
     */
 
 public class Qytetet {
+    
+    public static final int MAX_JUGADORES = 4;
+    static final int NUM_SORPRESAS = 10;
+    public static final int NUM_CASILLAS = 20;
+    static final int PRECIO_LIBERTAD = 200;
+    static final int SALDO_SALIDA = 1000;
 
 // Atributos privados
     
@@ -16,6 +22,10 @@ public class Qytetet {
     private ArrayList <Sorpresa> mazo = new ArrayList <> ();
         // Tablero con las casillas del juego
     private Tablero tablero;
+    
+    private Dado dado;
+    
+    
     
 // Constructor sin argumentos
     
@@ -29,6 +39,12 @@ public class Qytetet {
     Tablero getTablero (){return tablero;}
     
     ArrayList <Sorpresa> getMazo () {return mazo;}
+    
+    //public Sorpresa getCartaActual () {return mazo.get}
+    
+    Dado getDado() {return dado;}
+    
+    //public getJugadores
     
         /*
         Inicializa las cartas sopresa con las
@@ -71,5 +87,17 @@ public class Qytetet {
         // Inicialización del atributo tablero
     
     private void inicializarTablero (){tablero = new Tablero ();}
+    
+    @Override
+    public String toString(){
+        return "Qytetet{MAX_JUGADORES: "+ MAX_JUGADORES + 
+                "\nNUM_SORPRESAS: " + NUM_SORPRESAS + 
+                "\nNUM_CASILLAS: " + NUM_CASILLAS +
+                "\nPRECIO_LIBERTAD: "+ PRECIO_LIBERTAD +
+                "\nSALDO_SALIDA: "+ SALDO_SALIDA +
+                "\nMazo: " + mazo +
+                "\nTablero: " + tablero + 
+                "\nDado: " + dado + "}";
+    }
     
 }
