@@ -25,4 +25,6 @@ class Dado {
         return "Dado{Valor: " + valor+ "}";
     }
     
+    //int tirar ();
+    
 }
