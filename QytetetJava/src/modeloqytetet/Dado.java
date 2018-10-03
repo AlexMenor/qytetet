@@ -12,7 +12,11 @@ package modeloqytetet;
 class Dado {
     private int valor;
     
-    public Dado (int valor) {this.valor = valor;}
+    private static final Dado instance = new Dado ();
+    
+    private Dado () {valor = 1;} // Valor 1 por defecto
+    
+    public static Dado getInstance () {return instance;}
     
     public int getValor () {return valor;}
     
