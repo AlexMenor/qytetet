@@ -6,7 +6,7 @@ package modeloqytetet;
      qytetet
     */
 
-class Sorpresa {
+public class Sorpresa {
     
  // Atributos privados
     
