@@ -33,8 +33,6 @@ public class Qytetet {
     
     private Jugador jugadorActual;
     
-    private MetodoSalirCarcel metodo;
-    
     
 // Constructor sin argumentos
     
@@ -127,8 +125,8 @@ public class Qytetet {
                 + ", dado=" + dado 
                 + ", cartaActual=" + cartaActual 
                 + ", jugadores=" + jugadores 
-                + ", jugadorActual=" + jugadorActual 
-                + ", metodo=" + metodo + '}';
+                + ", jugadorActual=" + jugadorActual + "}";
+                
     }
     
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
