@@ -53,8 +53,8 @@ public class PruebaQytetet {
     private static final Scanner in = new Scanner (System.in);
         
     private static ArrayList<String> getNombreJugadores (){
-        System.out.println("Introduce el número de jugadores: ");
-        int n_jugadores = in.nextInt ();
+        int n_jugadores = Qytetet.MAX_JUGADORES;
+        
         ArrayList<String> nombres = new ArrayList <> (); 
         
         for (int i = 1; i <= n_jugadores; i++){
@@ -69,10 +69,9 @@ public class PruebaQytetet {
     public static void main(String[] args) {
         
             // Declarados para probar los métodos de esta clase
-            
-        ArrayList<String> nombres = getNombreJugadores ();
         
-        juego = Qytetet.getInstance(nombres);
+        juego = Qytetet.getInstance();
+        juego.inicializarJuego(getNombreJugadores());
         
         ArrayList<Sorpresa> mayoresQueCero, irACasilla, 
                 tipos, mazoCompleto;

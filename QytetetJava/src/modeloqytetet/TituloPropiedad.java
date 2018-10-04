@@ -55,7 +55,7 @@ public class TituloPropiedad {
 
     String getNombre() {return nombre;}
 
-    boolean isHipotecada() {return hipotecada;}
+    boolean getHipotecada() {return hipotecada;}
 
     int getPrecioCompra() {return precioCompra;}
 
@@ -75,27 +75,37 @@ public class TituloPropiedad {
     
     Jugador getPropietario () {return propietario;}
     
-    void setPropietario (Jugador propietario){
-        this.propietario = propietario;
-    }
-    
-        // Modificador hipotecada
+        // Modificadores
     
     void setHipotecada (boolean hipotecada){
         this.hipotecada = hipotecada;
+    }
+    
+    void setPropietario (Jugador propietario){
+        this.propietario = propietario;
     }
     
         // TituloPropiedad toString()
 
     @Override
     public String toString() {
-        return "TituloPropiedad{" + "nombre=" + nombre + ", hipotecada=" 
-                + hipotecada + ", precioCompra=" 
-                + precioCompra + ", alquilerBase=" + alquilerBase 
+        String toReturn = "TituloPropiedad{" 
+                + "nombre=" + nombre 
+                + ", hipotecada=" + hipotecada 
+                + ", precioCompra=" + precioCompra 
+                + ", alquilerBase=" + alquilerBase 
                 + ", factorRevalorizacion=" + factorRevalorizacion 
-                + ", hipotecaBase=" + hipotecaBase + ", precioEdificar=" 
-                + precioEdificar + ", numCasas=" + numCasas + ", numHoteles=" 
-                + numHoteles + '}';
-    }  
+                + ", hipotecaBase=" + hipotecaBase 
+                + ", precioEdificar=" + precioEdificar 
+                + ", numCasas=" + numCasas 
+                + ", numHoteles=" + numHoteles;
+        
+        if (propietario != null)
+                toReturn += ", propietario=" + propietario.getNombre();
+        
+        return toReturn + '}';
+    }
+
+    
     
 }

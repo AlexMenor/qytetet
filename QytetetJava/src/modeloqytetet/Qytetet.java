@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class Qytetet {
     
+        // Parametros del juego constantes
+    
     public static final int MAX_JUGADORES = 4;
     static final int NUM_SORPRESAS = 10;
     public static final int NUM_CASILLAS = 20;
@@ -19,7 +21,7 @@ public class Qytetet {
 // Atributos privados
     
         // Mazo con las cartas sorpresa
-    private ArrayList <Sorpresa> mazo = new ArrayList <> ();
+    private ArrayList <Sorpresa> mazo;
         // Tablero con las casillas del juego
     private Tablero tablero;
     
@@ -27,30 +29,20 @@ public class Qytetet {
     
     private Sorpresa cartaActual;
     
-    private ArrayList<Jugador> jugadores = new ArrayList <> ();
+    private ArrayList<Jugador> jugadores;
     
     private Jugador jugadorActual;
     
     private MetodoSalirCarcel metodo;
     
     
-    
-    
 // Constructor sin argumentos
     
     private static final Qytetet instance = new Qytetet ();
     
-    private Qytetet (){
-        ArrayList<String> nombres = new ArrayList<>();
-        
-        for (Jugador jugador : jugadores){
-            nombres.add (jugador.getNombre());
-        }
-        
-        inicializarJuego (nombres);
-    }
+    private Qytetet (){}
     
-    public static Qytetet getInstance (ArrayList<String> nombres) {return instance;}
+    public static Qytetet getInstance () {return instance;}
     
 // Consultores
     
@@ -67,7 +59,9 @@ public class Qytetet {
     public ArrayList <Jugador> getJugadores () {return jugadores;}
     
     
-    public void inicializarJugadores (ArrayList<String> nombres){
+    private void inicializarJugadores (ArrayList<String> nombres){
+        jugadores = new ArrayList <> ();
+        
         for (String nombre : nombres){
             jugadores.add (new Jugador(nombre));
         }
@@ -81,7 +75,8 @@ public class Qytetet {
         cartaActual = carta;
     }
     
-    void inicializarCartasSorpresa (){
+    private void inicializarCartasSorpresa (){
+        mazo = new ArrayList <> ();
         
         mazo.add (new Sorpresa ("Te encuentras un billete por la calle, cobra"
                 + " 500 euros", 500, TipoSorpresa.PAGARCOBRAR));
@@ -118,42 +113,22 @@ public class Qytetet {
     
     private void inicializarTablero (){tablero = new Tablero ();}
     
-    private void inicializarJuego (ArrayList<String> nombres){
+    public void inicializarJuego (ArrayList<String> nombres){
         inicializarTablero();
         inicializarCartasSorpresa();
         inicializarJugadores (nombres);
     }
     
     @Override
-    public String toString(){
-        
-        String aDevolver;
-        
-        aDevolver =  "Qytetet{MAX_JUGADORES: "+ MAX_JUGADORES + 
-                "\nNUM_SORPRESAS: " + NUM_SORPRESAS + 
-                "\nNUM_CASILLAS: " + NUM_CASILLAS +
-                "\nPRECIO_LIBERTAD: "+ PRECIO_LIBERTAD +
-                "\nSALDO_SALIDA: "+ SALDO_SALIDA +
-                "\nMazo: " + mazo +
-                "\nTablero: " + tablero;
-        
-                if (dado != null){
-                    aDevolver += "\nDado: " + dado;
-                }
-        
-                if (cartaActual != null){
-                    aDevolver += "\nCarta actual: " + cartaActual;
-                }
-                
-                if (jugadorActual != null){
-                    aDevolver += "\nJugador actual: " + jugadorActual;
-                }
-                
-                aDevolver += jugadores;
-                
-                aDevolver += "}";
-                
-                return aDevolver;
+    public String toString() {
+        return "Qytetet{" 
+                + "mazo=" + mazo 
+                + ", tablero=" + tablero 
+                + ", dado=" + dado 
+                + ", cartaActual=" + cartaActual 
+                + ", jugadores=" + jugadores 
+                + ", jugadorActual=" + jugadorActual 
+                + ", metodo=" + metodo + '}';
     }
     
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
@@ -181,4 +156,7 @@ public class Qytetet {
     int tirarDado ();
     public boolean venderPropiedad (int numeroCasilla);
     */
+
+    
+    
 }
