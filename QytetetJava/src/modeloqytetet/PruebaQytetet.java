@@ -51,9 +51,10 @@ public class PruebaQytetet {
     }
         
     private static final Scanner in = new Scanner (System.in);
+    private static final Scanner in2 = new Scanner (System.in);
         
     private static ArrayList<String> getNombreJugadores (){
-        int n_jugadores = Qytetet.MAX_JUGADORES;
+        int n_jugadores = in2.nextInt();
         
         ArrayList<String> nombres = new ArrayList <> (); 
         
