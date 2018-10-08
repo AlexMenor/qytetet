@@ -24,13 +24,13 @@ public class Qytetet {
     private ArrayList <Sorpresa> mazo;
         // Tablero con las casillas del juego
     private Tablero tablero;
-    
+        // Dado del juego
     private Dado dado;
-    
+        // Carta sorpresa actual
     private Sorpresa cartaActual;
-    
+        // Vector con los jugadores actuales
     private ArrayList<Jugador> jugadores;
-    
+        // Jugador cuyo turno está en curso
     private Jugador jugadorActual;
     
     
@@ -56,6 +56,10 @@ public class Qytetet {
     
     public ArrayList <Jugador> getJugadores () {return jugadores;}
     
+    /*
+        Inicializa los jugadores
+        según un array de nombres
+    */
     
     private void inicializarJugadores (ArrayList<String> nombres){
         jugadores = new ArrayList <> ();
@@ -64,14 +68,20 @@ public class Qytetet {
             jugadores.add (new Jugador(nombre));
         }
     }  
-        /*
-        Inicializa las cartas sopresa con las
-        características que hemos decidido
-        */
+        
+    /*
+        Método modificador de la
+        carta sorpresa actual
+    */
     
     private void setCartaActual (Sorpresa carta){
         cartaActual = carta;
     }
+    
+    /*
+        Inicializa las cartas sopresa con las
+        características que hemos decidido
+    */
     
     private void inicializarCartasSorpresa (){
         mazo = new ArrayList <> ();
@@ -117,6 +127,7 @@ public class Qytetet {
         inicializarJugadores (nombres);
     }
     
+    // Método toString de la clase
     @Override
     public String toString() {
         return "Qytetet{" 
