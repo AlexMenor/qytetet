@@ -16,15 +16,15 @@ class Jugador
   def to_s
     to_return = "\nEncarcelado: #{@encarcelado} \nNombre: #{@nombre} \nSaldo: #{@saldo}"
     
-    if (!carta_libertad.nil)
+    if (!carta_libertad.nil?)
       to_return << ("\nCarta Libertad: #{@carta_libertad.to_s}")
     end
     
-    if (!casilla_actual.nil)
+    if (!casilla_actual.nil?)
       to_return << ("\nCasilla Actual: #{@casilla_actual.to_s}")
     end
     
-    if (!propiedades.nil)
+    if (!propiedades.nil?)
       to_return << ("\nPropiedades: #{@propiedades.to_s}")
     end
     
