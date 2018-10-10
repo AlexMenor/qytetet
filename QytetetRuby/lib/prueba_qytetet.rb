@@ -20,7 +20,7 @@ module ModeloQytetet
     
     # Variable de clase
     
-    @@juego = Qytetet.new
+    @@juego = Qytetet.instance
     
     
     # Método de instancia de clase que crea, a partir
@@ -72,7 +72,7 @@ module ModeloQytetet
       
       nombres = Array.new
       
-      for i in(0..numero)
+      for i in(1..numero.to_i)
         
         puts "Introduce el nombre del jugador #{i}"
         cadena = gets
@@ -88,6 +88,8 @@ module ModeloQytetet
     # para probar el juego
     
     def self.main
+      
+      @@juego.inicializar_juego (get_nombre_jugadores)
       
       mazo_completo = @@juego.mazo
       
@@ -113,6 +115,8 @@ module ModeloQytetet
       tablero = @@juego.tablero
       
       puts tablero
+      
+      puts @@juego
       
     end
   end
