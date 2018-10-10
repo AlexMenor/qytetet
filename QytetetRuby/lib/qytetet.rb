@@ -1,18 +1,29 @@
 # encoding: utf-8
 
+require "singleton"
+
 module ModeloQytetet
   
   class Qytetet
-    attr_reader:mazo
-    attr_reader:tablero
+    include Singleton
     
-    def initialize
-      @mazo = Array.new
-      self.inicializarTablero
-      self.inicializarCartasSorpresa
+    @@MAX_JUGADORES = 4
+    @@NUM_SORPRESAS = 10
+    @@NUM_CASILLAS = 20
+    @@PRECIO_LIBERTAD = 200
+    @@SALDO_SALIDA = 1000
+    
+    attr_reader:mazo,:tablero, :dado, :jugadores, :jugador_actual
+    attr_writer:carta_actual
+    
+    def inicializar_jugadores (nombres)
+      @jugadores = Array.new
+      nombres.each do |nombre|
+        jugadores << Jugador.new(nombre)
+      end
     end
     
-    def inicializarCartasSorpresa
+    def inicializar_cartas_sorpresa
       @mazo << Sorpresa.new("Te encuentras un billete por la calle, cobra 500 euros", 
         500, TipoSorpresa::PAGARCOBRAR)
       @mazo << Sorpresa.new("Te han pillado superando el límite de velocidad", 
@@ -35,9 +46,28 @@ module ModeloQytetet
         0, TipoSorpresa::SALIRCARCEL) 
     end
     
-    def inicializarTablero
+    def inicializar_tablero
       @tablero = Tablero.new
     end
     
+    def inicializar_juego(nombres)
+      inicializar_tablero()
+      inicializar_cartas_sorpresa()
+      inicializar_jugadores(nombres)
+    end
+    
+    def to_s
+      to_return = "Qytetet:\n" 
+      to_return += "mazo=#{@mazo}\n"
+      to_return += "tablero=#{@tablero}\n"
+      to_return += "dado=#{@dado}\n"
+      to_return += "carta_acutal=#{@carta_actual}\n"
+      to_return += "jugadores=#{@jugadores}\n"
+      to_return += "jugador_actual=#{@jugador_actual}\n"
+      
+      to_return
+    end
+    
+    private :carta_actual=, :inicializar_jugadores, :inicializar_cartas_sorpresa, :inicializar_tablero
   end
 end
