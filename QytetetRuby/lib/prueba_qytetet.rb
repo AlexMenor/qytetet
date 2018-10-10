@@ -65,6 +65,24 @@ module ModeloQytetet
       es_de_tipo(mazo, TipoSorpresa::IRACASILLA)
     end
     
+    def self.get_nombre_jugadores
+      puts "Introduce el número de jugadores"
+      numero = gets.chomp.to_s
+      
+      nombres = Array.new
+      
+      for i in(0..numero)
+        
+        puts "Introduce el nombre del jugador #{i}"
+        cadena = gets
+        nombres << cadena
+        
+      end
+      
+      nombres
+      
+    end
+    
     # Método de instancia de clase Main 
     # para probar el juego
     
