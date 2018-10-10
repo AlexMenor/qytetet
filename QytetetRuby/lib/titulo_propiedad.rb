@@ -5,7 +5,7 @@ module ModeloQytetet
   class TituloPropiedad
     
     attr_reader:nombre
-    attr_accessor:hipotecada
+    attr_accessor:hipotecada,:propietario
     attr_reader:factor_revalorizacion
     attr_reader:alquiler_base
     attr_reader:precio_compra
@@ -27,6 +27,7 @@ module ModeloQytetet
       @precio_edificar = precio_edificar
       @num_hoteles = 0
       @num_casas= 0
+      @propietario
     end
     
     # Método que imprime por pantalla los atributos de un título de propiedad
@@ -40,6 +41,10 @@ module ModeloQytetet
       to_return << "#{@factor_revalorizacion}\nhipoteca_base: #{@hipoteca_base}" 
       to_return << "\nprecio_edificar: #{@precio_edificar}\nnum_hoteles: #{@num_hoteles}"
       to_return << "\nnum_casas: #{@num_casas}"
+      
+      if (!propietario.nil)
+        to_return << "\nPropietario: #{@propietario.to_s}"
+      end
       
       to_return
     end
