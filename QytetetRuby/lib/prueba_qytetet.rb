@@ -12,6 +12,7 @@ require_relative "tipo_casilla"
 require_relative "casilla"
 require_relative "titulo_propiedad"
 require_relative "tablero"
+require_relative "jugador"
 
 module ModeloQytetet
   
