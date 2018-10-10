@@ -24,6 +24,7 @@ module ModeloQytetet
     end
     
     def inicializar_cartas_sorpresa
+      @mazo = Array.new
       @mazo << Sorpresa.new("Te encuentras un billete por la calle, cobra 500 euros", 
         500, TipoSorpresa::PAGARCOBRAR)
       @mazo << Sorpresa.new("Te han pillado superando el límite de velocidad", 
