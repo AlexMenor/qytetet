@@ -13,6 +13,8 @@ require_relative "casilla"
 require_relative "titulo_propiedad"
 require_relative "tablero"
 require_relative "jugador"
+require_relative "dado"
+require_relative "metodo_salir_carcel"
 
 module ModeloQytetet
   
