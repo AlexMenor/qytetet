@@ -33,7 +33,6 @@ module ModeloQytetet
     end
     
     # toString()
-    #pendiente modificarlo para precio_compra
     
     def to_s()
        
@@ -41,7 +40,7 @@ module ModeloQytetet
       to_return << "\nalquiler_base: #{@alquiler_base}\nfactor_revalorizacion: " 
       to_return << "#{@factor_revalorizacion}\nhipoteca_base: #{@hipoteca_base}" 
       to_return << "\nprecio_edificar: #{@precio_edificar}\nnum_hoteles: #{@num_hoteles}"
-      to_return << "\nnum_casas: #{@num_casas}"
+      to_return << "\nnum_casas: #{@num_casas}\nprecio_compra: #{@precio_compra}"
       
       if (!propietario.nil?)
         to_return << "\nPropietario: #{@propietario.to_s}"
