@@ -34,7 +34,7 @@ public class Casilla {
         inicializa el tipo de casilla a calle
         */
     
-    public Casilla (int numeroCasilla, TituloPropiedad titulo){
+    Casilla (int numeroCasilla, TituloPropiedad titulo){
         this.numeroCasilla = numeroCasilla;
         setTitulo (titulo);
         this.coste = titulo.getPrecioCompra();
@@ -47,7 +47,7 @@ public class Casilla {
         por defecto inicializa coste a 0
         */
     
-    public Casilla (int numeroCasilla, TipoCasilla tipo){
+    Casilla (int numeroCasilla, TipoCasilla tipo){
         this.numeroCasilla = numeroCasilla;
         this.coste = 0;
         this.tipo = tipo;
@@ -69,6 +69,14 @@ public class Casilla {
         calle y por tanto, tiene título
         */
 
+    /* Por implementar
+    TituloPropiedad asignarPropietario (Jugador jugador){}
+    int pagarAlquiler (){}
+    boolean propietarioEncarcelado(){}
+    boolean soyEdificable(){}
+    boolean tengoPropietario(){}
+    */
+    
     @Override
     public String toString() {
         String toReturn = "Casilla{" 

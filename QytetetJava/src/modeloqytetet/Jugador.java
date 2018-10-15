@@ -2,8 +2,13 @@
 package modeloqytetet;
 import java.util.ArrayList;
 
+/*
+Esta clase representa a cada jugador de qytetet
+*/
 
 public class Jugador {
+    
+    // Atributos privados de jugador
 
     private boolean encarcelado = false;
     private String nombre;
@@ -18,7 +23,46 @@ public class Jugador {
         this.nombre = nombre;
     }
     
+    // Modificadores 
     
+    void setCartaLibertad (Sorpresa carta){
+        cartaLibertad = carta;
+    }
+    
+    void setCasillaActual (Casilla casilla){
+        casillaActual = casilla;
+    }
+    
+    void setEncarcelado (boolean encarcelado){
+        this.encarcelado = encarcelado;
+    }
+    
+    // Consultores 
+     Sorpresa getCartaLibertad (){
+        return cartaLibertad;
+    }
+    
+    Casilla getCasillaActual (){
+        return casillaActual;
+    }
+    
+    boolean getEncarcelado (){
+        return encarcelado;
+    }
+    
+    String getNombre(){
+        return nombre;
+    }
+    
+    ArrayList <TituloPropiedad> getPropiedades(){
+        return propiedades;
+    }
+    
+    public int getSaldo (){
+        return saldo;
+    }
+
+    /* Por implementar
     boolean cancelarHipoteca (TituloPropiedad titulo){
     
         return true;
@@ -55,31 +99,6 @@ public class Jugador {
     boolean estoyEnCalleLibre (){
         return true;
     }
-    
-    Sorpresa getCartaLibertad (){
-        return cartaLibertad;
-    }
-    
-    Casilla getCasillaActual (){
-        return casillaActual;
-    }
-    
-    boolean getEncarcelado (){
-        return encarcelado;
-    }
-    
-    String getNombre(){
-        return nombre;
-    }
-    
-    ArrayList <TituloPropiedad> getPropiedades(){
-        return propiedades;
-    }
-    
-    public int getSaldo (){
-        return saldo;
-    }
-    
     boolean hipotecarPropiedad (TituloPropiedad titulo){
         return true;
     }
@@ -111,19 +130,7 @@ public class Jugador {
     
     }
     
-    void setCartaLibertad (Sorpresa carta){
-        cartaLibertad = carta;
-    }
-    
-    void setCasillaActual (Casilla casilla){
-        casillaActual = casilla;
-    }
-    
-    void setEncarcelado (boolean encarcelado){
-        this.encarcelado = encarcelado;
-    }
-    
-    boolean tengoCartaLibertad (){
+     boolean tengoCartaLibertad (){
         return true;
     }
     
@@ -134,7 +141,7 @@ public class Jugador {
     boolean venderPropiedad (Casilla casilla){
         return true;
     }
-
+    */
     @Override
     public String toString() {
         return "Jugador{" 

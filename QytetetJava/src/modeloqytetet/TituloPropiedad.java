@@ -38,7 +38,7 @@ public class TituloPropiedad {
     private Jugador propietario;
     
         // Constructor
-    public TituloPropiedad
+    TituloPropiedad
         (String nombre, int precioCompra, int alquilerBase,
          float factorRevalorizacion, int hipotecaBase, 
          int precioEdificar)
@@ -99,6 +99,8 @@ public class TituloPropiedad {
                 + ", precioEdificar=" + precioEdificar 
                 + ", numCasas=" + numCasas 
                 + ", numHoteles=" + numHoteles;
+        
+        // Solución a el problema de la navegabilidad en doble sentido
         
         if (propietario != null)
                 toReturn += ", propietario=" + propietario.getNombre();

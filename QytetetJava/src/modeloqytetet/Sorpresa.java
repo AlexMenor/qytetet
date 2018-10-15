@@ -20,7 +20,7 @@ public class Sorpresa {
         
         // Constructor 
     
-    public Sorpresa (String texto, int valor, TipoSorpresa tipo){
+    Sorpresa (String texto, int valor, TipoSorpresa tipo){
         this.texto = texto;
         this.tipo = tipo;
         this.valor = valor;

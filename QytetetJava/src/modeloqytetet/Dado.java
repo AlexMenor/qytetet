@@ -3,7 +3,7 @@ package modeloqytetet;
      Esta clase representa
      el dado del juego
     */
-class Dado {
+public class Dado {
     // Atributos privados    
     private int valor; // Valor del dado al tirarlo
         
@@ -11,7 +11,7 @@ class Dado {
     private static final Dado instance = new Dado (); // Método dado que crea
                                                       // la única instancia de dado
  
-    private Dado () {valor = 1;} // Consturctor de la instancia única del dado
+    private Dado () {valor = 1;} // Constructor de la instancia única del dado
                                  // Valor 1 por defecto
     
     // Métodos públicos 
@@ -27,6 +27,7 @@ class Dado {
         return "Dado{Valor: " + valor+ "}";
     }
     
-    //int tirar ();
-    
+    /* Por implementar
+    int tirar (){}
+    */
 }

@@ -15,6 +15,12 @@ public class Tablero {
     private ArrayList<Casilla> casillas; // Vector de casillas del tablero
     private Casilla carcel; // Casilla que contiene la cárcel
     
+    // Constructor sin argumentos
+    
+    Tablero(){
+        inicializar();
+    }
+    
     /* 
         Método privado que inicializa el tablero con las características 
         que hemos decidido
@@ -56,12 +62,6 @@ public class Tablero {
         casillas.add (new Casilla (18, TipoCasilla.SORPRESA));
         casillas.add (new Casilla (19, new TituloPropiedad ("Gran Vía", 1500,
                 100, (float)1.95, 1000, 700)));
-    }
-
-    // Constructor sin argumentos
-    
-    public Tablero(){
-        inicializar();
     }
     
     // Consultores

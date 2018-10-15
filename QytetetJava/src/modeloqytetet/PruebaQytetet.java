@@ -12,6 +12,8 @@ public class PruebaQytetet {
 
     static Qytetet juego;
     
+    // Métodos para probar el mazo
+    
     private static ArrayList<Sorpresa> 
         sorpresaMayorQueCero (ArrayList<Sorpresa> mazo){
         
@@ -51,10 +53,10 @@ public class PruebaQytetet {
     }
         
     private static final Scanner in = new Scanner (System.in);
-    private static final Scanner in2 = new Scanner (System.in);
         
     private static ArrayList<String> getNombreJugadores (){
-        int n_jugadores = in2.nextInt();
+        String line = in.nextLine();
+        int n_jugadores = Integer.parseInt(line);
         
         ArrayList<String> nombres = new ArrayList <> (); 
         

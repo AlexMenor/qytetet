@@ -34,7 +34,7 @@ public class Qytetet {
     private Jugador jugadorActual;
     
     
-// Constructor sin argumentos
+    // Singleton
     
     private static final Qytetet instance = new Qytetet ();
     
@@ -55,19 +55,6 @@ public class Qytetet {
     Jugador getJugadorActual () {return jugadorActual;}
     
     public ArrayList <Jugador> getJugadores () {return jugadores;}
-    
-    /*
-        Inicializa los jugadores
-        según un array de nombres
-    */
-    
-    private void inicializarJugadores (ArrayList<String> nombres){
-        jugadores = new ArrayList <> ();
-        
-        for (String nombre : nombres){
-            jugadores.add (new Jugador(nombre));
-        }
-    }  
         
     /*
         Método modificador de la
@@ -77,6 +64,17 @@ public class Qytetet {
     private void setCartaActual (Sorpresa carta){
         cartaActual = carta;
     }
+    
+    
+        // Métodos de inicialización
+    
+    public void inicializarJuego (ArrayList<String> nombres){
+        inicializarTablero();
+        inicializarCartasSorpresa();
+        inicializarJugadores (nombres);
+    }
+    
+     private void inicializarTablero (){tablero = new Tablero ();}
     
     /*
         Inicializa las cartas sopresa con las
@@ -117,15 +115,18 @@ public class Qytetet {
         
     }
     
-        // Inicialización del atributo tablero
+    /*
+        Inicializa los jugadores
+        según un array de nombres
+    */
     
-    private void inicializarTablero (){tablero = new Tablero ();}
-    
-    public void inicializarJuego (ArrayList<String> nombres){
-        inicializarTablero();
-        inicializarCartasSorpresa();
-        inicializarJugadores (nombres);
-    }
+    private void inicializarJugadores (ArrayList<String> nombres){
+        jugadores = new ArrayList <> ();
+        
+        for (String nombre : nombres){
+            jugadores.add (new Jugador(nombre));
+        }
+    }  
     
     // Método toString de la clase
     @Override
