@@ -4,6 +4,8 @@ module ModeloQytetet
 
   class TituloPropiedad
     
+    # Consultores y modificadores
+    
     attr_reader:nombre
     attr_accessor:hipotecada,:propietario
     attr_reader:factor_revalorizacion
@@ -30,9 +32,8 @@ module ModeloQytetet
       @propietario
     end
     
-    # Método que imprime por pantalla los atributos de un título de propiedad
-    
-    #pendiente modificar to_s para precio_compra
+    # toString()
+    #pendiente modificarlo para precio_compra
     
     def to_s()
        

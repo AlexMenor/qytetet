@@ -1,8 +1,13 @@
 # encoding: utf-8
 
 class Jugador
+  
+  #Modificadores y consultores
+  
   attr_reader:saldo,:nombre,:propiedades
   attr_accessor:carta_libertad,:casilla_actual,:encarcelado
+  
+  # Constructor con un parámetro
   
   def initialize (nombre)
     @encarcelado = false
@@ -12,6 +17,8 @@ class Jugador
     @casilla_actual
     @propiedades = Array.new
   end
+  
+  # toString()
   
   def to_s
     to_return = "\nEncarcelado: #{@encarcelado} \nNombre: #{@nombre} \nSaldo: #{@saldo}"

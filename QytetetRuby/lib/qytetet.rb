@@ -5,7 +5,13 @@ require "singleton"
 module ModeloQytetet
   
   class Qytetet
+    
+    # Clase singleton
+    
     include Singleton
+    
+    
+    # Parámetros del juego
     
     @@MAX_JUGADORES = 4
     @@NUM_SORPRESAS = 10
@@ -13,8 +19,12 @@ module ModeloQytetet
     @@PRECIO_LIBERTAD = 200
     @@SALDO_SALIDA = 1000
     
+    # Consultores y modificadores
+    
     attr_reader:mazo,:tablero, :dado, :jugadores, :jugador_actual
-    attr_writer:carta_actual
+    attr_accessor:carta_actual
+    
+    # Métodos para inicializar el juego
     
     def inicializar_jugadores (nombres)
       @jugadores = Array.new
@@ -57,6 +67,8 @@ module ModeloQytetet
       inicializar_jugadores(nombres)
     end
     
+    # toString()
+    
     def to_s
       to_return = "Qytetet:\n" 
       to_return += "mazo=#{@mazo}\n"
@@ -68,6 +80,9 @@ module ModeloQytetet
       
       to_return
     end
+    
+    # Los 3 métodos inicializadores son privados y se llaman desde
+    # inicializarJuego() que sí es público
     
     private :carta_actual=, :inicializar_jugadores, :inicializar_cartas_sorpresa, :inicializar_tablero
   end

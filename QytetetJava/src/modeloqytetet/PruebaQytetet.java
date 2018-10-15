@@ -55,6 +55,8 @@ public class PruebaQytetet {
     private static final Scanner in = new Scanner (System.in);
         
     private static ArrayList<String> getNombreJugadores (){
+        
+        System.out.println("Introduzca el número de jugadores: ");
         String line = in.nextLine();
         int n_jugadores = Integer.parseInt(line);
         

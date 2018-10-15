@@ -70,14 +70,14 @@ module ModeloQytetet
     
     def self.get_nombre_jugadores
       puts "Introduce el número de jugadores"
-      numero = gets.chomp.to_s
+      numero = gets.chomp.to_i
       
       nombres = Array.new
       
-      for i in(1..numero.to_i)
+      for i in(1..numero)
         
         puts "Introduce el nombre del jugador #{i}"
-        cadena = gets
+        cadena = gets.chomp
         nombres << cadena
         
       end
@@ -111,12 +111,24 @@ module ModeloQytetet
       end
       
       puts "\n\n///////////////////////////////////////////////////"
-      puts "  Prueba del tablero to_s"
+      puts "  Prueba del tablero.to_s"
       puts "///////////////////////////////////////////////////\n\n"
       
       tablero = @@juego.tablero
       
       puts tablero
+      
+      puts "\n\n///////////////////////////////////////////////////"
+      puts "  Prueba del jugadores"
+      puts "///////////////////////////////////////////////////\n\n"
+      
+      jugadores = @@juego.jugadores
+      
+      puts jugadores
+      
+      puts "\n\n///////////////////////////////////////////////////"
+      puts "  Prueba de juego.to_s"
+      puts "///////////////////////////////////////////////////\n\n"
       
       puts @@juego
       

@@ -6,9 +6,14 @@ module ModeloQytetet
   # de nuestro Qytetet
   
   class Casilla
+    
+    # Consultores y modificadores
+    
     attr_reader:numero_casilla, :coste, :tipo
     attr_accessor:titulo
     private :titulo=
+    
+    # Constructor con dos parámetros (en realidad es un constructor "doble")
     
     def initialize (numero_casilla, titulo_o_tipo)
       if titulo_o_tipo.instance_of?(ModeloQytetet::TituloPropiedad)
@@ -22,6 +27,8 @@ module ModeloQytetet
       end
       @numero_casilla = numero_casilla
     end
+    
+    # toString()
     
     def to_s
       to_return = "\nNúmero de casilla: #{@numero_casilla} \ncoste: #{@coste}\ntipo: #{@tipo}" 

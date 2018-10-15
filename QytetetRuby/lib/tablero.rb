@@ -2,12 +2,20 @@
 
 module ModeloQytetet
   class Tablero
+    
+    # Consultores
+    
     attr_reader:casillas, :carcel
+    
+    # Constructor sin parámetros que a la vez inicializa 
+    # las casillas del tablero
     
     def initialize
       @casillas = Array.new
       self.inicializar
     end
+    
+    # Método de ayuda para inicializar las casillas
     
     def inicializar
       @casillas = Array.new
@@ -46,6 +54,8 @@ module ModeloQytetet
       @casillas << Casilla.new(19,
         TituloPropiedad.new("Gran vía", 1500, 100, 1.95, 1000, 700)) 
     end
+    
+    # toString ()
     
     def to_s
       
