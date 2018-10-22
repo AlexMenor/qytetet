@@ -9,6 +9,15 @@ module ModeloQytetet
     include Singleton
     attr_reader:valor
     
+    # Método que genera un número entre 1-6
+    
+    def tirar
+      random = Random.new
+      
+      @valor = random.rand(7)
+      return @valor
+    end
+    
     # toString()
     
     def to_s

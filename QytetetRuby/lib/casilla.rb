@@ -28,6 +28,24 @@ module ModeloQytetet
       @numero_casilla = numero_casilla
     end
     
+    # Devuelve true solo si la casilla es del tipo calle
+    
+    def soy_edificable
+      return @tipo ==ModeloQytetet::TipoCasilla.const_get(CALLE)
+    end
+    
+    # Llama al método de mismo nombre de la clase TituloPropiedad
+    
+    def tengo_propietario
+      return @titulo.tengo_propietario
+    end
+    
+   # Llama al método de mismo nombre de la clase TituloPropiedad
+    
+    def propietario_encarcelado
+      return @titulo.propietario_encarcelado
+    end
+    
     # toString()
     
     def to_s

@@ -32,6 +32,18 @@ module ModeloQytetet
       @propietario
     end
     
+    # Devuelve true solo si tiene propietario
+    
+    def tengo_propietario
+      return !@propietario.nil?
+    end
+    
+    # Devuelve true solo si el propietario está encarcelado
+    
+    def propietario_encarcelado
+      return @propietario.encarcelado
+    end
+    
     # toString()
     
     def to_s()
