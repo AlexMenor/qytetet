@@ -74,12 +74,36 @@ public class Tablero {
         return carcel;
     }
     
+    // Método para verificar si una casilla es la carcel
+    
+    boolean esCasillaCarcel (int numeroCasilla){
+        return numeroCasilla == carcel.getNumeroCasilla();
+    }
+    
+    // Método para obtener una casilla concreta
+    
+    Casilla obtenerCasillaNumero(int numeroCasilla){
+        return casillas.get(numeroCasilla);
+    }
+    
+    // Método para obtener una casilla, dados una base y un desplazamiento
+    
+    Casilla obtenerCasillaFinal (Casilla casilla, int desplazamiento){
+    
+        int posicionFinal = (casilla.getNumeroCasilla() + desplazamiento) % casillas.size();
+        
+        return obtenerCasillaNumero(posicionFinal);
+    }
+
+
     // Método toString, que muestra las casillas de un tablero 
 
     @Override
     public String toString() {
         return "Tablero{" + "casillas=" + casillas + '}';
     }
+    
+    
     
     
     
