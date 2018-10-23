@@ -63,6 +63,18 @@ public class Casilla {
     
     TituloPropiedad getTitulo(){return titulo;}
     
+    boolean soyEdificable(){
+        return (tipo == TipoCasilla.CALLE);
+    }
+    
+    boolean tengoPropietario(){
+        return titulo.tengoPropietario();
+    }
+    
+    boolean propietarioEncarcelado(){
+        return titulo.propietarioEncarcelado();
+    }
+    
         /* 
         Casilla toString() solo devuelve las características
         de título propiedad, si la casilla es de tipo
@@ -73,8 +85,6 @@ public class Casilla {
     TituloPropiedad asignarPropietario (Jugador jugador){}
     int pagarAlquiler (){}
     boolean propietarioEncarcelado(){}
-    boolean soyEdificable(){}
-    boolean tengoPropietario(){}
     */
     
     @Override
