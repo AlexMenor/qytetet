@@ -21,13 +21,17 @@ public class Dado {
     public int getValor () {return valor;} // Consultor: devuelve el valor actual
                                            // del dado
     
+    int tirar (){
+        int valor_dado = (int) Math.ceil(Math.random() * (6));
+        valor = valor_dado;
+        return valor_dado;
+    }
+    
     // Método toString, que devuelve una cadena con los campos del dado
     @Override
     public String toString (){
         return "Dado{Valor: " + valor+ "}";
     }
     
-    /* Por implementar
-    int tirar (){}
-    */
+    
 }
