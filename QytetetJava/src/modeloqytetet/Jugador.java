@@ -209,7 +209,10 @@ public class Jugador implements Comparable{
         return toReturn;
     }
     
-    
+    public boolean situadoEnCalleLibre (){
+        return (casillaActual.soyEdificable() && 
+                casillaActual.tengoPropietario());
+    }
     
     // Implementación de la interfaz Comparable
     
