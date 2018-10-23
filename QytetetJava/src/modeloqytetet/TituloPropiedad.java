@@ -75,6 +75,14 @@ public class TituloPropiedad {
     
     Jugador getPropietario () {return propietario;}
     
+    boolean tengoPropietario (){
+        return (propietario != null);
+    }
+    
+    boolean propietarioEncarcelado (){
+        return (propietario.getEncarcelado());
+    }
+    
         // Modificadores
     
     void setHipotecada (boolean hipotecada){
