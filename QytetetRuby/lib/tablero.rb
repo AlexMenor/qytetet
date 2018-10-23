@@ -55,6 +55,20 @@ module ModeloQytetet
         TituloPropiedad.new("Gran vía", 1500, 100, 1.95, 1000, 700)) 
     end
     
+    def es_casilla_carcel (numero_casilla)
+      return numero_casilla == @carcel.numero_casilla
+    end
+    
+    def obtener_casilla_numero (numero_casilla)
+      return @casillas.at(numero_casilla)
+    end
+    
+    def obtener_casilla_final (casilla, desplazamiento)
+      casilla_final = (casilla.numero_casilla + desplazamiento) % @casillas.size
+      
+      return obtener_casilla_numero (casilla_final)
+    end
+    
     # toString ()
     
     def to_s
