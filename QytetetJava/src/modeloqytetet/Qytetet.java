@@ -32,6 +32,10 @@ public class Qytetet {
     private ArrayList<Jugador> jugadores;
         // Jugador cuyo turno está en curso
     private Jugador jugadorActual;
+        // Estado del juego
+    private EstadoJuego estado;
+        // Número del jugador actual
+    private int numJugadorActual;
     
     
     // Singleton
@@ -141,6 +145,86 @@ public class Qytetet {
                 
     }
     
+    public void siguienteJugador (){
+        numJugadorActual = (jugadores.indexOf(jugadorActual)+1) % jugadores.size();
+        jugadorActual = jugadores.get(numJugadorActual);
+                
+        if (jugadorActual.getEncarcelado())
+           estado = EstadoJuego.JA_ENCARCELADOCONOPCIONDELIBERTAD;
+        else
+           estado = EstadoJuego.JA_PREPARADO;
+    }
+    
+    private void salidaJugadores (){
+        for (Jugador jug : jugadores){
+            jug.setCasillaActual(tablero.getCasillas().get(0));
+        }
+        
+        numJugadorActual = (int) Math.floor(Math.random() * (jugadores.size()+1));
+        jugadorActual = jugadores.get(numJugadorActual);
+        
+        estado = EstadoJuego.JA_PREPARADO;
+    }
+    
+    public ArrayList<Integer> obtenerPropiedadesJugador (){
+        ArrayList<Integer> aDevolver = new ArrayList<>();
+        
+        aDevolver = obtenerPropiedadesJugadorSegunEstadoHipoteca (true);
+        
+        for (int numero : obtenerPropiedadesJugadorSegunEstadoHipoteca (false)){
+            aDevolver.add(numero);
+        }
+        
+        return aDevolver;
+    }
+    
+    public ArrayList<Integer> obtenerPropiedadesJugadorSegunEstadoHipoteca (boolean estadoHipoteca){
+        ArrayList<Integer> aDevolver = new ArrayList <> ();
+        ArrayList<TituloPropiedad> propiedades = new ArrayList <> ();
+        
+        propiedades = jugadorActual.obtenerPropiedades(estadoHipoteca);
+        
+        for (Casilla casilla : tablero.getCasillas()){
+            if (casilla.getTitulo() != null){
+                if (propiedades.contains(casilla.getTitulo())){
+                    aDevolver.add(casilla.getNumeroCasilla());
+                }
+            }
+        }
+        
+        return aDevolver;
+    }
+    
+    public boolean jugadorActualEncarcelado (){
+        return (jugadorActual.getEncarcelado());
+    }
+    
+    public void jugar (){
+        int valor_dado = tirarDado();
+        tablero.obtenerCasillaFinal(jugadorActual.getCasillaActual(), valor_dado);
+        // mover ();
+    }
+    
+    public void obtenerRanking (){
+        
+    }
+    
+    public int obtenerSaldoJugadorActual (){
+         return jugadorActual.getSaldo();
+    }
+    
+    boolean jugadorActualEnCalleLibre (){
+        return jugadorActual.situadoEnCalleLibre();
+    }
+    
+    int tirarDado (){
+        return dado.tirar();
+    }
+    
+    int getValorDado (){
+        return dado.getValor();
+    }
+    
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
     void actuarSiEnCasillaEdificable ();
     void actuarSiEnCasillaNoEdificable ();
@@ -153,17 +237,15 @@ public class Qytetet {
     public int getValorDado ();
     public void hipotecarPropiedad (int numeroCasilla);
     public boolean intentarSalirCarcel (MetodoSalirCArcel metodo);
-    public void jugar ();
+    
     void mover (int numCasillaDestino);
-    public Casilla obtenerCasillaJugadorActual ();
+    
     public ArrayList<Casilla> obtenerCasillasTablero ();
-    public ArrayList<int> obtenerPropiedadesJugador ();
-    public ArrayList<int> obtenerPropiedadesJugadorSegunEstadoHipoteca (boolean estadoHipoteca);
-    public void obtenerRanking ();
-    public int obtenerSaldoJugadorActual ();
-    private void salidaJugadores ();
-    public void siguienteJugador ();
-    int tirarDado ();
+    
+    
+   
+    
+    
     public boolean venderPropiedad (int numeroCasilla);
     */
 
