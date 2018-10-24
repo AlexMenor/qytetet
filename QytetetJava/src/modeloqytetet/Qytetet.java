@@ -213,6 +213,10 @@ public class Qytetet {
          return jugadorActual.getSaldo();
     }
     
+    public Casilla obtenerCasillaJugadorActual(){
+        return jugadorActual.getCasillaActual();
+    }
+    
     boolean jugadorActualEnCalleLibre (){
         return jugadorActual.situadoEnCalleLibre();
     }
@@ -225,10 +229,75 @@ public class Qytetet {
         return dado.getValor();
     }
     
+    void actuarSiEnCasillaEdificable (){
+        if (jugadorActual.deboPagarAlquiler()){
+            jugadorActual.pagarAlquiler();
+        }
+        
+        Casilla casilla = obtenerCasillaJugadorActual();
+        
+        if (casilla.tengoPropietario()){
+            setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        }
+        else{
+            setEstadoJuego (EstadoJuego.JA_PUEDECOMPRAROGESTIONAR);
+        }
+    }
+    
+    public void aplicarSorpresa (){
+        setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        
+        if (cartaActual.getTipo() == TipoSorpresa.SALIRCARCEL)
+            jugadorActual.setCartaLibertad(cartaActual);
+        else{
+            mazo.add(cartaActual);
+            switch (cartaActual.getTipo()){
+
+                case PAGARCOBRAR:
+                    jugadorActual.modificarSaldo(cartaActual.getValor());
+                    if (jugadorActual.getSaldo() < 0)
+                        setEstadoJuego (EstadoJuego.ALGUNJUGADORENBANCARROTA);
+                    break;
+                case IRACASILLA:
+                    int valor = cartaActual.getValor();
+                    if (tablero.esCasillaCarcel(valor))
+                        encarcelarJugador()
+                    else
+                        mover(valor);
+                    break;
+                case PORCASAHOTEL:
+                    int cantidad = cartaActual.getValor();
+                    int numeroTotal = jugadorActual.cuantasCasasHotelesTengo();
+                    jugadorActual.modificarSaldo(numeroTotal*cantidad);
+                    
+                    if (jugadorActual.getSaldo() < 0)
+                        setEstadoJuego (EstadoJuego.ALGUNJUGADORENBANCARROTA);
+                    break;
+                case PORJUGADOR:
+                    for (Jugador jugador : jugadores){
+                        if (jugador != jugadorActual){
+                            
+                            jugador.modificarSaldo (cartaActual.getValor());
+                            
+                            if (jugador.getSaldo() < 0)
+                                setEstadoJuego (EstadoJuego.ALGUNJUGADORENBANCARROTA);
+ 
+                            jugadorActual.modificarSaldo(-cartaActual.getValor());
+                        
+                            if (jugadorActual.getSaldo() < 0)
+                                setEstadoJuego(EstadoJuego.ALGUNJUGADORENBANCARROTA);
+                        
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+    
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
-    void actuarSiEnCasillaEdificable ();
+    
     void actuarSiEnCasillaNoEdificable ();
-    public void aplicarSorpresa ();
+
     public boolean cancelarHipoteca (int numeroCasilla);
     public boolean comprarTituloPropiedad (int numeroCasilla);
     public boolean edificarCasa (int numeroCasilla);
