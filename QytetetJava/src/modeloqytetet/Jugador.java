@@ -173,18 +173,20 @@ public class Jugador implements Comparable{
     int obtenerCapital (){
         int toReturn = getSaldo();
         
-        for (TituloPropiedad cadaPropiedad : propiedades){
-            int valorDeLaPropiedad = cadaPropiedad.getPrecioCompra();
-            
-            int numTotalDeEdificaciones = 
-                    cadaPropiedad.getNumCasas() + cadaPropiedad.getNumHoteles();
-            
-            valorDeLaPropiedad += (numTotalDeEdificaciones * cadaPropiedad.getPrecioEdificar());
-            
-            if (cadaPropiedad.getHipotecada())
-                valorDeLaPropiedad -= cadaPropiedad.getHipotecaBase();
-            
-            toReturn += valorDeLaPropiedad;
+        if (propiedades != null){
+            for (TituloPropiedad cadaPropiedad : propiedades){
+                int valorDeLaPropiedad = cadaPropiedad.getPrecioCompra();
+
+                int numTotalDeEdificaciones = 
+                        cadaPropiedad.getNumCasas() + cadaPropiedad.getNumHoteles();
+
+                valorDeLaPropiedad += (numTotalDeEdificaciones * cadaPropiedad.getPrecioEdificar());
+
+                if (cadaPropiedad.getHipotecada())
+                    valorDeLaPropiedad -= cadaPropiedad.getHipotecaBase();
+
+                toReturn += valorDeLaPropiedad;
+            }
         }
         
         return toReturn;
