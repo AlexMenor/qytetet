@@ -254,6 +254,27 @@ public class Qytetet {
         }
     }
     
+    void actuarSiEnCasillaNoEdificable (){
+        setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        
+        Casilla casillaActual = jugadorActual.getCasillaActual();
+        
+        if (casillaActual.getTipo() == TipoCasilla.IMPUESTO){
+            jugadorActual.pagarImpuesto();
+        }
+        else{
+            if (casillaActual.getTipo() == TipoCasilla.JUEZ){
+                encarcelarJugador();
+            }
+            else if (casillaActual.getTipo() == TipoCasilla.SORPRESA){
+                cartaActual = mazo.remove(0);
+                setEstadoJuego (EstadoJuego.JA_CONSORPRESA);
+            }
+        }
+        
+    }
+    
+    
     private void encarcelarJugador (){
         if (!jugadorActual.tengoCartaLibertad()){
             Casilla casillaCarcel = tablero.getCarcel();
