@@ -61,6 +61,32 @@ public class Jugador implements Comparable{
     public int getSaldo (){
         return saldo;
     }
+    
+     
+    boolean edificarCasa (TituloPropiedad titulo){
+        boolean edificada = false;
+        
+        int numCasas = titulo.getNumCasas();
+        
+        if (numCasas < 4){
+            int costeEdificarCasa = titulo.getPrecioEdificar();
+            if (tengoSaldo(costeEdificarCasa)){
+                titulo.edificarCasa();
+                modificarSaldo(-costeEdificarCasa);
+                edificada = true;
+            }
+        }
+        
+        return edificada;
+    }
+    
+    void pagarLibertad (int cantidad){
+        if (tengoSaldo(cantidad)){
+            setEncarcelado(false);
+            modificarSaldo(-cantidad);
+        }
+    }
+ 
 
     /* Por implementar
     boolean cancelarHipoteca (TituloPropiedad titulo){
@@ -73,10 +99,7 @@ public class Jugador implements Comparable{
         return true;
     }
     
-    
-    boolean edificarCasa (TituloPropiedad titulo){
-        return true;
-    }
+   
     
     boolean edificarHotel (TituloPropiedad titulo){
         return true;
@@ -108,10 +131,7 @@ public class Jugador implements Comparable{
     
     
     
-    void pagarLibertad (int cantidad){
     
-    }
- 
     
    
     

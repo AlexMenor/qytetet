@@ -1,5 +1,6 @@
 package modeloqytetet;
 import java.util.ArrayList;
+import java.util.Collections;
 
     /* 
      Esta clase representa
@@ -76,6 +77,7 @@ public class Qytetet {
         inicializarTablero();
         inicializarCartasSorpresa();
         inicializarJugadores (nombres);
+        salidaJugadores();
     }
     
      private void inicializarTablero (){tablero = new Tablero ();}
@@ -116,6 +118,10 @@ public class Qytetet {
         
         mazo.add (new Sorpresa ("Quedas libres de la cárcel, puedes guardar "
         + " esto para luego", 0, TipoSorpresa.SALIRCARCEL));
+        
+            // Barajamos
+        
+        Collections.shuffle(mazo);
         
     }
     
@@ -294,18 +300,57 @@ public class Qytetet {
         }
     }
     
+    public boolean edificarCasa (int numeroCasilla){
+        boolean edificada = false;
+        
+        Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+        TituloPropiedad titulo = casilla.getTitulo();
+        
+        edificada = jugadorActual.edificarCasa (titulo);
+        
+        if (edificada)
+            setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        
+        return edificada;
+    
+    }
+    
+    public boolean intentarSalirCarcel (MetodoSalirCarcel metodo){
+        if (metodo == MetodoSalirCarcel.TIRANDODADO){
+            int resultado = tirarDado();
+            
+            if (resultado >= 5)
+                jugadorActual.setEncarcelado(false);
+        }
+        else if (metodo == MetodoSalirCarcel.PAGANDOLIBERTAD)
+            jugadorActual.pagarLibertad (PRECIO_LIBERTAD);
+        
+        boolean encarcelado = jugadorActual.getEncarcelado();
+        
+        if (encarcelado)
+            setEstadoJuego(EstadoJuego.JA_ENCARCELADO);
+        else
+            setEstadoJuego(EstadoJuego.JA_PREPARADO);
+        
+        return !encarcelado;
+    }
+    
+    // Falta el método número 9 del diagrama de interacción, tengo que preguntar a nuria
+    
+    
+    
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
     
     void actuarSiEnCasillaNoEdificable ();
 
     public boolean cancelarHipoteca (int numeroCasilla);
     public boolean comprarTituloPropiedad (int numeroCasilla);
-    public boolean edificarCasa (int numeroCasilla);
+    
     public boolean edificarHotel (int numeroCasilla);
     private void encarcelarJugador ();
     public int getValorDado ();
     public void hipotecarPropiedad (int numeroCasilla);
-    public boolean intentarSalirCarcel (MetodoSalirCArcel metodo);
+
     
     void mover (int numCasillaDestino);
     

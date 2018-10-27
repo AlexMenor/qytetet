@@ -93,6 +93,12 @@ public class TituloPropiedad {
         this.propietario = propietario;
     }
     
+    // Incrementa el número de casas del titulo propiedad
+    
+    void edificarCasa (){
+        numCasas++;
+    }
+    
         // TituloPropiedad toString()
 
     @Override
