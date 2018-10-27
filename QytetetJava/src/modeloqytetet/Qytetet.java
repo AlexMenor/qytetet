@@ -294,7 +294,7 @@ public class Qytetet {
                 case IRACASILLA:
                     int valor = cartaActual.getValor();
                     if (tablero.esCasillaCarcel(valor))
-                        encarcelarJugador()
+                        encarcelarJugador();
                     else
                         mover(valor);
                     break;
