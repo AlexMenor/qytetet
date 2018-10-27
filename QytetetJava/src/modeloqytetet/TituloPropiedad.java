@@ -1,5 +1,5 @@
 package modeloqytetet;
-
+import java.util.ArrayList;
     /* 
      Esta clase representa
      el conjunto de características
