@@ -70,6 +70,10 @@ public class Qytetet {
         cartaActual = carta;
     }
     
+    private void setEstadoJuego (EstadoJuego estado){
+        this.estado = estado;
+    }
+    
     
         // Métodos de inicialización
     
@@ -212,7 +216,7 @@ public class Qytetet {
     }
     
     public void obtenerRanking (){
-        
+        Collections.sort(jugadores);
     }
     
     public int obtenerSaldoJugadorActual (){
@@ -248,6 +252,29 @@ public class Qytetet {
         else{
             setEstadoJuego (EstadoJuego.JA_PUEDECOMPRAROGESTIONAR);
         }
+    }
+    
+    private void encarcelarJugador (){
+        if (!jugadorActual.tengoCartaLibertad()){
+            Casilla casillaCarcel = tablero.getCarcel();
+            jugadorActual.irACarcel(casillaCarcel);
+            setEstadoJuego (EstadoJuego.JA_ENCARCELADO);
+        }
+        else{
+            Sorpresa carta = jugadorActual.getCartaLibertad();
+            // mazo.incluirAlFinal (carta);
+            setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        }
+    }
+    
+    public boolean comprarTituloPropiedad (int numeroCasilla){
+        boolean comprado = jugadorActual.comprarTituloPropiedad();
+        
+        if (comprado){
+            setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
+        }
+        
+        return comprado;
     }
     
     public void aplicarSorpresa (){
