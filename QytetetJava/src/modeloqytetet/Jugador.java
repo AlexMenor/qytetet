@@ -236,6 +236,26 @@ public class Jugador implements Comparable{
                 casillaActual.tengoPropietario());
     }
     
+    void irACarcel (Casilla casilla){
+        setCasillaActual (casilla);
+        setEncarcelado (true);
+    }
+    
+    boolean comprarTituloPropiedad(){
+        boolean comprado = false;
+        
+        int costeCompra = casillaActual.getCoste();
+        
+        if (costeCompra < saldo){
+            TituloPropiedad titulo = casillaActual.asignarPropietario (this);
+            comprado = true;
+            propiedades.add (titulo);
+            modificarSaldo (saldo-costeCompra);
+        }
+        
+        return comprado;
+    }
+    
     // Implementación de la interfaz Comparable
     
     @Override
