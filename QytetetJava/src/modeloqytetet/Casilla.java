@@ -75,6 +75,11 @@ public class Casilla {
         return titulo.propietarioEncarcelado();
     }
     
+    TituloPropiedad asignarPropietario (Jugador jugador){
+        titulo.setPropietario (jugador);
+        
+        return titulo;
+    }
         /* 
         Casilla toString() solo devuelve las características
         de título propiedad, si la casilla es de tipo
