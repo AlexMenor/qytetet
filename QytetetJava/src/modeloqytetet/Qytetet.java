@@ -211,8 +211,8 @@ public class Qytetet {
     
     public void jugar (){
         int valor_dado = tirarDado();
-        tablero.obtenerCasillaFinal(jugadorActual.getCasillaActual(), valor_dado);
-        // mover ();
+        Casilla casillaDestino = tablero.obtenerCasillaFinal(jugadorActual.getCasillaActual(), valor_dado);
+        mover (casillaDestino.getNumeroCasilla());
     }
     
     public void obtenerRanking (){
@@ -283,7 +283,7 @@ public class Qytetet {
         }
         else{
             Sorpresa carta = jugadorActual.getCartaLibertad();
-            // mazo.incluirAlFinal (carta);
+            mazo.add (carta);
             setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
         }
     }
@@ -383,31 +383,46 @@ public class Qytetet {
         return !encarcelado;
     }
     
-    
-    
-    
+    void mover (int numCasillaDestino){
+         Casilla casillaInicial = jugadorActual.getCasillaActual();
+         Casilla casillaFinal = tablero.obtenerCasillaNumero(numCasillaDestino);
+         
+         jugadorActual.setCasillaActual(casillaFinal);
+         
+         if (numCasillaDestino < casillaInicial.getNumeroCasilla()){
+             jugadorActual.modificarSaldo(SALDO_SALIDA);
+         }
+         
+         if (casillaFinal.soyEdificable()){
+             actuarSiEnCasillaEdificable();
+         }
+         else{
+             actuarSiEnCasillaNoEdificable();
+         }
+     }
+     
+     public void hipotecarPropiedad (int numeroCasilla){
+         Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+         TituloPropiedad titulo = casilla.getTitulo();
+         
+         jugadorActual.hipotecarPropiedad (titulo);
+         
+         setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
+     }
+     
+     public boolean venderPropiedad (int numeroCasilla){
+         Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+         jugadorActual.venderPropiedad (casilla);
+         setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
+                 
+        return true;
+     }
+     
+     
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
-    
-    void actuarSiEnCasillaNoEdificable ();
-
     public boolean cancelarHipoteca (int numeroCasilla);
-    public boolean comprarTituloPropiedad (int numeroCasilla);
-    
     public boolean edificarHotel (int numeroCasilla);
-    private void encarcelarJugador ();
-    public int getValorDado ();
-    public void hipotecarPropiedad (int numeroCasilla);
-
-    
-    void mover (int numCasillaDestino);
-    
     public ArrayList<Casilla> obtenerCasillasTablero ();
-    
-    
-   
-    
-    
-    public boolean venderPropiedad (int numeroCasilla);
     */
 
     
