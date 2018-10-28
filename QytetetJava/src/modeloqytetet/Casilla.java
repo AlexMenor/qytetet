@@ -80,17 +80,23 @@ public class Casilla {
         
         return titulo;
     }
-        /* 
+    
+    int pagarAlquiler (){
+        return titulo.pagarAlquiler();
+    }
+        
+
+    /* Por implementar
+    TituloPropiedad asignarPropietario (Jugador jugador){}
+    
+    boolean propietarioEncarcelado(){}
+    */
+    
+    /* 
         Casilla toString() solo devuelve las características
         de título propiedad, si la casilla es de tipo
         calle y por tanto, tiene título
         */
-
-    /* Por implementar
-    TituloPropiedad asignarPropietario (Jugador jugador){}
-    int pagarAlquiler (){}
-    boolean propietarioEncarcelado(){}
-    */
     
     @Override
     public String toString() {

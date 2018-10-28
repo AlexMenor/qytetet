@@ -99,6 +99,19 @@ public class TituloPropiedad {
         numCasas++;
     }
     
+    int pagarAlquiler(){
+        int costeAlquiler = calcularCosteAlquiler();
+        
+        propietario.modificarSaldo(costeAlquiler);
+        
+        return costeAlquiler;
+    
+    }
+    
+    int calcularCosteAlquiler(){
+        return alquilerBase + (int) (numCasas * 0.5 + numHoteles * 2 );
+    }
+    
         // TituloPropiedad toString()
 
     @Override

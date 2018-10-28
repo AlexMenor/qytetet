@@ -86,6 +86,14 @@ public class Jugador implements Comparable{
             modificarSaldo(-cantidad);
         }
     }
+    
+        
+    
+    void pagarAlquiler (){
+        int costeAlquiler = casillaActual.pagarAlquiler();
+        
+        modificarSaldo(-costeAlquiler);
+    }
  
 
     /* Por implementar
@@ -124,10 +132,7 @@ public class Jugador implements Comparable{
     
     
     
-    
-    
-    void pagarAlquiler (){
-    }
+
     
     
     

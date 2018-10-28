@@ -383,7 +383,6 @@ public class Qytetet {
         return !encarcelado;
     }
     
-    // Falta el método número 9 del diagrama de interacción, tengo que preguntar a nuria
     
     
     
