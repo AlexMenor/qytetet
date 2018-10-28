@@ -25,7 +25,7 @@ public class Casilla {
     
         // Modificador privado de titulo
     
-    private void setTitulo(TituloPropiedad titulo){
+    public void setTitulo(TituloPropiedad titulo){
         this.titulo = titulo;
     }
         
