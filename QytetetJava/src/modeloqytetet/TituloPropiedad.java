@@ -135,6 +135,20 @@ public class TituloPropiedad {
         return toReturn + '}';
     }
 
+    int hipotecar(){
+        setHipotecada(true);
+        
+        int costeHipoteca = calcularCosteHipotecar();
+        
+        return costeHipoteca;
+    }
     
+    int calcularCosteHipotecar(){
+        return (int) (hipotecaBase + numCasas * 0.5 * hipotecaBase + numHoteles * hipotecaBase);
+    }
+    
+    int calcularPrecioVenta(){
+        return (int) (precioCompra + (numCasas + numHoteles ) * precioEdificar * factorRevalorizacion);
+    }
     
 }
