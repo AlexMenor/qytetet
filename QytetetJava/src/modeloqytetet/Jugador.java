@@ -102,45 +102,12 @@ public class Jugador implements Comparable{
         return true;
     }
     
-    
-    boolean deboPagarAlquiler (){
-        return true;
-    }
-    
-   
-    
     boolean edificarHotel (TituloPropiedad titulo){
         return true;
     }
     
-    private void eliminarDeMisPropiedades (TituloPropiedad titulo){
-    
-    }
     
     boolean estoyEnCalleLibre (){
-        return true;
-    }
-    boolean hipotecarPropiedad (TituloPropiedad titulo){
-        return true;
-    }
-    
-    void irACarcel (Casilla casilla){
-        
-    }
-    
-   
-    
-    
-    
-
-    
-    
-    
-    
-    
-   
-    
-    boolean venderPropiedad (Casilla casilla){
         return true;
     }
     */
@@ -259,6 +226,46 @@ public class Jugador implements Comparable{
         }
         
         return comprado;
+    }
+    
+    
+    boolean deboPagarAlquiler (){
+        boolean deboPagar;
+        boolean p_encarcelado = false;
+        boolean estaHipotecada = false;
+        
+        boolean esDeMiPropiedad = esDeMiPropiedad(casillaActual.getTitulo());
+        boolean tienePropietario = casillaActual.tengoPropietario();
+        if (tienePropietario){
+            p_encarcelado = casillaActual.propietarioEncarcelado();
+            estaHipotecada = casillaActual.getTitulo().getHipotecada();
+        }
+        
+        deboPagar = !esDeMiPropiedad & tienePropietario & !p_encarcelado & !estaHipotecada;
+        return deboPagar;
+    }
+    
+    boolean hipotecarPropiedad (TituloPropiedad titulo){
+        int costeHipoteca = titulo.hipotecar();
+        
+        modificarSaldo (costeHipoteca);
+        
+        return true;
+    }
+    
+    boolean venderPropiedad (Casilla casilla){
+        TituloPropiedad titulo = casilla.getTitulo();
+        eliminarDeMisPropiedades (titulo);
+        int precioVenta = titulo.calcularPrecioVenta();
+        modificarSaldo (precioVenta);
+        casilla.setTitulo(null);
+        
+        return true;
+    }
+    
+    private void eliminarDeMisPropiedades (TituloPropiedad titulo){
+        propiedades.remove(titulo);
+        titulo.setPropietario(null);
     }
     
     // Implementación de la interfaz Comparable
