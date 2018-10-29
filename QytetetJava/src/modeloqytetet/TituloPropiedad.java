@@ -99,6 +99,10 @@ public class TituloPropiedad {
         numCasas++;
     }
     
+    void edificarHotel (){
+        numHoteles++;
+    }
+    
     int pagarAlquiler(){
         int costeAlquiler = calcularCosteAlquiler();
         
@@ -141,6 +145,10 @@ public class TituloPropiedad {
         int costeHipoteca = calcularCosteHipotecar();
         
         return costeHipoteca;
+    }
+    
+    void cancelarHipoteca(){
+        setHipotecada(false);
     }
     
     int calcularCosteHipotecar(){
