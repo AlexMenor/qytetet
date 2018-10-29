@@ -1,6 +1,7 @@
 package modeloqytetet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
     /* 
      Esta clase representa
@@ -170,7 +171,7 @@ public class Qytetet {
             jug.setCasillaActual(tablero.getCasillas().get(0));
         }
         
-        numJugadorActual = (int) (Math.random() * jugadores.size()-1);
+        numJugadorActual = new Random().nextInt(jugadores.size());
         jugadorActual = jugadores.get(numJugadorActual);
         
         estado = EstadoJuego.JA_PREPARADO;
