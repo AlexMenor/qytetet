@@ -21,6 +21,7 @@ public class Jugador implements Comparable{
 
     Jugador(String nombre) {
         this.nombre = nombre;
+        propiedades = new ArrayList <>();
     }
     
     // Modificadores 
@@ -222,7 +223,7 @@ public class Jugador implements Comparable{
             TituloPropiedad titulo = casillaActual.asignarPropietario (this);
             comprado = true;
             propiedades.add (titulo);
-            modificarSaldo (saldo-costeCompra);
+            modificarSaldo (-costeCompra);
         }
         
         return comprado;

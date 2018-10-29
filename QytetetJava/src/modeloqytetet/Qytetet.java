@@ -289,7 +289,7 @@ public class Qytetet {
         }
     }
     
-    public boolean comprarTituloPropiedad (int numeroCasilla){
+    public boolean comprarTituloPropiedad (){
         boolean comprado = jugadorActual.comprarTituloPropiedad();
         
         if (comprado){
