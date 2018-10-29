@@ -364,6 +364,34 @@ public class Qytetet {
     
     }
     
+    public boolean edificarHotel (int numeroCasilla){
+        boolean edificado = false;
+        
+        Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+        TituloPropiedad titulo = casilla.getTitulo();
+        
+        edificado = jugadorActual.edificarHotel(titulo);
+        
+        if (edificado)
+            setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        
+        return edificado;
+    }
+    
+    public boolean cancelarHipoteca (int numeroCasilla){
+        boolean cancelada = false;
+        
+        Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+        TituloPropiedad titulo = casilla.getTitulo();
+        
+        cancelada = jugadorActual.cancelarHipoteca(titulo);
+        
+        if (cancelada)
+            setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+        
+        return cancelada;
+    }
+    
     public boolean intentarSalirCarcel (MetodoSalirCarcel metodo){
         if (metodo == MetodoSalirCarcel.TIRANDODADO){
             int resultado = tirarDado();
@@ -419,10 +447,7 @@ public class Qytetet {
         return true;
      }
      
-     
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
-    public boolean cancelarHipoteca (int numeroCasilla);
-    public boolean edificarHotel (int numeroCasilla);
     public ArrayList<Casilla> obtenerCasillasTablero ();
     */
 
