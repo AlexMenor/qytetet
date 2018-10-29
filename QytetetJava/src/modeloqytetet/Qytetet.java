@@ -170,7 +170,7 @@ public class Qytetet {
             jug.setCasillaActual(tablero.getCasillas().get(0));
         }
         
-        numJugadorActual = (int) Math.floor(Math.random() * (jugadores.size()+1));
+        numJugadorActual = (int) (Math.random() * jugadores.size()-1);
         jugadorActual = jugadores.get(numJugadorActual);
         
         estado = EstadoJuego.JA_PREPARADO;
