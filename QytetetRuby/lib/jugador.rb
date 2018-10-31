@@ -91,6 +91,65 @@ class Jugador
     return (@saldo > cantidad)
   end
   
+  def comprar_titulo_propiedad
+    comprado = false
+    
+    coste_compra = @casilla_actual.coste
+    
+    if coste_compra < @saldo
+      @casilla_actual.titulo.propietario = self
+      comprado = true
+      @propiedades << @casilla_actual.titulo
+      modificar_saldo (-coste_compra)
+    end
+    
+    return comprado
+  end
+  
+  def ir_a_carcel(casilla_Carcel)
+    @casilla_actual = casilla_carcel
+    @encarcelado = true
+  end
+  
+  def debo_pagar_alquiler
+    p_encarcelado = false
+    esta_hipotecada = false
+    es_de_mi_propiedad = es_de_mi_propiedad(@casilla_actual.titulo)
+    tiene_propietario = @casilla_actual.propietario
+    
+    if tiene_propietario
+      p_encarcelado = @casilla_actual.propietario_encarcelado
+      esta_hipotecada = @casilla_actual.titulo.hipotecada
+    end
+    
+    debo_pagar = !es_de_mi_propiedad & tiene_propietario & !p_encarcelado & !esta_hipotecada
+    
+    return debo_pagar
+  end
+  
+  def hipotecar_propiedad(titulo)
+    coste_hipoteca = titulo.hipotecar
+    modificar_saldo(coste_hipoteca)
+    
+    return true
+  end
+  
+  def vender_propiedad (casilla)
+    titulo = casilla.titulo
+    eliminar_de_mis_propiedades (titulo)
+    
+    precio_venta = titulo.calcular_precio_venta
+    modificar_saldo(precio_venta)
+    casilla.titulo = nil
+    
+    return true
+  end
+  
+  def eliminar_de_mis_propiedades (titulo)
+    @propieades.delete(titulo)
+    titulo.propietario = nil
+  end
+  
   # toString()
   
   def to_s

@@ -195,6 +195,79 @@ module ModeloQytetet
       return @dado.valor
     end
     
+    def actuar_si_en_casilla_no_edificable
+      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      casilla_actual = @jugador_actual.casilla_actual
+      
+      if casilla_actual.tipo == ModeloQytetet::TipoCasilla.const_get(IMPUESTO)
+        @jugador_actual.pagar_impuesto
+      else 
+        if casilla_actual.tipo == ModeloQytetet::TipoCasilla.const_get(JUEZ)
+          encarcelar_jugador()
+        elsif casilla_actual.tipo == ModeloQytetet::TipoCasilla.const_get(SORPRESA)
+          @carta_actual = @mazo.shift
+          @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_CONSORPRESA)
+        end
+      end
+    end
+    
+    def comprar_titulo_propiedad
+      comprado = @jugador_actual.comprar_titulo_propiedad
+      
+      if comprado
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      end
+      
+      return comprado
+    end
+    
+    def encarcelar_jugador
+      if !@jugador_actual.tengo_carta_libertad
+        casilla_carcel = @tablero.carcel 
+        @jugador_actual.ir_a_carcel(casilla_carcel)
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_ENCARCELADO)
+      else
+        carta = @jugador_actual.devolver_carta_libertad
+        @mazo << carta
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      end
+    end
+    
+    def mover (num_casilla_destino)
+      casilla_inicial = @jugador_actual.casilla_actual
+      casilla_final = @tablero.get(num_casilla_destino)
+      @jugador_actual.casilla_actual = casilla_final
+      
+      if num_casilla_destino < casilla_inicial.numero_casilla
+        @jugador_actual.modificar_saldo(SALDO_SALIDA)
+      end
+      
+      if casilla_actual.soy_edificable
+        actuar_si_en_casilla_edificable()
+      else
+        actual_si_en_casilla_no_edificable()
+      end
+    end
+    
+    def hipotecar_propiedad(numero_casilla)
+      casilla = @tablero.obtener_casilla_numero(numero_casilla)
+      titulo = casilla.titulo
+      
+      @jugador_actual.hipotecar_propiedad(titulo)
+      
+      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+    end
+    
+    def vender_propiedad (numero_casilla)
+      casilla = @tablero.obtener_casilla_numero(numero_casilla)
+      
+      @jugador_actual.vender_propiedad(casilla)
+      
+      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      
+      return true
+    end
+    
     
     # Los 3 métodos inicializadores son privados y se llaman desde
     # inicializarJuego() que sí es público

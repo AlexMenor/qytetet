@@ -44,6 +44,19 @@ module ModeloQytetet
       return @propietario.encarcelado
     end
     
+    def hipotecar
+      @hipotecada = true
+      return calcular_coste_hipotecar
+    end
+    
+    def calcular_coste_hipotecar
+      return (@hipoteca_base + @num_casas * 0.5 * @hipoteca_base + @num_hoteles * @hipoteca_base).to_i
+    end
+    
+    def calcular_precio_venta
+      return (@precio_compra + (@num_casas + @num_hoteles) * @precio_edificar * @factor_revalorizacion).to_i
+    end
+    
     # toString()
     
     def to_s()
