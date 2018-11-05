@@ -44,6 +44,19 @@ module ModeloQytetet
       return @propietario.encarcelado
     end
     
+    def pagar_alquiler
+      coste_alquiler = calcular_importe_alquiler
+      @propietario.modificar_saldo(coste_alquiler)
+      
+      return coste_alquiler
+    end
+    
+    def calcular_importe_alquiler
+      coste_alquiler = @alquiler_base + (@num_casas * 0.5 + @num_hoteles * 2).to_i
+      
+      return coste_alquiler
+    end
+    
     def hipotecar
       @hipotecada = true
       return calcular_coste_hipotecar
