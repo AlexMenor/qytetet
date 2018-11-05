@@ -189,10 +189,76 @@ module ModeloQytetet
       return @dado.tirar
     end
     
+    def obtener_casilla_jugador_actual
+      casilla = @jugador_actual.casilla_actual
+      
+      return casilla
+    end
+    
     # Devuelve el valor que salió la última vez que se tiró el dado
    
     def get_valor_dado
       return @dado.valor
+    end
+    
+    def actuar_si_en_casilla_edificable
+      debo_pagar = @jugador_actual.debo_pagar_alquiler
+      
+      if debo_pagar_alquiler
+        @jugador_actual.pagar_alquiler
+      end
+      
+      casilla = obtener_casilla_jugador_actual
+      
+      tengo_propietario = @casilla_actual.tengo_propietario
+      
+      if tengo_propietario
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      else
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDECOMPRARGESTIONAR)
+      end 
+    end
+    
+    def aplicar_sorpresa
+      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      
+      if (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(SALIRCARCEL))
+        @jugador_actual.set_carta_libertad(@carta_actual)
+      else
+        @mazo << @carta_actual
+      end
+      
+      if (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PAGARCOBRAR))
+          @jugador_actual.modificar_saldo(@carta_actual.valor)
+          
+        if (@jugador_actual.saldo < 0)
+          @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+        end
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(IRACASILLA))
+        valor = @carta_actual.valor
+        casilla_carcel = @tablero.es_casilla_carcel(valor)
+        
+        if (casilla_carcel)
+          encarcelar_jugador
+        else
+          mover(valor)
+        end
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PORCASAHOTEL))
+        cantidad = @casilla_actual.valor
+        numero_total = @jugador_actual.cuantas_casas_hoteles_tengo
+        @jugador_actual.modificar_saldo(cantidad*numero_total)
+        
+        if (@jugador_actual.saldo < 0)
+          @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+        end
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PORJUGADOR))
+        @jugadores.each do |jugador|
+          if jugador != @jugador_actual
+            
+          end
+        end
+        
+      end
     end
     
     def actuar_si_en_casilla_no_edificable
