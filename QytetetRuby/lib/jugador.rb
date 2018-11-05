@@ -76,6 +76,10 @@ class Jugador
     return @saldo
   end
   
+  def set_carta_libertad (carta)
+    @carta_libertad = carta
+  end
+  
   def obtener_propiedades (estado_hipotecada)
     to_return = Array.new
     
@@ -89,6 +93,13 @@ class Jugador
   
   def tengo_saldo (cantidad)
     return (@saldo > cantidad)
+  end
+  
+  def pagar_alquiler 
+    coste_alquiler = @casilla_actual.pagar_alquiler
+    modificar_saldo (-coste_alquiler)
+    
+    return true
   end
   
   def comprar_titulo_propiedad
