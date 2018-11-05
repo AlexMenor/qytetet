@@ -46,6 +46,12 @@ module ModeloQytetet
       return @titulo.propietario_encarcelado
     end
     
+    def pagar_alquiler
+      coste_alquiler = @titulo.pagar_alquiler
+      
+      return coste_alquiler
+    end
+    
     # toString()
     
     def to_s
