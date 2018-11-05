@@ -70,6 +70,10 @@ module ModeloQytetet
       return (@precio_compra + (@num_casas + @num_hoteles) * @precio_edificar * @factor_revalorizacion).to_i
     end
     
+    def edificar_casa
+      @num_casas = @num_casas + 1
+    end
+    
     # toString()
     
     def to_s()
