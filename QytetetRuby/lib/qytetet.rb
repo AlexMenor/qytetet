@@ -21,8 +21,8 @@ module ModeloQytetet
     
     # Consultores y modificadores
     
-    attr_reader:mazo,:tablero, :dado, :jugadores, :jugador_actual
-    attr_accessor:carta_actual, :estado_juego
+    attr_reader:mazo, :dado, :jugadores, :jugador_actual
+    attr_accessor:carta_actual, :estado_juego, :tablero
     
     # Métodos para inicializar el juego
     
@@ -62,9 +62,11 @@ module ModeloQytetet
     end
     
     def inicializar_juego(nombres)
+      inicializar_jugadores(nombres)
       inicializar_tablero()
       inicializar_cartas_sorpresa()
-      inicializar_jugadores(nombres)
+      salida_jugadores()
+      @tablero.inicializar()
     end
     
     # toString()
@@ -254,11 +256,58 @@ module ModeloQytetet
       elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PORJUGADOR))
         @jugadores.each do |jugador|
           if jugador != @jugador_actual
+            jugador.modificarSaldo(@carta_actual.valor)
             
+            if jugador.saldo < 0
+              @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+            end
+            @jugador_actual.modificarSaldo(-@carta_actual.valor)
+            
+            if @jugador_actual.saldo < 0
+              @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+            end
           end
         end
-        
       end
+    end
+    
+    def edificar_casa (numero_casilla)
+      edificada = false
+      
+      casilla = @tablero.obtener_casilla_numero(numero_casilla)
+      
+      titulo = casilla.titulo
+      
+      edificada = @jugador_actual.edificar_casa(titulo)
+      
+      if (edificada)
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      end
+      
+      return edificada
+    end
+    
+    def intentar_salir_carcel (metodo)
+      if (metodo == ModeloQytetet::MetodoSalirCarcel.const_get(TIRANDODADO))
+        resultado = tirar_dado()
+        
+        if (resultado >= 5)
+          @jugador_actual.encarcelado = false
+        end
+      
+      elsif (metodo == ModeloQytetet::MetodoSalirCarcel.const_get(PAGANDOLIBERTAD))
+        @jugador_actual.pagar_libertad(@@PRECIO_LIBERTAD)
+      end
+      
+      libre = @jugador_actual.encarcelado
+      
+      if (libre)
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_ENCARCELADO)
+      else
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PREPARADO)
+      end
+      
+      return libre
     end
     
     def actuar_si_en_casilla_no_edificable
