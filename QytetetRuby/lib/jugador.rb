@@ -161,6 +161,31 @@ class Jugador
     titulo.propietario = nil
   end
   
+  def edificar_casa (titulo)
+    num_casas = titulo.num_casas
+    
+    if (num_casas < 4)
+      coste_edificar_casa = titulo.precio_edificar
+      tengo_saldo = tengo_saldo (coste_edificar_casa)
+      
+      if (tengo_saldo)
+        titulo.edificar_casa
+        modificar_saldo (coste_edificar_casa)
+        edificada = true
+      end
+    end
+    return edificada
+  end
+  
+  def pagar_libertad (cantidad)
+    tengo_saldo = tengo_saldo (cantidad)
+    
+    if (tengo_saldo)
+      encarcelado = false
+      modificar_saldo (-cantidad)
+    end
+  end
+  
   # toString()
   
   def to_s
