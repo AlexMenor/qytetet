@@ -31,7 +31,7 @@ module ModeloQytetet
     # Devuelve true solo si la casilla es del tipo calle
     
     def soy_edificable
-      return @tipo ==ModeloQytetet::TipoCasilla.const_get(CALLE)
+      return @tipo ==ModeloQytetet::TipoCasilla::CALLE
     end
     
     # Llama al método de mismo nombre de la clase TituloPropiedad
