@@ -71,7 +71,15 @@ module ModeloQytetet
     end
     
     def edificar_casa
-      @num_casas = @num_casas + 1
+      @num_casas += 1
+    end
+    
+    def edificar_hotel
+      @num_hoteles += 1
+    end
+    
+    def cancelar_hipoteca
+      @hipotecada = false
     end
     
     # toString()

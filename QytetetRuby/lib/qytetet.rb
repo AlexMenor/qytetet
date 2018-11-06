@@ -383,6 +383,36 @@ module ModeloQytetet
       return true
     end
     
+    def edificar_hotel (numero_casilla)
+      edificado = false
+      
+      casilla = @tablero.obtener_casilla_numero(numero_casilla)
+      
+      titulo = casilla.titulo
+      
+      edificado = @jugador_actual.edificar_hotel(titulo)
+      
+      if (edificado)
+        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      end
+      
+      return edificado
+    end
+    
+    def cancelar_hipoteca (numero_casilla)
+      cancelada = false
+      
+      casilla = tablero.obtener_casilla_numero(numero_casilla)
+      titulo = casilla.titulo
+      cancelada = @jugador_actual.cancelar_hipoteca(titulo)
+      
+     if cancelada
+       @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+     end
+     
+      return cancelada
+    end
+    
     
     # Los 3 métodos inicializadores son privados y se llaman desde
     # inicializarJuego() que sí es público

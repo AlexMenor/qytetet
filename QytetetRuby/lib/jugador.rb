@@ -117,7 +117,12 @@ class Jugador
     return comprado
   end
   
-  def ir_a_carcel(casilla_Carcel)
+  def cancelar_hipoteca(titulo)
+    titulo.cancelar_hipoteca
+    return true
+  end
+  
+  def ir_a_carcel(casilla_carcel)
     @casilla_actual = casilla_carcel
     @encarcelado = true
   end
@@ -162,6 +167,7 @@ class Jugador
   end
   
   def edificar_casa (titulo)
+    edificada = false
     num_casas = titulo.num_casas
     
     if (num_casas < 4)
@@ -175,6 +181,23 @@ class Jugador
       end
     end
     return edificada
+  end
+  
+   def edificar_hotel (titulo)
+     edificado = false
+    num_hoteles = titulo.num_hoteles
+    
+    if (num_hoteles < 4)
+      coste_edificar_hotel = titulo.precio_edificar
+      tengo_saldo = tengo_saldo (coste_edificar_hotel)
+      
+      if (tengo_saldo)
+        titulo.edificar_hotel
+        modificar_saldo (coste_edificar_hotel)
+        edificado = true
+      end
+    end
+    return edificado
   end
   
   def pagar_libertad (cantidad)
