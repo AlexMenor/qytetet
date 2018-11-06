@@ -95,8 +95,8 @@ module ModeloQytetet
       
       
         @estado_juego = @jugador_actual.encarcelado ? 
-          ModeloQytetet::EstadoJuego.const_get(JA_ENCARCELADOCONOPCIONDELIBERTAD) :
-          ModeloQytetet::EstadoJuego.const_get(JA_PREPARADO)
+          ModeloQytetet::EstadoJuego::JA_ENCARCELADOCONOPCIONDELIBERTAD :
+          ModeloQytetet::EstadoJuego::JA_PREPARADO
     end
     
     # Posiciona todos los jugadores en la casilla de salida
@@ -112,7 +112,7 @@ module ModeloQytetet
       
       @jugador_actual = @jugadores.at(primero_en_salir)
       
-      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PREPARADO);
+      @estado_juego = ModeloQytetet::EstadoJuego::JA_PREPARADO;
     end
     
     # Devuelve los números de las casillas de las propiedades
@@ -215,28 +215,28 @@ module ModeloQytetet
       tengo_propietario = @casilla_actual.tengo_propietario
       
       if tengo_propietario
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       else
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDECOMPRARGESTIONAR)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDECOMPRARGESTIONAR
       end 
     end
     
     def aplicar_sorpresa
-      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       
-      if (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(SALIRCARCEL))
+      if (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::SALIRCARCEL)
         @jugador_actual.set_carta_libertad(@carta_actual)
       else
         @mazo << @carta_actual
       end
       
-      if (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PAGARCOBRAR))
+      if (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::PAGARCOBRAR)
           @jugador_actual.modificar_saldo(@carta_actual.valor)
           
         if (@jugador_actual.saldo < 0)
-          @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+          @estado_juego = ModeloQytetet::EstadoJuego::ALGUNJUGADORENBANCARROTA
         end
-      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(IRACASILLA))
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::IRACASILLA)
         valor = @carta_actual.valor
         casilla_carcel = @tablero.es_casilla_carcel(valor)
         
@@ -245,26 +245,26 @@ module ModeloQytetet
         else
           mover(valor)
         end
-      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PORCASAHOTEL))
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::PORCASAHOTEL)
         cantidad = @casilla_actual.valor
         numero_total = @jugador_actual.cuantas_casas_hoteles_tengo
         @jugador_actual.modificar_saldo(cantidad*numero_total)
         
         if (@jugador_actual.saldo < 0)
-          @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+          @estado_juego = ModeloQytetet::EstadoJuego::ALGUNJUGADORENBANCARROTA
         end
-      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa.const_get(PORJUGADOR))
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::PORJUGADOR)
         @jugadores.each do |jugador|
           if jugador != @jugador_actual
             jugador.modificarSaldo(@carta_actual.valor)
             
             if jugador.saldo < 0
-              @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+              @estado_juego = ModeloQytetet::EstadoJuego::ALGUNJUGADORENBANCARROTA
             end
             @jugador_actual.modificarSaldo(-@carta_actual.valor)
             
             if @jugador_actual.saldo < 0
-              @estado_juego = ModeloQytetet::EstadoJuego.const_get(ALGUNJUGADORENBANCARROTA)
+              @estado_juego = ModeloQytetet::EstadoJuego::ALGUNJUGADORENBANCARROTA
             end
           end
         end
@@ -281,47 +281,47 @@ module ModeloQytetet
       edificada = @jugador_actual.edificar_casa(titulo)
       
       if (edificada)
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
       
       return edificada
     end
     
     def intentar_salir_carcel (metodo)
-      if (metodo == ModeloQytetet::MetodoSalirCarcel.const_get(TIRANDODADO))
+      if (metodo == ModeloQytetet::MetodoSalirCarcel::TIRANDODADO)
         resultado = tirar_dado()
         
         if (resultado >= 5)
           @jugador_actual.encarcelado = false
         end
       
-      elsif (metodo == ModeloQytetet::MetodoSalirCarcel.const_get(PAGANDOLIBERTAD))
+      elsif (metodo == ModeloQytetet::MetodoSalirCarcel::PAGANDOLIBERTAD)
         @jugador_actual.pagar_libertad(@@PRECIO_LIBERTAD)
       end
       
       libre = @jugador_actual.encarcelado
       
       if (libre)
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_ENCARCELADO)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_ENCARCELADO
       else
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PREPARADO)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PREPARADO
       end
       
       return libre
     end
     
     def actuar_si_en_casilla_no_edificable
-      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       casilla_actual = @jugador_actual.casilla_actual
       
-      if casilla_actual.tipo == ModeloQytetet::TipoCasilla.const_get(IMPUESTO)
+      if (casilla_actual.tipo == ModeloQytetet::TipoCasilla::IMPUESTO)
         @jugador_actual.pagar_impuesto
       else 
-        if casilla_actual.tipo == ModeloQytetet::TipoCasilla.const_get(JUEZ)
+        if (casilla_actual.tipo == ModeloQytetet::TipoCasilla::JUEZ)
           encarcelar_jugador()
-        elsif casilla_actual.tipo == ModeloQytetet::TipoCasilla.const_get(SORPRESA)
+        elsif casilla_actual.tipo == ModeloQytetet::TipoCasilla::SORPRESA
           @carta_actual = @mazo.shift
-          @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_CONSORPRESA)
+          @estado_juego = ModeloQytetet::EstadoJuego::JA_CONSORPRESA
         end
       end
     end
@@ -330,7 +330,7 @@ module ModeloQytetet
       comprado = @jugador_actual.comprar_titulo_propiedad
       
       if comprado
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
       
       return comprado
@@ -340,17 +340,17 @@ module ModeloQytetet
       if !@jugador_actual.tengo_carta_libertad
         casilla_carcel = @tablero.carcel 
         @jugador_actual.ir_a_carcel(casilla_carcel)
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_ENCARCELADO)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_ENCARCELADO
       else
         carta = @jugador_actual.devolver_carta_libertad
         @mazo << carta
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
     end
     
     def mover (num_casilla_destino)
       casilla_inicial = @jugador_actual.casilla_actual
-      casilla_final = @tablero.get(num_casilla_destino)
+      casilla_final = @tablero.casillas.at(num_casilla_destino)
       @jugador_actual.casilla_actual = casilla_final
       
       if num_casilla_destino < casilla_inicial.numero_casilla
@@ -370,7 +370,7 @@ module ModeloQytetet
       
       @jugador_actual.hipotecar_propiedad(titulo)
       
-      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
     end
     
     def vender_propiedad (numero_casilla)
@@ -378,7 +378,7 @@ module ModeloQytetet
       
       @jugador_actual.vender_propiedad(casilla)
       
-      @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+      @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       
       return true
     end
@@ -393,7 +393,7 @@ module ModeloQytetet
       edificado = @jugador_actual.edificar_hotel(titulo)
       
       if (edificado)
-        @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
       
       return edificado
@@ -407,7 +407,7 @@ module ModeloQytetet
       cancelada = @jugador_actual.cancelar_hipoteca(titulo)
       
      if cancelada
-       @estado_juego = ModeloQytetet::EstadoJuego.const_get(JA_PUEDEGESTIONAR)
+       @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
      end
      
       return cancelada
