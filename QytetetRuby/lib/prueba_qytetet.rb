@@ -15,6 +15,7 @@ require_relative "tablero"
 require_relative "jugador"
 require_relative "dado"
 require_relative "metodo_salir_carcel"
+require_relative "estado_juego"
 
 module ModeloQytetet
   
@@ -131,6 +132,38 @@ module ModeloQytetet
       puts "///////////////////////////////////////////////////\n\n"
       
       puts @@juego
+      
+      #Primera
+      
+      puts @@juego.jugador_actual.casilla_actual
+      @@juego.mover(4)
+      
+      #Segunda
+      
+      puts @@juego.jugador_actual
+      
+      @@juego.mover(3);
+      @@juego.comprar_titulo_propiedad
+      
+      puts @@juego.jugador_actual
+      
+      @@juego.siguiente_jugador
+      puts @@juego.jugador_actual
+      @@juego.mover(3)
+      puts @@juego.jugador_actual
+      
+      #Tercera
+      
+      @@juego.mover(18)
+      puts @@juego.carta_actual
+      @@juego.aplicar_sorpresa
+      puts @@juego.jugador_actual
+      
+      #Cuarta
+      
+      @@juego.siguiente_jugador
+      @@juego.edificar_casa(3)
+      puts @@juego.jugador_actual
       
     end
   end
