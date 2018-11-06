@@ -63,10 +63,10 @@ module ModeloQytetet
     
     def inicializar_juego(nombres)
       inicializar_jugadores(nombres)
-      inicializar_tablero()
-      inicializar_cartas_sorpresa()
-      salida_jugadores()
-      @tablero.inicializar()
+      inicializar_tablero
+      inicializar_cartas_sorpresa
+      salida_jugadores
+      @tablero.inicializar
     end
     
     # toString()
@@ -103,7 +103,7 @@ module ModeloQytetet
     
     def salida_jugadores
       jugadores.each do |jugador|
-        jugador.casilla_actual = 0
+        jugador.casilla_actual = @tablero.casillas.at(0)
       end
       
       random = Random.new
@@ -357,10 +357,10 @@ module ModeloQytetet
         @jugador_actual.modificar_saldo(SALDO_SALIDA)
       end
       
-      if casilla_actual.soy_edificable
-        actuar_si_en_casilla_edificable()
+      if @jugador_actual.casilla_actual.soy_edificable
+        actuar_si_en_casilla_edificable
       else
-        actual_si_en_casilla_no_edificable()
+        actuar_si_en_casilla_no_edificable
       end
     end
     
