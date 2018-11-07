@@ -71,7 +71,7 @@ public class PruebaQytetet {
         return nombres;
     }
     
-    public static void main(String[] args) {
+ /*   public static void main(String[] args) {
         
             // Declarados para probar los métodos de esta clase
         
@@ -116,7 +116,7 @@ public class PruebaQytetet {
         */
         
             // Primera 
-        
+       /* 
         System.out.println(juego.getJugadorActual().getCasillaActual());
         juego.mover(4);
         
@@ -151,9 +151,9 @@ public class PruebaQytetet {
         /*
         juego.siguienteJugador();
         juego.edificarCasa(3);
-        System.out.println(juego.getJugadorActual());*/
+        System.out.println(juego.getJugadorActual());
                 
 
-    }
+    }*/
     
 }
