@@ -55,6 +55,8 @@ module ModeloQytetet
        -45, TipoSorpresa::PORJUGADOR)  
       @mazo << Sorpresa.new("Quedas libres de la cárcel, puedes guardar esto para luego", 
         0, TipoSorpresa::SALIRCARCEL) 
+      
+      @mazo.shuffle!
     end
     
     def inicializar_tablero
@@ -245,7 +247,7 @@ module ModeloQytetet
           mover(valor)
         end
       elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::PORCASAHOTEL)
-        cantidad = @casilla_actual.valor
+        cantidad = @carta_actual.valor
         numero_total = @jugador_actual.cuantas_casas_hoteles_tengo
         @jugador_actual.modificar_saldo(cantidad*numero_total)
         

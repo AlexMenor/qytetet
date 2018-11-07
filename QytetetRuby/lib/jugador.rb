@@ -18,9 +18,14 @@ class Jugador
     @propiedades = Array.new
   end
   
+  # Implementado este operador para poder clasificar a los jugadores
+  
   def <=> (otroJugador)
     otroJugador.obtener_capital <=> obtener_capital
   end
+  
+  # Método que devuelve el capital formado por el saldo y el valor
+  # inmobiliario de sus propiedades
   
   def obtener_capital
     to_return = @saldo
@@ -41,7 +46,9 @@ class Jugador
     return to_return
   end
   
-  def cuantas_casa_hoteles_tengo
+  # Método que cuenta las casas y hoteles del jugador
+  
+  def cuantas_casas_hoteles_tengo
     to_return = 0
     
     @propiedades.each do |propiedad|
@@ -51,6 +58,8 @@ class Jugador
     return to_return
   end
   
+  # Método que "quita" al jugador la carta libertad que posee
+  
   def devolver_carta_libertad
     tmp = @carta_libertad
     @carta_libertad = nil
@@ -58,17 +67,26 @@ class Jugador
     return tmp
   end
   
+  # Método que resta al jugador de su saldo un impuesto a pagar
+  
   def pagar_impuesto
     @saldo -= @casilla_actual.coste
   end
+  
+  # Método consultor para comprobar si un jugador tiene una carta libertad
   
   def tengo_carta_libertad
     return !@carta_libertad.nil?
   end
   
+  # Método consultor para comprobar si un jugador tiene una propiedad dada
+  
   def es_de_mi_propiedad (titulo)
     return @propiedades.include?(titulo)
   end
+  
+  # Método para sumarle al saldo de un jugador una cantidad
+  # (puede ser negativa)
   
   def modificar_saldo (cantidad)
     @saldo += cantidad
@@ -76,9 +94,14 @@ class Jugador
     return @saldo
   end
   
+  # Método que provee al jugador de una carta libertad
+  
   def set_carta_libertad (carta)
     @carta_libertad = carta
   end
+  
+  # Método que devuelve un subarray de las propiedades
+  # de un jugador, hipotecadas o no según su argumento
   
   def obtener_propiedades (estado_hipotecada)
     to_return = Array.new
@@ -90,6 +113,8 @@ class Jugador
     end
     return to_return
   end
+  
+  # Consulta si un usuario puede pagar un dinero dado como argumento 
   
   def tengo_saldo (cantidad)
     return (@saldo > cantidad)
