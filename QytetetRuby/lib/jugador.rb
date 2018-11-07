@@ -131,7 +131,7 @@ class Jugador
     p_encarcelado = false
     esta_hipotecada = false
     es_de_mi_propiedad = es_de_mi_propiedad(@casilla_actual.titulo)
-    tiene_propietario = @casilla_actual.propietario
+    tiene_propietario = @casilla_actual.tengo_propietario
     
     if tiene_propietario
       p_encarcelado = @casilla_actual.propietario_encarcelado

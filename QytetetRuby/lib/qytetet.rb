@@ -205,18 +205,18 @@ module ModeloQytetet
     def actuar_si_en_casilla_edificable
       debo_pagar = @jugador_actual.debo_pagar_alquiler
       
-      if debo_pagar_alquiler
+      if debo_pagar
         @jugador_actual.pagar_alquiler
       end
       
       casilla = obtener_casilla_jugador_actual
       
-      tengo_propietario = @casilla_actual.tengo_propietario
+      tengo_propietario = @jugador_actual.casilla_actual.tengo_propietario
       
       if tengo_propietario
         @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       else
-        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDECOMPRARGESTIONAR
+        @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDECOMPRAROGESTIONAR
       end 
     end
     

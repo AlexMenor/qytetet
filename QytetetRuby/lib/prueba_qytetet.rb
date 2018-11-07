@@ -90,82 +90,93 @@ require_relative "titulo_propiedad"
     # Método de instancia de clase Main 
     # para probar el juego
     
+#    def self.main
+#      
+#      @@juego.inicializar_juego (get_nombre_jugadores)
+#      
+#      mazo_completo = @@juego.mazo
+#      
+#      mazo_mayor_que_cero = sorpresa_mayor_que_cero(mazo_completo)
+#      puts "\n\n///////////////////////////////////////////////////"
+#      puts "Prueba del método de mazo con valor mayor que cero:"
+#      puts "///////////////////////////////////////////////////\n\n"
+#      puts mazo_mayor_que_cero
+#      
+#      
+#      TipoSorpresa::constants.each do |constante|
+#        tipo = TipoSorpresa.const_get(constante)
+#        puts "\n\n///////////////////////////////////////////////////"
+#        puts "  Prueba del método de mazo con tipo #{tipo}"
+#        puts "///////////////////////////////////////////////////\n\n"
+#        puts es_de_tipo(mazo_completo, tipo)
+#      end
+#      
+#      puts "\n\n///////////////////////////////////////////////////"
+#      puts "  Prueba del tablero.to_s"
+#      puts "///////////////////////////////////////////////////\n\n"
+#      
+#      tablero = @@juego.tablero
+#      
+#      puts tablero
+#      
+#      puts "\n\n///////////////////////////////////////////////////"
+#      puts "  Prueba del jugadores"
+#      puts "///////////////////////////////////////////////////\n\n"
+#      
+#      jugadores = @@juego.jugadores
+#      
+#      puts jugadores
+#      
+#      puts "\n\n///////////////////////////////////////////////////"
+#      puts "  Prueba de juego.to_s"
+#      puts "///////////////////////////////////////////////////\n\n"
+#     
+#      puts @@juego.to_s
+#     
+#      
+#      #Primera
+#      
+#      puts @@juego.jugador_actual.casilla_actual
+#      @@juego.mover(4)
+#      
+#      #Segunda
+#      
+#      puts @@juego.jugador_actual
+#      
+#      @@juego.mover(3);
+#      @@juego.comprar_titulo_propiedad
+#      
+#      puts @@juego.jugador_actual
+#      
+#      @@juego.siguiente_jugador
+#      puts @@juego.jugador_actual
+#      @@juego.mover(3)
+#      puts @@juego.jugador_actual
+#      
+#      #Tercera
+#      
+#      @@juego.mover(18)
+#      puts @@juego.carta_actual
+#      @@juego.aplicar_sorpresa
+#      puts @@juego.jugador_actual
+#      
+#      #Cuarta
+#      
+#      @@juego.siguiente_jugador
+#      @@juego.edificar_casa(3)
+#      puts @@juego.jugador_actual
+#      
+#    end
+
     def self.main
-      
-      @@juego.inicializar_juego (get_nombre_jugadores)
-      
-      mazo_completo = @@juego.mazo
-      
-      mazo_mayor_que_cero = sorpresa_mayor_que_cero(mazo_completo)
-      puts "\n\n///////////////////////////////////////////////////"
-      puts "Prueba del método de mazo con valor mayor que cero:"
-      puts "///////////////////////////////////////////////////\n\n"
-      puts mazo_mayor_que_cero
-      
-      
-      TipoSorpresa::constants.each do |constante|
-        tipo = TipoSorpresa.const_get(constante)
-        puts "\n\n///////////////////////////////////////////////////"
-        puts "  Prueba del método de mazo con tipo #{tipo}"
-        puts "///////////////////////////////////////////////////\n\n"
-        puts es_de_tipo(mazo_completo, tipo)
-      end
-      
-      puts "\n\n///////////////////////////////////////////////////"
-      puts "  Prueba del tablero.to_s"
-      puts "///////////////////////////////////////////////////\n\n"
-      
-      tablero = @@juego.tablero
-      
-      puts tablero
-      
-      puts "\n\n///////////////////////////////////////////////////"
-      puts "  Prueba del jugadores"
-      puts "///////////////////////////////////////////////////\n\n"
-      
-      jugadores = @@juego.jugadores
-      
-      puts jugadores
-      
-      puts "\n\n///////////////////////////////////////////////////"
-      puts "  Prueba de juego.to_s"
-      puts "///////////////////////////////////////////////////\n\n"
-     
-      #puts @@juego.to_s
+      @@juego.inicializar_juego(get_nombre_jugadores)
+      #puts @@juego
       #puts @@juego.jugador_actual
       
       #Primera
       
       puts @@juego.jugador_actual.casilla_actual
       @@juego.mover(4)
-      
-      #Segunda
-      
-      puts @@juego.jugador_actual
-      
-      @@juego.mover(3);
-      @@juego.comprar_titulo_propiedad
-      
-      puts @@juego.jugador_actual
-      
-      @@juego.siguiente_jugador
-      puts @@juego.jugador_actual
-      @@juego.mover(3)
-      puts @@juego.jugador_actual
-      
-      #Tercera
-      
-      @@juego.mover(18)
-      puts @@juego.carta_actual
-      @@juego.aplicar_sorpresa
-      puts @@juego.jugador_actual
-      
-      #Cuarta
-      
-      @@juego.siguiente_jugador
-      @@juego.edificar_casa(3)
-      puts @@juego.jugador_actual
-      
     end
   end
   
