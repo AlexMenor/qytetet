@@ -29,6 +29,12 @@ public class Casilla {
         this.titulo = titulo;
     }
         
+    TituloPropiedad asignarPropietario (Jugador jugador){
+        titulo.setPropietario(jugador);
+        
+        return titulo;
+    }
+    
         /* 
         Constructor para calles, por defecto
         inicializa el tipo de casilla a calle
