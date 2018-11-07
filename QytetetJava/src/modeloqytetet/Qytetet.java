@@ -61,7 +61,19 @@ public class Qytetet {
     Jugador getJugadorActual () {return jugadorActual;}
     
     public ArrayList <Jugador> getJugadores () {return jugadores;}
+    
+    public boolean jugadorActualEncarcelado () {return (jugadorActual.getEncarcelado());}
+    
+    public int obtenerSaldoJugadorActual () {return jugadorActual.getSaldo();}
+    
+    public Casilla obtenerCasillaJugadorActual() {return jugadorActual.getCasillaActual();}
+    
+    boolean jugadorActualEnCalleLibre () {return jugadorActual.situadoEnCalleLibre();}
+    
+    int getValorDado () {return dado.getValor();}
         
+        // Modificadores
+    
     /*
         Método modificador de la
         carta sorpresa actual
@@ -70,6 +82,11 @@ public class Qytetet {
     private void setCartaActual (Sorpresa carta){
         cartaActual = carta;
     }
+    
+    /*
+        Método modificador del
+        estado de juego actual
+    */
     
     private void setEstadoJuego (EstadoJuego estado){
         this.estado = estado;
@@ -143,18 +160,11 @@ public class Qytetet {
         }
     }  
     
-    // Método toString de la clase
-    @Override
-    public String toString() {
-        return "Qytetet{" 
-                + "mazo=" + mazo 
-                + ", tablero=" + tablero 
-                + ", dado=" + dado 
-                + ", cartaActual=" + cartaActual 
-                + ", jugadores=" + jugadores 
-                + ", jugadorActual=" + jugadorActual + "}";
-                
-    }
+    // Métodos que se usan durante el transcurso del juego
+    
+    /*
+        Pasa al siguiente jugador
+    */
     
     public void siguienteJugador (){
         numJugadorActual = (jugadores.indexOf(jugadorActual)+1) % jugadores.size();
@@ -165,6 +175,10 @@ public class Qytetet {
         else
            estado = EstadoJuego.JA_PREPARADO;
     }
+    
+    /*
+        Manda a los jugadores a la salida
+    */
     
     private void salidaJugadores (){
         for (Jugador jug : jugadores){
@@ -177,6 +191,10 @@ public class Qytetet {
         estado = EstadoJuego.JA_PREPARADO;
     }
     
+    /*
+        Obtiene las propiedades del jugador
+    */
+    
     public ArrayList<Integer> obtenerPropiedadesJugador (){
         ArrayList<Integer> aDevolver = new ArrayList<>();
         
@@ -188,6 +206,11 @@ public class Qytetet {
         
         return aDevolver;
     }
+    
+    /*
+        Devuelve las propiedades del jugador 
+        según estén o no hipotecadas
+    */
     
     public ArrayList<Integer> obtenerPropiedadesJugadorSegunEstadoHipoteca (boolean estadoHipoteca){
         ArrayList<Integer> aDevolver = new ArrayList <> ();
@@ -206,39 +229,40 @@ public class Qytetet {
         return aDevolver;
     }
     
-    public boolean jugadorActualEncarcelado (){
-        return (jugadorActual.getEncarcelado());
-    }
+    /*
+        Tira el dado y se mueve al jugador actual a la
+        casilla destino
+    */
     
     public void jugar (){
         int valor_dado = tirarDado();
-        Casilla casillaDestino = tablero.obtenerCasillaFinal(jugadorActual.getCasillaActual(), valor_dado);
+        Casilla casillaDestino = tablero.obtenerCasillaFinal(jugadorActual.getCasillaActual(), 
+                                                                                   valor_dado);
         mover (casillaDestino.getNumeroCasilla());
     }
+    
+    /*
+        Obtiene el ranking de los jugadores.
+        Se termina el juego tras este método
+    */
     
     public void obtenerRanking (){
         Collections.sort(jugadores);
     }
     
-    public int obtenerSaldoJugadorActual (){
-         return jugadorActual.getSaldo();
-    }
-    
-    public Casilla obtenerCasillaJugadorActual(){
-        return jugadorActual.getCasillaActual();
-    }
-    
-    boolean jugadorActualEnCalleLibre (){
-        return jugadorActual.situadoEnCalleLibre();
-    }
+    /*
+        Tira el dado y devuelve su valor
+    */
     
     int tirarDado (){
         return dado.tirar();
     }
     
-    int getValorDado (){
-        return dado.getValor();
-    }
+    /*
+        Hace las acciones adecuadas si
+        el jugador se encuentra en una casilla edificable
+        (pagar el alquiler, comprar la casilla, etc)
+    */
     
     void actuarSiEnCasillaEdificable (){
         if (jugadorActual.deboPagarAlquiler()){
@@ -254,6 +278,12 @@ public class Qytetet {
             setEstadoJuego (EstadoJuego.JA_PUEDECOMPRAROGESTIONAR);
         }
     }
+    
+    /*
+        Hace las acciones adecuadas si
+        el jugador se encuentra en una casilla
+        no edificable (aplicar la sorpresa, pagar impuesto o ir a la cárcel)
+    */
     
     void actuarSiEnCasillaNoEdificable (){
         setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
@@ -275,6 +305,10 @@ public class Qytetet {
         
     }
     
+    /*
+        Encarcela al jugador actual
+        si no tiene carta de libertad
+    */
     
     private void encarcelarJugador (){
         if (!jugadorActual.tengoCartaLibertad()){
@@ -289,6 +323,10 @@ public class Qytetet {
         }
     }
     
+    /*
+        Compra una propiedad
+    */
+    
     public boolean comprarTituloPropiedad (){
         boolean comprado = jugadorActual.comprarTituloPropiedad();
         
@@ -298,6 +336,11 @@ public class Qytetet {
         
         return comprado;
     }
+    
+    /*
+        Aplica una carta sopresa
+        según del tipo que sea
+    */
     
     public void aplicarSorpresa (){
         setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
@@ -348,6 +391,11 @@ public class Qytetet {
             }
         }
     }
+    
+    /*
+        Pone una casa en una casilla
+        si hay espacio suficiente
+    */
     
     public boolean edificarCasa (int numeroCasilla){
         boolean edificada = false;
@@ -451,6 +499,16 @@ public class Qytetet {
     public ArrayList<Casilla> obtenerCasillasTablero ();
     */
 
-    
-    
+    // Método toString de la clase
+    @Override
+    public String toString() {
+        return "Qytetet{" 
+                + "mazo=" + mazo 
+                + ", tablero=" + tablero 
+                + ", dado=" + dado 
+                + ", cartaActual=" + cartaActual 
+                + ", jugadores=" + jugadores 
+                + ", jugadorActual=" + jugadorActual + "}";
+                
+    }
 }
