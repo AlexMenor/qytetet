@@ -8,9 +8,6 @@
 require_relative "sorpresa"
 require_relative "qytetet"
 require_relative "tipo_sorpresa"
-require_relative "tipo_casilla"
-require_relative "casilla"
-require_relative "titulo_propiedad"
 require_relative "tablero"
 require_relative "jugador"
 require_relative "dado"
@@ -23,6 +20,9 @@ module ModeloQytetet
     
     # Variable de clase
     
+require_relative "tipo_casilla"
+require_relative "casilla"
+require_relative "titulo_propiedad"
     @@juego = Qytetet.instance
     
     
