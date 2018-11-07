@@ -117,13 +117,13 @@ public class PruebaQytetet {
         
             // Primera 
         
-        /*System.out.println(juego.getJugadorActual().getCasillaActual());
+        System.out.println(juego.getJugadorActual().getCasillaActual());
         juego.mover(4);
         
-        System.out.println(juego.getJugadorActual().getCasillaActual());*/
+        System.out.println(juego.getJugadorActual().getCasillaActual());
         
             // Segunda
-        /*
+        
             // Antes de comprar
         System.out.println(juego.getJugadorActual());
             // Compramos
@@ -136,7 +136,7 @@ public class PruebaQytetet {
         System.out.println(juego.getJugadorActual());
         juego.mover(3);
             // Verificamos que ha pagado alquiler
-        System.out.println(juego.getJugadorActual());*/
+        System.out.println(juego.getJugadorActual());
         
         // Tercera
         

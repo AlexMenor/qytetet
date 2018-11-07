@@ -75,12 +75,6 @@ public class Casilla {
         return titulo.propietarioEncarcelado();
     }
     
-    TituloPropiedad asignarPropietario (Jugador jugador){
-        titulo.setPropietario (jugador);
-        
-        return titulo;
-    }
-    
     int pagarAlquiler (){
         return titulo.pagarAlquiler();
     }
