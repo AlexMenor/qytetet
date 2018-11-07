@@ -66,7 +66,6 @@ module ModeloQytetet
       inicializar_tablero
       inicializar_cartas_sorpresa
       salida_jugadores
-      @tablero.inicializar
     end
     
     # toString()
@@ -105,12 +104,12 @@ module ModeloQytetet
       jugadores.each do |jugador|
         jugador.casilla_actual = @tablero.casillas.at(0)
       end
-      
       random = Random.new
       
       primero_en_salir = random.rand(@jugadores.size + 1)
       
       @jugador_actual = @jugadores.at(primero_en_salir)
+
       
       @estado_juego = ModeloQytetet::EstadoJuego::JA_PREPARADO;
     end
@@ -354,7 +353,7 @@ module ModeloQytetet
       @jugador_actual.casilla_actual = casilla_final
       
       if num_casilla_destino < casilla_inicial.numero_casilla
-        @jugador_actual.modificar_saldo(SALDO_SALIDA)
+        @jugador_actual.modificar_saldo(@@SALDO_SALIDA)
       end
       
       if @jugador_actual.casilla_actual.soy_edificable

@@ -130,8 +130,9 @@ module ModeloQytetet
       puts "\n\n///////////////////////////////////////////////////"
       puts "  Prueba de juego.to_s"
       puts "///////////////////////////////////////////////////\n\n"
-      
-      puts @@juego
+     
+      #puts @@juego.to_s
+      #puts @@juego.jugador_actual
       
       #Primera
       
