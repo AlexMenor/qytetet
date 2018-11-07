@@ -106,12 +106,16 @@ class Jugador
     comprado = false
     
     coste_compra = @casilla_actual.coste
-    
+      
     if coste_compra < @saldo
+       
       @casilla_actual.titulo.propietario = self
+     
       comprado = true
       @propiedades << @casilla_actual.titulo
+     
       modificar_saldo (-coste_compra)
+    
     end
     
     return comprado

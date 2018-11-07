@@ -101,12 +101,12 @@ module ModeloQytetet
     # Posiciona todos los jugadores en la casilla de salida
     
     def salida_jugadores
-      jugadores.each do |jugador|
+      @jugadores.each do |jugador|
         jugador.casilla_actual = @tablero.casillas.at(0)
       end
       random = Random.new
       
-      primero_en_salir = random.rand(@jugadores.size + 1)
+      primero_en_salir = random.rand(@jugadores.size)
       
       @jugador_actual = @jugadores.at(primero_en_salir)
 
@@ -326,6 +326,7 @@ module ModeloQytetet
     end
     
     def comprar_titulo_propiedad
+   
       comprado = @jugador_actual.comprar_titulo_propiedad
       
       if comprado

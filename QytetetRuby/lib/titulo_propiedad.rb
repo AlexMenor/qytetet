@@ -93,7 +93,7 @@ module ModeloQytetet
       to_return << "\nnum_casas: #{@num_casas}\nprecio_compra: #{@precio_compra}"
       
       if (!propietario.nil?)
-        to_return << "\nPropietario: #{@propietario.to_s}"
+        to_return << "\nPropietario: #{@propietario.nombre}"
       end
       
       to_return
