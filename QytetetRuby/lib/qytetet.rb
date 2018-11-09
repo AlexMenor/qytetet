@@ -70,19 +70,7 @@ module ModeloQytetet
       salida_jugadores
     end
     
-    # toString()
     
-    def to_s
-      to_return = "Qytetet:\n" 
-      to_return += "mazo=#{@mazo}\n"
-      to_return += "tablero=#{@tablero}\n"
-      to_return += "dado=#{@dado}\n"
-      to_return += "carta_acutal=#{@carta_actual}\n"
-      to_return += "jugadores=#{@jugadores}\n"
-      to_return += "jugador_actual=#{@jugador_actual}\n"
-      
-      to_return
-    end
     
     # Asigna jugador actual al siguiente de la lista de jugadores
     # si está encarcelado lo refleja en estado_juego
@@ -204,6 +192,9 @@ module ModeloQytetet
       return @dado.valor
     end
     
+    # Al caer en una casilla edificable se llama a este método para ajustar
+    # todos los parámetros del juego afectados por dicho suceso
+    
     def actuar_si_en_casilla_edificable
       debo_pagar = @jugador_actual.debo_pagar_alquiler
       
@@ -221,6 +212,9 @@ module ModeloQytetet
         @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDECOMPRAROGESTIONAR
       end 
     end
+    
+    # Si se ha caído en una casilla de carta sorpresa, se aplica la misma
+    # en función del tipo, recogidos en tipo_sorpresa.rb
     
     def aplicar_sorpresa
       @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
@@ -272,6 +266,9 @@ module ModeloQytetet
       end
     end
     
+    # Hace uso del método de mismo nombre definido en la clase Jugador
+    # para edificar una casa en un número de casilla dado
+    
     def edificar_casa (numero_casilla)
       edificada = false
       
@@ -287,6 +284,8 @@ module ModeloQytetet
       
       return edificada
     end
+    
+    # El jugador prueba suerte para salir de la cárcel con este método
     
     def intentar_salir_carcel (metodo)
       if (metodo == ModeloQytetet::MetodoSalirCarcel::TIRANDODADO)
@@ -311,6 +310,9 @@ module ModeloQytetet
       return libre
     end
     
+    # Al caer en una casilla no edificable se llama a este método
+    # para tomar las medidas necesarias dependiendo del contexto actual
+    
     def actuar_si_en_casilla_no_edificable
       @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       casilla_actual = @jugador_actual.casilla_actual
@@ -327,6 +329,8 @@ module ModeloQytetet
       end
     end
     
+    # Método para hacer la compra de un título propiedad
+    
     def comprar_titulo_propiedad
    
       comprado = @jugador_actual.comprar_titulo_propiedad
@@ -337,6 +341,8 @@ module ModeloQytetet
       
       return comprado
     end
+    
+    # Método para encarcelar al jugador actual si se dan las condiciones 
     
     def encarcelar_jugador
       if !@jugador_actual.tengo_carta_libertad
@@ -349,6 +355,9 @@ module ModeloQytetet
         @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
     end
+    
+    # El jugador actual se mueve de casilla a la casilla dada 
+    # y se llaman a los métodos de actuación edificable o no edificable
     
     def mover (num_casilla_destino)
       casilla_inicial = @jugador_actual.casilla_actual
@@ -366,6 +375,8 @@ module ModeloQytetet
       end
     end
     
+    # Se hipoteca la propiedad de la casilla pasada como parámetro
+    
     def hipotecar_propiedad(numero_casilla)
       casilla = @tablero.obtener_casilla_numero(numero_casilla)
       titulo = casilla.titulo
@@ -374,6 +385,8 @@ module ModeloQytetet
       
       @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
     end
+    
+    # Se vende la propiedad de la casilla pasada como parámetro
     
     def vender_propiedad (numero_casilla)
       casilla = @tablero.obtener_casilla_numero(numero_casilla)
@@ -384,6 +397,9 @@ module ModeloQytetet
       
       return true
     end
+    
+    # Llama al método del mismo nombre de la clase Jugador para edificar
+    # un hotel en la casilla del número pasado como parámetro
     
     def edificar_hotel (numero_casilla)
       edificado = false
@@ -401,6 +417,8 @@ module ModeloQytetet
       return edificado
     end
     
+    # Cancela la hipoteca de la propiedad de la casilla pasada como parámetro
+    
     def cancelar_hipoteca (numero_casilla)
       cancelada = false
       
@@ -413,6 +431,20 @@ module ModeloQytetet
      end
      
       return cancelada
+    end
+    
+    # toString()
+    
+    def to_s
+      to_return = "Qytetet:\n" 
+      to_return += "mazo=#{@mazo}\n"
+      to_return += "tablero=#{@tablero}\n"
+      to_return += "dado=#{@dado}\n"
+      to_return += "carta_acutal=#{@carta_actual}\n"
+      to_return += "jugadores=#{@jugadores}\n"
+      to_return += "jugador_actual=#{@jugador_actual}\n"
+      
+      to_return
     end
     
     

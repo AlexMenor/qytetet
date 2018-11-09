@@ -55,13 +55,20 @@ module ModeloQytetet
         TituloPropiedad.new("Gran vía", 1500, 100, 1.95, 1000, 700)) 
     end
     
+    # Consulta si el número de la casilla pasada como parámetro es el de la cárcel
+    
     def es_casilla_carcel (numero_casilla)
       return numero_casilla == @carcel.numero_casilla
     end
     
+    # Consultor de una casilla del tablero cuyo número se pasa como parámetro
+    
     def obtener_casilla_numero (numero_casilla)
       return @casillas.at(numero_casilla)
     end
+    
+    # Consultor de una casilla que se obtiene como la suma de una casilla base
+    # y un desplazamiento, teniendo un tablero "circular"
     
     def obtener_casilla_final (casilla, desplazamiento)
       casilla_final = (casilla.numero_casilla + desplazamiento) % @casillas.size

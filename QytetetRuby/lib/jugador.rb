@@ -120,12 +120,17 @@ class Jugador
     return (@saldo > cantidad)
   end
   
+  # Paga el alquiler, modificando su saldo
+  
   def pagar_alquiler 
     coste_alquiler = @casilla_actual.pagar_alquiler
     modificar_saldo (-coste_alquiler)
     
     return true
   end
+  
+  # Compra un titulo propiedad, modificando su saldo
+  # y sus propiedades
   
   def comprar_titulo_propiedad
     comprado = false
@@ -146,15 +151,21 @@ class Jugador
     return comprado
   end
   
+  # Cancela la hipoteca de un titulo
+  
   def cancelar_hipoteca(titulo)
     titulo.cancelar_hipoteca
     return true
   end
   
+  # Cambia su posición a la casilla cárcel y se activa @encarcelado
+  
   def ir_a_carcel(casilla_carcel)
     @casilla_actual = casilla_carcel
     @encarcelado = true
   end
+  
+  # Consulta si debe pagar alquiler al caer en una casilla
   
   def debo_pagar_alquiler
     p_encarcelado = false
@@ -172,12 +183,16 @@ class Jugador
     return debo_pagar
   end
   
+  # Hipoteca una propiedad, pasando TituloPropiedad como argumento
+  
   def hipotecar_propiedad(titulo)
     coste_hipoteca = titulo.hipotecar
     modificar_saldo(coste_hipoteca)
     
     return true
   end
+  
+  # Se elimina una propiedad de sus propiedades y se modifica su saldo
   
   def vender_propiedad (casilla)
     titulo = casilla.titulo
@@ -190,10 +205,15 @@ class Jugador
     return true
   end
   
+  # Se elimina una propiedad dada como argumento de las propiedades del jugador
+  
   def eliminar_de_mis_propiedades (titulo)
     @propieades.delete(titulo)
     titulo.propietario = nil
   end
+  
+  # Se edifica una casa si se cumplen las condiciones necesarias 
+  # en la propiedad pasada como argumento
   
   def edificar_casa (titulo)
     edificada = false
@@ -212,6 +232,8 @@ class Jugador
     return edificada
   end
   
+  # Similar a edificar_casa pero con un hotel
+  
    def edificar_hotel (titulo)
      edificado = false
     num_hoteles = titulo.num_hoteles
@@ -228,6 +250,8 @@ class Jugador
     end
     return edificado
   end
+  
+   # Paga por su libertad y sale de la cárcel si tiene el saldo necesario 
   
   def pagar_libertad (cantidad)
     tengo_saldo = tengo_saldo (cantidad)

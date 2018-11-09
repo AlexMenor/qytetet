@@ -44,6 +44,8 @@ module ModeloQytetet
       return @propietario.encarcelado
     end
     
+    # Paga el alquiler al jugador propietario de la propiedad
+    
     def pagar_alquiler
       coste_alquiler = calcular_importe_alquiler
       @propietario.modificar_saldo(coste_alquiler)
@@ -51,32 +53,46 @@ module ModeloQytetet
       return coste_alquiler
     end
     
+    # Método auxiliar para calcular el coste del alquiler de la propiedad 
+    
     def calcular_importe_alquiler
       coste_alquiler = @alquiler_base + (@num_casas * 0.5 + @num_hoteles * 2).to_i
       
       return coste_alquiler
     end
     
+    # Hipoteca la propiedad
+    
     def hipotecar
       @hipotecada = true
       return calcular_coste_hipotecar
     end
     
+    # Método auxiliar para calcular el coste de hipotecar la propiedad
+    
     def calcular_coste_hipotecar
       return (@hipoteca_base + @num_casas * 0.5 * @hipoteca_base + @num_hoteles * @hipoteca_base).to_i
     end
+    
+    # Método auxiliar para calcular el coste de venta de la propiedad
     
     def calcular_precio_venta
       return (@precio_compra + (@num_casas + @num_hoteles) * @precio_edificar * @factor_revalorizacion).to_i
     end
     
+    # Incrementa el número de casas edificadas
+    
     def edificar_casa
       @num_casas += 1
     end
     
+    # Incrementa el número de hoteles edificados
+    
     def edificar_hotel
       @num_hoteles += 1
     end
+    
+    # Cancela la hipoteca de la propiedad
     
     def cancelar_hipoteca
       @hipotecada = false
