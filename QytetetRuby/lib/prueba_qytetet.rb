@@ -87,6 +87,89 @@ require_relative "titulo_propiedad"
       
     end
     
+    # Mueve entre varias opciones
+    
+    def self.probar_mover
+      puts "¿A que tipo de casilla quieres moverte?\n"
+      puts "1. Calle\n"
+      puts "2. Impuesto\n"
+      puts "3. Sorpresa\n"
+      
+      opcion = gets.chomp.to_i
+      
+      case opcion
+      when 1
+        @@juego.mover(3)
+        puts "Quieres comprarla? (y/n)\n"
+        opcion2 = gets.chomp
+        if opcion2 == "y"
+          @@juego.comprar_titulo_propiedad
+        end
+      when 2
+        @@juego.mover(17)
+      when 3
+        @@juego.mover(18)
+        @@juego.aplicar_sorpresa
+      end
+      
+    end
+    
+    # Cambia al siguiente jugador y lo mueve en una casilla en la que se puede comprar
+    # con la opción 1
+    
+    def self.probar_pagar_alquiler
+      @@juego.siguiente_jugador
+      @@juego.mover(3)
+    end
+    
+    # Probar hipotecar una casilla
+    
+    def self.probar_hipotecar
+      puts "Hipotecamos la casilla 5\n"
+      @@juego.hipotecar_propiedad(5)
+      puts @@juego
+      puts "La cancelamos\n"
+      puts @@juego
+    end
+    
+    # Probar comprar y vender una propiedad
+    
+    def self.probar_vender
+      puts "Compramos la 8 primero\n"
+      @@juego.mover (8)
+      @@juego.comprar_titulo_propiedad
+      
+      puts @@juego
+      puts "La vendemos\n"
+      @@juego.vender_propiedad(8)
+      puts @@juego
+     
+    end
+    
+    # Probamos a edificar
+    
+    def self.probar_edificar
+      puts "Vamos a comprar una propiedad (13) y a edificar un hotel y una casa\n"
+      @@juego.mover (13)
+      @@juego.comprar_titulo_propiedad
+      puts @@juego
+      puts "Ahora edificamos \n"
+      @@juego.edificar_casa(13)
+      @@juego.edificar_hotel(13)
+      puts @@juego
+    end
+    
+    # Ranking
+    
+    def self.probar_ranking
+      puts "Primero sin ordenar\n"
+      puts @@juego.jugadores
+      puts "Ordenamos\n"
+      @@juego.obtener_ranking
+      puts @@juego.jugadores
+    end
+    
+    
     # Método de instancia de clase Main 
     # para probar el juego
     
@@ -127,47 +210,29 @@ require_relative "titulo_propiedad"
 #      
 #      puts jugadores
       
-      puts "\n\n///////////////////////////////////////////////////"
-      puts "  Prueba de juego.to_s"
-      puts "///////////////////////////////////////////////////\n\n"
+#      puts "\n\n///////////////////////////////////////////////////"
+#      puts "  Prueba de juego.to_s"
+#      puts "///////////////////////////////////////////////////\n\n"
+#     
+#      puts @@juego.to_s
      
-      puts @@juego.to_s
+      
+     puts "Prueba Qytetet: \n"
+     puts "Opción 1: Probar Mover\n"
+     puts "Opción 2: Probar pagar alquiler\n"
+     puts "Opción 3: Probar Hipotecar\n"
+     puts "Opción 4: Probar Vender\n"
+     puts "Opción 5: Probar Edificar\n"
+     puts "Opción 6: Probar Ranking\n"
      
-      
-      #Primera
-      
-      puts @@juego.jugador_actual.casilla_actual
-      @@juego.mover(4)
-      puts @@juego.jugador_actual.casilla_actual
-
-      #Segunda
-      
-      puts @@juego.jugador_actual
-      
-      @@juego.mover(3);
-      @@juego.comprar_titulo_propiedad
-      
-      puts @@juego.jugador_actual
+     opcion = gets.chomp.to_i
      
-      @@juego.siguiente_jugador
-      puts @@juego.jugador_actual
-      @@juego.mover(3)
-      puts @@juego.jugador_actual
-      
-      #Tercera
-      
-      @@juego.mover(18)
-      puts @@juego.carta_actual
-      @@juego.aplicar_sorpresa
-      puts @@juego.jugador_actual
-      
-      #Cuarta
-      
-      @@juego.siguiente_jugador
-      @@juego.edificar_casa(3)
-      puts @@juego.jugador_actual
-      
+     case opcion
+     when 1
+     when 2
+     end
     end
+    
 
    
   
