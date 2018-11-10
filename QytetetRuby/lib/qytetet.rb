@@ -338,7 +338,7 @@ module ModeloQytetet
       if comprado
         @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
-      
+
       return comprado
     end
     

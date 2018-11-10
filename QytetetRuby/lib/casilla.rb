@@ -11,7 +11,7 @@ module ModeloQytetet
     
     attr_reader:numero_casilla, :coste, :tipo
     attr_accessor:titulo
-    private :titulo=
+
     
     # Constructor con dos parámetros (en realidad es un constructor "doble")
     

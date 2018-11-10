@@ -96,11 +96,13 @@ require_relative "titulo_propiedad"
       puts "3. Sorpresa\n"
       
       opcion = gets.chomp.to_i
+      puts "\nCasilla antes de llamarlo: \n"
+      puts @@juego.jugador_actual.casilla_actual
       
       case opcion
-      when 1
+        when 1
         @@juego.mover(3)
-        puts "Quieres comprarla? (y/n)\n"
+        puts "\nQuieres comprarla? (y/n)\n"
         opcion2 = gets.chomp
         if opcion2 == "y"
           @@juego.comprar_titulo_propiedad
@@ -109,8 +111,14 @@ require_relative "titulo_propiedad"
         @@juego.mover(17)
       when 3
         @@juego.mover(18)
+        puts "\nCarta actual\n\n"
+        puts @@juego.carta_actual
         @@juego.aplicar_sorpresa
       end
+      puts "\nCasilla despues de llamarlo: \n"
+      puts @@juego.jugador_actual.casilla_actual
+      puts "\nJugador despues de llamarlo: "
+      puts @@juego.jugador_actual
       
     end
     
@@ -119,52 +127,62 @@ require_relative "titulo_propiedad"
     
     def self.probar_pagar_alquiler
       @@juego.siguiente_jugador
+       puts "\nJugador antes de: \n"
+      puts @@juego.jugador_actual
       @@juego.mover(3)
+      puts "\nJugador despues de: \n"
+      puts @@juego.jugador_actual
+      
     end
     
     # Probar hipotecar una casilla
     
     def self.probar_hipotecar
-      puts "Hipotecamos la casilla 5\n"
+      puts "\nAntes de hipotecar: "
+      puts @@juego.tablero.obtener_casilla_numero(5)
+      puts "\nHipotecamos la casilla 5\n"
       @@juego.hipotecar_propiedad(5)
-      puts @@juego
-      puts "La cancelamos\n"
-      puts @@juego
+      puts @@juego.tablero.obtener_casilla_numero(5)
+      puts "\nLa cancelamos\n"
+      @@juego.cancelar_hipoteca(5)
+     puts @@juego.tablero.obtener_casilla_numero(5)
     end
     
     # Probar comprar y vender una propiedad
     
     def self.probar_vender
-      puts "Compramos la 8 primero\n"
+      puts "\nCompramos la 8 primero\n"
       @@juego.mover (8)
       @@juego.comprar_titulo_propiedad
+      puts @@juego.jugador_actual
       
-      puts @@juego
-      puts "La vendemos\n"
+      puts @@juego.tablero.obtener_casilla_numero(8)
+      puts "\nLa vendemos\n"
       @@juego.vender_propiedad(8)
-      puts @@juego
+      puts @@juego.tablero.obtener_casilla_numero(8)
+      puts @@juego.jugador_actual
      
     end
     
     # Probamos a edificar
     
     def self.probar_edificar
-      puts "Vamos a comprar una propiedad (13) y a edificar un hotel y una casa\n"
+      puts "\nVamos a comprar una propiedad (13) y a edificar un hotel y una casa\n"
       @@juego.mover (13)
       @@juego.comprar_titulo_propiedad
-      puts @@juego
-      puts "Ahora edificamos \n"
+      puts @@juego.tablero.obtener_casilla_numero(13)
+      puts "\nAhora edificamos \n"
       @@juego.edificar_casa(13)
       @@juego.edificar_hotel(13)
-      puts @@juego
+      puts @@juego.tablero.obtener_casilla_numero(13)
     end
     
     # Ranking
     
     def self.probar_ranking
-      puts "Primero sin ordenar\n"
+      puts "\nPrimero sin ordenar\n"
       puts @@juego.jugadores
-      puts "Ordenamos\n"
+      puts "\nOrdenamos\n"
       @@juego.obtener_ranking
       puts @@juego.jugadores
     end
@@ -216,27 +234,45 @@ require_relative "titulo_propiedad"
 #     
 #      puts @@juego.to_s
      
+     loop do
+      puts "Prueba Qytetet: \n"
+      puts "Opción 1: Probar Mover\n"
+      puts "Opción 2: Probar pagar alquiler\n"
+      puts "Opción 3: Probar Hipotecar\n"
+      puts "Opción 4: Probar Vender\n"
+      puts "Opción 5: Probar Edificar\n"
+      puts "Opción 6: Probar Ranking\n"
+
+      opcion = gets.chomp.to_i
+
+      case opcion
+      when 1
+        probar_mover()
+      when 2
+        probar_pagar_alquiler()
+      when 3
+        probar_hipotecar()
+      when 4
+        probar_vender()
+      when 5
+        probar_edificar()
+      when 6
+        probar_ranking()
+      else
+        puts "Fin del programa"
+        break
+      end
       
-     puts "Prueba Qytetet: \n"
-     puts "Opción 1: Probar Mover\n"
-     puts "Opción 2: Probar pagar alquiler\n"
-     puts "Opción 3: Probar Hipotecar\n"
-     puts "Opción 4: Probar Vender\n"
-     puts "Opción 5: Probar Edificar\n"
-     puts "Opción 6: Probar Ranking\n"
      
-     opcion = gets.chomp.to_i
-     
-     case opcion
-     when 1
-     when 2
      end
-    end
     
 
    
   
-  PruebaQytetet.main
   
+  
+    end
+
   end
+  PruebaQytetet.main
 end

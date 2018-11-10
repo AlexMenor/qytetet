@@ -200,7 +200,6 @@ class Jugador
     
     precio_venta = titulo.calcular_precio_venta
     modificar_saldo(precio_venta)
-    casilla.titulo = nil
     
     return true
   end
@@ -208,7 +207,7 @@ class Jugador
   # Se elimina una propiedad dada como argumento de las propiedades del jugador
   
   def eliminar_de_mis_propiedades (titulo)
-    @propieades.delete(titulo)
+    @propiedades.delete(titulo)
     titulo.propietario = nil
   end
   
