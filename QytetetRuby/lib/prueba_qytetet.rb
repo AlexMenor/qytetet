@@ -13,16 +13,16 @@ require_relative "jugador"
 require_relative "dado"
 require_relative "metodo_salir_carcel"
 require_relative "estado_juego"
+require_relative "tipo_casilla"
+require_relative "casilla"
+require_relative "titulo_propiedad"
 
 module ModeloQytetet
   
   class PruebaQytetet
     
     # Variable de clase
-    
-require_relative "tipo_casilla"
-require_relative "casilla"
-require_relative "titulo_propiedad"
+ 
     @@juego = Qytetet.instance
     
     
@@ -265,12 +265,7 @@ require_relative "titulo_propiedad"
       
      
      end
-    
-
-   
-  
-  
-  
+     
     end
 
   end
