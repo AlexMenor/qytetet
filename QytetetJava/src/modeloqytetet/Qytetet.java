@@ -20,7 +20,7 @@ public class Qytetet {
     static final int PRECIO_LIBERTAD = 200;
     static final int SALDO_SALIDA = 1000;
 
-// Atributos privados
+        // Atributos privados
     
         // Mazo con las cartas sorpresa
     private ArrayList <Sorpresa> mazo;
@@ -40,7 +40,7 @@ public class Qytetet {
     private int numJugadorActual;
     
     
-    // Singleton
+        // Singleton
     
     private static final Qytetet instance = new Qytetet ();
     
@@ -48,7 +48,7 @@ public class Qytetet {
     
     public static Qytetet getInstance () {return instance;}
     
-// Consultores
+        // Consultores
     
     Tablero getTablero (){return tablero;}
     
@@ -393,7 +393,7 @@ public class Qytetet {
     }
     
     /*
-        Pone una casa en una casilla
+        Pone una casa en una propiedad
         si hay espacio suficiente
     */
     
@@ -412,6 +412,11 @@ public class Qytetet {
     
     }
     
+    /*
+        Pone un hotel en una propiedad
+        si hay espacio suficiente
+    */
+    
     public boolean edificarHotel (int numeroCasilla){
         boolean edificado = false;
         
@@ -426,6 +431,11 @@ public class Qytetet {
         return edificado;
     }
     
+    /*
+        Cancela la hipoteca 
+        de una propiedad
+    */
+    
     public boolean cancelarHipoteca (int numeroCasilla){
         boolean cancelada = false;
         
@@ -439,6 +449,13 @@ public class Qytetet {
         
         return cancelada;
     }
+    
+    /*
+        Intenta salir de la cárcel
+        según el método seleccionado
+        (tirando el dado o con la
+        carta de libertad)
+    */
     
     public boolean intentarSalirCarcel (MetodoSalirCarcel metodo){
         if (metodo == MetodoSalirCarcel.TIRANDODADO){
@@ -460,40 +477,54 @@ public class Qytetet {
         return !encarcelado;
     }
     
+    /*
+        Mueve al jugador actual a la casilla
+        que se indica y actúa según sea o no
+        edificable
+    */
+    
     void mover (int numCasillaDestino){
-         Casilla casillaInicial = jugadorActual.getCasillaActual();
-         Casilla casillaFinal = tablero.obtenerCasillaNumero(numCasillaDestino);
+        Casilla casillaInicial = jugadorActual.getCasillaActual();
+        Casilla casillaFinal = tablero.obtenerCasillaNumero(numCasillaDestino);
          
-         jugadorActual.setCasillaActual(casillaFinal);
+        jugadorActual.setCasillaActual(casillaFinal);
          
-         if (numCasillaDestino < casillaInicial.getNumeroCasilla()){
-             jugadorActual.modificarSaldo(SALDO_SALIDA);
-         }
+        if (numCasillaDestino < casillaInicial.getNumeroCasilla()){
+            jugadorActual.modificarSaldo(SALDO_SALIDA);
+        }
          
-         if (casillaFinal.soyEdificable()){
-             actuarSiEnCasillaEdificable();
-         }
-         else{
-             actuarSiEnCasillaNoEdificable();
-         }
-     }
-     
-     public void hipotecarPropiedad (int numeroCasilla){
-         Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
-         TituloPropiedad titulo = casilla.getTitulo();
+        if (casillaFinal.soyEdificable()){
+            actuarSiEnCasillaEdificable();
+        }
+        else{
+            actuarSiEnCasillaNoEdificable();
+        }
+    }
+    
+    /*
+        Hipoteca una propiedad
+    */
+    
+    public void hipotecarPropiedad (int numeroCasilla){
+        Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+        TituloPropiedad titulo = casilla.getTitulo();
          
-         jugadorActual.hipotecarPropiedad (titulo);
+        jugadorActual.hipotecarPropiedad (titulo);
          
-         setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
-     }
-     
-     public boolean venderPropiedad (int numeroCasilla){
-         Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
-         jugadorActual.venderPropiedad (casilla);
-         setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
+        setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
+    }
+    
+    /*
+        Vende una propiedad
+    */
+    
+    public boolean venderPropiedad (int numeroCasilla){
+        Casilla casilla = tablero.obtenerCasillaNumero(numeroCasilla);
+        jugadorActual.venderPropiedad (casilla);
+        setEstadoJuego(EstadoJuego.JA_PUEDEGESTIONAR);
                  
         return true;
-     }
+    }
      
     /* MÉTODOS A IMPLEMENTAR EN EL FUTURO:
     public ArrayList<Casilla> obtenerCasillasTablero ();
