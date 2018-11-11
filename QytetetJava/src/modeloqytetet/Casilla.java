@@ -81,6 +81,11 @@ public class Casilla {
         return titulo.propietarioEncarcelado();
     }
     
+    /* 
+       Devuelve el dinero a pagar por el
+       alquiler de una casilla
+    */
+    
     int pagarAlquiler (){
         return titulo.pagarAlquiler();
     }
