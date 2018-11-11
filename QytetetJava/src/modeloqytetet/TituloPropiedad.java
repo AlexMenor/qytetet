@@ -51,7 +51,7 @@ public class TituloPropiedad {
             this.precioEdificar = precioEdificar;
         }
         
-// Consultores
+    // Consultores
 
     String getNombre() {return nombre;}
 
@@ -61,9 +61,7 @@ public class TituloPropiedad {
 
     int getAlquilerBase() {return alquilerBase;}
 
-    float getFactorRevalorizacion() {
-        return factorRevalorizacion;
-    }
+    float getFactorRevalorizacion() {return factorRevalorizacion;}
     
     int getHipotecaBase() {return hipotecaBase;}
 
@@ -75,13 +73,9 @@ public class TituloPropiedad {
     
     Jugador getPropietario () {return propietario;}
     
-    boolean tengoPropietario (){
-        return (propietario != null);
-    }
+    boolean tengoPropietario () {return propietario != null;}
     
-    boolean propietarioEncarcelado (){
-        return (propietario.getEncarcelado());
-    }
+    boolean propietarioEncarcelado () {return propietario.getEncarcelado();}
     
         // Modificadores
     
@@ -93,15 +87,27 @@ public class TituloPropiedad {
         this.propietario = propietario;
     }
     
-    // Incrementa el número de casas del titulo propiedad
+    // Métodos que se usarán durante el transcurso del juego
+    
+    /*
+        Incrementa el número de casas del título propiedad
+    */
     
     void edificarCasa (){
         numCasas++;
     }
     
+    /*
+        Incrementa el número de hoteles del título propiedad
+    */
+    
     void edificarHotel (){
         numHoteles++;
     }
+    
+    /*
+        Paga el alquiler del título
+    */
     
     int pagarAlquiler(){
         int costeAlquiler = calcularCosteAlquiler();
@@ -112,12 +118,52 @@ public class TituloPropiedad {
     
     }
     
+    /*
+        Calcula el coste del alquiler
+    */
+    
     int calcularCosteAlquiler(){
         return alquilerBase + (int) (numCasas * 0.5 + numHoteles * 2 );
     }
-    
-        // TituloPropiedad toString()
 
+    /*
+        Hipoteca la propiedad
+    */
+    
+    int hipotecar(){
+        setHipotecada(true);
+        
+        int costeHipoteca = calcularCosteHipotecar();
+        
+        return costeHipoteca;
+    }
+    
+    /*
+        Cancela la hipoteca
+    */
+    
+    void cancelarHipoteca(){
+        setHipotecada(false);
+    }
+    
+    /*
+        Calcula el coste de hipotecar la propiedad
+    */
+    
+    int calcularCosteHipotecar(){
+        return (int) (hipotecaBase + numCasas * 0.5 * hipotecaBase + numHoteles * hipotecaBase);
+    }
+    
+    /*
+        Calcula el precio de venta de la propiedad
+    */
+    
+    int calcularPrecioVenta(){
+        return (int) (precioCompra + (numCasas + numHoteles ) * precioEdificar * factorRevalorizacion);
+    }
+    
+    // Método toString de la clase
+    
     @Override
     public String toString() {
         String toReturn = "TituloPropiedad{" 
@@ -138,25 +184,4 @@ public class TituloPropiedad {
         
         return toReturn + '}';
     }
-
-    int hipotecar(){
-        setHipotecada(true);
-        
-        int costeHipoteca = calcularCosteHipotecar();
-        
-        return costeHipoteca;
-    }
-    
-    void cancelarHipoteca(){
-        setHipotecada(false);
-    }
-    
-    int calcularCosteHipotecar(){
-        return (int) (hipotecaBase + numCasas * 0.5 * hipotecaBase + numHoteles * hipotecaBase);
-    }
-    
-    int calcularPrecioVenta(){
-        return (int) (precioCompra + (numCasas + numHoteles ) * precioEdificar * factorRevalorizacion);
-    }
-    
 }
