@@ -71,7 +71,118 @@ public class PruebaQytetet {
         return nombres;
     }
     
- /*   public static void main(String[] args) {
+    /*
+        Mueve al jugador a la casilla de la clase que se elija
+    */
+    
+    private static void probarMover(){
+        System.out.println("A qué casilla quieres moverte: ");
+        System.out.println("1. Calle");
+        System.out.println("2. Impuesto");
+        System.out.println("3. Sorpresa");
+        
+        String opcion = in.nextLine();
+        System.out.println("Casilla antes de llamarlo: ");
+        System.out.println(juego.getJugadorActual().getCasillaActual());
+        
+        switch (opcion){
+            case "1":
+                juego.mover(3);
+                System.out.println("Compramos la propiedad");
+                juego.comprarTituloPropiedad();
+                System.out.println("Comprada");
+                break;
+            case "2":
+                juego.mover(17);
+                break;
+            case "3":
+                juego.mover(18);
+                System.out.println("Carta actual: ");
+                System.out.println(juego.getCartaActual());
+                juego.aplicarSorpresa();
+                break;
+        }
+        
+        System.out.println("Casilla después de llamarlo: ");
+        System.out.println(juego.getJugadorActual().getCasillaActual());
+        System.out.println("Jugador después de llamarlo: ");
+        System.out.println(juego.getJugadorActual());
+    }
+    
+    /*
+        Cambia al siguiente jugador y lo mueve a una casilla que se puede
+        comprar
+    */
+    
+    private static void probarPagarAlquiler(){
+        juego.siguienteJugador();
+        System.out.println("Jugador antes de: ");
+        System.out.println(juego.getJugadorActual());
+        juego.mover(3);
+        System.out.println("Jugador después de: ");
+        System.out.println(juego.getJugadorActual());
+    }
+    
+    /*
+        Prueba de hipotecar una casilla
+    */
+    
+    private static void probarHipotecar(){
+        System.out.println("Antes de hipotecar: ");
+        System.out.println(juego.getTablero().obtenerCasillaNumero(5));
+        System.out.println("Hipotecamos la casilla 5");
+        juego.hipotecarPropiedad(5);
+        System.out.println(juego.getTablero().obtenerCasillaNumero(5));
+        System.out.println("La cancelamos");
+        juego.cancelarHipoteca(5);
+        System.out.println(juego.getTablero().obtenerCasillaNumero(5));
+    }
+    
+    /*
+        Prueba de comprar y vender una propiedad
+    */
+    
+    private static void probarVender(){
+        System.out.println("Compramos la 8 primero");
+        juego.mover(8);
+        juego.comprarTituloPropiedad();
+        System.out.println(juego.getJugadorActual());
+        
+        System.out.println(juego.getTablero().obtenerCasillaNumero(8));
+        System.out.println("La vendemos");
+        juego.venderPropiedad(8);
+        System.out.println(juego.getJugadorActual());
+        System.out.println(juego.getTablero().obtenerCasillaNumero(8));
+    }
+    
+    /*
+        Prueba de edificar
+    */
+    
+    private static void probarEdificar(){
+        System.out.println("Vamos a comprar una propiedad (13) y a edificar un hotel y una casa");
+        juego.mover(13);
+        juego.comprarTituloPropiedad();
+        System.out.println(juego.getTablero().obtenerCasillaNumero(13));
+        System.out.println("Ahora edificamos");
+        juego.edificarCasa(13);
+        juego.edificarHotel(13);
+        System.out.println(juego.getTablero().obtenerCasillaNumero(13));
+    }
+    
+    /*
+        Prueba del ranking
+    */
+    
+    private static void probarRanking(){
+        System.out.println("Primero sin ordenar");
+        System.out.println(juego.getJugadores());
+        System.out.println("Ahora ordenados");
+        juego.obtenerRanking();
+        System.out.println(juego.getJugadores());
+    }
+    
+    public static void main(String[] args) {
         
             // Declarados para probar los métodos de esta clase
         
@@ -114,9 +225,10 @@ public class PruebaQytetet {
         System.out.println("Juego: ");
         System.out.println(juego);
         */
-        
+       
+        /*
             // Primera 
-       /* 
+        
         System.out.println(juego.getJugadorActual().getCasillaActual());
         juego.mover(4);
         
@@ -140,20 +252,57 @@ public class PruebaQytetet {
         
         // Tercera
         
-        /*
+        
         System.out.println(juego.getJugadorActual());
         juego.mover(18);
         System.out.println(juego.getCartaActual());
         juego.aplicarSorpresa();
-        System.out.println(juego.getJugadorActual());*/
+        System.out.println(juego.getJugadorActual());
         
         // Cuarta
-        /*
+        
         juego.siguienteJugador();
         juego.edificarCasa(3);
         System.out.println(juego.getJugadorActual());
                 
-
-    }*/
+        */
+        boolean sigue = true;
+        while (sigue){
+            System.out.println("Prueba Qytetet: ");
+            System.out.println("Opción 1: Probar Mover");
+            System.out.println("Opción 2: Probar pagar alquiler");
+            System.out.println("Opción 3: Probar Hipotecar");
+            System.out.println("Opción 4: Probar Vender");
+            System.out.println("Opción 5: Probar Edificar");
+            System.out.println("Opción 6: Probar Ranking");
+            
+            String opcion = in.nextLine();
+            
+            switch (opcion){
+                case "1":
+                    probarMover();
+                    break;
+                case "2":
+                    probarPagarAlquiler();
+                    break;
+                case "3":
+                    probarHipotecar();
+                    break;
+                case "4":
+                    probarVender();
+                    break;
+                case "5":
+                    probarEdificar();
+                    break;
+                case "6":
+                    probarRanking();
+                    break;
+                default:
+                    System.out.println("Número incorrecto");
+                    sigue = false;
+                    break;
+            }
+        }
+    }
     
 }
