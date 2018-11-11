@@ -26,7 +26,7 @@ public class Sorpresa {
         this.valor = valor;
     }
     
-// Consultores
+        // Consultores
     
     String getTexto (){return (texto);} 
     
