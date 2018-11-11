@@ -141,13 +141,6 @@ public class Jugador implements Comparable{
         
         modificarSaldo(-costeAlquiler);
     }
- 
-
-    /* Por implementar
-    boolean estoyEnCalleLibre (){
-        return true;
-    }
-    */
     
     /*
      Devuelve true si el usuario tiene más 
