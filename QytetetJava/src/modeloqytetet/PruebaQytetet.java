@@ -226,46 +226,6 @@ public class PruebaQytetet {
         System.out.println(juego);
         */
        
-        /*
-            // Primera 
-        
-        System.out.println(juego.getJugadorActual().getCasillaActual());
-        juego.mover(4);
-        
-        System.out.println(juego.getJugadorActual().getCasillaActual());
-        
-            // Segunda
-        
-            // Antes de comprar
-        System.out.println(juego.getJugadorActual());
-            // Compramos
-        juego.mover(3);
-        juego.comprarTituloPropiedad();
-            // Verificamos la compra
-        System.out.println(juego.getJugadorActual());
-            // Hacemos caer al siguiente jugador en la casilla para que pague
-        juego.siguienteJugador();
-        System.out.println(juego.getJugadorActual());
-        juego.mover(3);
-            // Verificamos que ha pagado alquiler
-        System.out.println(juego.getJugadorActual());
-        
-        // Tercera
-        
-        
-        System.out.println(juego.getJugadorActual());
-        juego.mover(18);
-        System.out.println(juego.getCartaActual());
-        juego.aplicarSorpresa();
-        System.out.println(juego.getJugadorActual());
-        
-        // Cuarta
-        
-        juego.siguienteJugador();
-        juego.edificarCasa(3);
-        System.out.println(juego.getJugadorActual());
-                
-        */
         boolean sigue = true;
         while (sigue){
             System.out.println("Prueba Qytetet: ");
