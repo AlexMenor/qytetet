@@ -1,5 +1,5 @@
 package modeloqytetet;
-/* 
+    /* 
      Esta clase representa
      el dado del juego
     */
@@ -21,6 +21,7 @@ public class Dado {
     public int getValor () {return valor;} // Consultor: devuelve el valor actual
                                            // del dado
     
+    // Tira el dado y devuelve su valor
     int tirar (){
         int valor_dado = (int) Math.ceil(Math.random() * (6));
         valor = valor_dado;
