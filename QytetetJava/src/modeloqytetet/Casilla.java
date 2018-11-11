@@ -53,9 +53,9 @@ public class Casilla {
         por defecto inicializa coste a 0
         */
     
-    Casilla (int numeroCasilla, TipoCasilla tipo){
+    Casilla (int numeroCasilla, TipoCasilla tipo, int coste){
         this.numeroCasilla = numeroCasilla;
-        this.coste = 0;
+        this.coste = coste;
         this.tipo = tipo;
     }
     
@@ -89,13 +89,6 @@ public class Casilla {
     int pagarAlquiler (){
         return titulo.pagarAlquiler();
     }
-        
-
-    /* Por implementar
-    TituloPropiedad asignarPropietario (Jugador jugador){}
-    
-    boolean propietarioEncarcelado(){}
-    */
     
     /* 
         Casilla toString() solo devuelve las características
