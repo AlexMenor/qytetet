@@ -375,12 +375,12 @@ public class Qytetet {
                     for (Jugador jugador : jugadores){
                         if (jugador != jugadorActual){
                             
-                            jugador.modificarSaldo (cartaActual.getValor());
+                            jugador.modificarSaldo (-cartaActual.getValor());
                             
                             if (jugador.getSaldo() < 0)
                                 setEstadoJuego (EstadoJuego.ALGUNJUGADORENBANCARROTA);
  
-                            jugadorActual.modificarSaldo(-cartaActual.getValor());
+                            jugadorActual.modificarSaldo(cartaActual.getValor());
                         
                             if (jugadorActual.getSaldo() < 0)
                                 setEstadoJuego(EstadoJuego.ALGUNJUGADORENBANCARROTA);
