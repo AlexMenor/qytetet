@@ -63,7 +63,12 @@ public class Jugador implements Comparable{
         return saldo;
     }
     
-     
+    // Métodos que se usarán durante el transcurso de la partida
+    
+    /*
+        Pone una casa en una propiedad, siempre
+        y cuando sea posible
+    */
     boolean edificarCasa (TituloPropiedad titulo){
         boolean edificada = false;
         
@@ -80,6 +85,11 @@ public class Jugador implements Comparable{
         
         return edificada;
     }
+    
+    /*
+        Pone una casa en una propiedad, siempre
+        y cuando sea posible
+    */
     
     boolean edificarHotel (TituloPropiedad titulo){
         boolean edificado = false;
@@ -98,11 +108,21 @@ public class Jugador implements Comparable{
         return edificado;
     }
     
+    /*
+        Cancela la hipoteca de una
+        propiedad hipotecada
+    */
+    
     boolean cancelarHipoteca (TituloPropiedad titulo){
         titulo.cancelarHipoteca ();
         
         return (true);
     }
+    
+    /*
+        Sale de la cárcel pagando
+        la libertad
+    */
     
     void pagarLibertad (int cantidad){
         if (tengoSaldo(cantidad)){
@@ -111,7 +131,10 @@ public class Jugador implements Comparable{
         }
     }
     
-        
+    /*
+        Paga el alquiler de una
+        propiedad
+    */   
     
     void pagarAlquiler (){
         int costeAlquiler = casillaActual.pagarAlquiler();
@@ -126,14 +149,19 @@ public class Jugador implements Comparable{
     }
     */
     
-    // Devuelve true si el usuario tiene más que la cantidad pasada como parámetro
+    /*
+     Devuelve true si el usuario tiene más 
+     saldo que la cantidad pasada como parámetro
+    */
     
      private boolean tengoSaldo (int cantidad){
         return saldo > cantidad;
     }
     
-    // Devuelve los titulos de propiedad que estén o no hipotecados (dependiendo
-    // del parametro booleano)
+     /*
+        Devuelve los titulos de propiedad que estén o no hipotecados (dependiendo
+        del parametro booleano)
+    */
     
     ArrayList <TituloPropiedad> obtenerPropiedades (boolean hipotecada){
         ArrayList <TituloPropiedad> toReturn = new ArrayList <> ();
@@ -146,35 +174,44 @@ public class Jugador implements Comparable{
         return toReturn;    
     }
     
-    // Modifica el saldo del usuario y lo devuelve
+    /* 
+        Modifica el saldo del jugador y lo devuelve
+    */
      int modificarSaldo (int cantidad){
          saldo += cantidad;
          
         return saldo;
     }
     
-    
-    // Método para consultar si un jugador tiene una propiedad que 
-    // se pasa por argumento
+    /*
+        Método para consultar si un jugador tiene una propiedad que 
+        se pasa por argumento
+    */
     
     boolean esDeMiPropiedad (TituloPropiedad titulo){
         return propiedades.contains(titulo);
     }
     
-    // Método para consultar si un jugador tiene una carta libertad
+    /* 
+        Método para consultar si un jugador tiene una carta libertad
+    */
     
     boolean tengoCartaLibertad(){
         return cartaLibertad != null;
     }
     
-    // Se paga el impuesto de la casilla actual
+    /*
+        Se paga el impuesto de la casilla actual
+    */
     
     void pagarImpuesto (){
         saldo -= casillaActual.getCoste();
     }
     
-    // Devuelve el capital total, compuesto del saldo y el valor de todas sus
-    // propiedades
+    /*
+        Devuelve el capital total, compuesto del saldo y el valor de todas sus
+        propiedades
+    */
     
     int obtenerCapital (){
         int toReturn = getSaldo();
@@ -198,16 +235,21 @@ public class Jugador implements Comparable{
         return toReturn;
     }
     
-    // Devuelve la carta de libertad del jugador (se la quita)
-    
+    /*
+        Devuelve la carta de libertad del jugador (se la quita)
+    */
+
     Sorpresa devolverCartaLibertad () {
-    Sorpresa tmp = cartaLibertad;
-    cartaLibertad = null;
+        Sorpresa tmp = cartaLibertad;
+        cartaLibertad = null;
     
-    return tmp;
+        return tmp;
     }
     
-    // Devuelve el número total de casas y hoteles pertenecientes al jugador
+    /*
+        Devuelve el número total de casas y hoteles pertenecientes al jugador
+    */
+    
     int cuantasCasasHotelesTengo (){
         int toReturn = 0;
         
@@ -217,15 +259,28 @@ public class Jugador implements Comparable{
         return toReturn;
     }
     
-    public boolean situadoEnCalleLibre (){
+    /*
+        Devuelve true si la casilla está
+        libre
+    */
+    
+    boolean situadoEnCalleLibre (){
         return (casillaActual.soyEdificable() && 
-                casillaActual.tengoPropietario());
+                !casillaActual.tengoPropietario());
     }
+    
+    /*
+        Manda al jugador a la cárcel
+    */
     
     void irACarcel (Casilla casilla){
         setCasillaActual (casilla);
         setEncarcelado (true);
     }
+    
+    /*
+        Compra una propiedad
+    */
     
     boolean comprarTituloPropiedad(){
         boolean comprado = false;
@@ -242,6 +297,10 @@ public class Jugador implements Comparable{
         return comprado;
     }
     
+    /*
+        Devuelve true si el jugador
+        debe pagar un alquiler
+    */
     
     boolean deboPagarAlquiler (){
         boolean deboPagar;
@@ -259,6 +318,10 @@ public class Jugador implements Comparable{
         return deboPagar;
     }
     
+    /*
+        Hipotca una propiedad
+    */
+    
     boolean hipotecarPropiedad (TituloPropiedad titulo){
         int costeHipoteca = titulo.hipotecar();
         
@@ -266,6 +329,10 @@ public class Jugador implements Comparable{
         
         return true;
     }
+    
+    /*
+        Vende una propiedad
+    */
     
     boolean venderPropiedad (Casilla casilla){
         TituloPropiedad titulo = casilla.getTitulo();
@@ -276,6 +343,11 @@ public class Jugador implements Comparable{
         
         return true;
     }
+    
+    /*
+        Elimina un título de propiedad de
+        las propiedades del jugador
+    */
     
     private void eliminarDeMisPropiedades (TituloPropiedad titulo){
         propiedades.remove(titulo);
@@ -288,6 +360,8 @@ public class Jugador implements Comparable{
     public int compareTo(Object t) {
        return ((Jugador) t).obtenerCapital() - this.obtenerCapital();
     }
+    
+    // Método toString de la clase
     
     @Override
     public String toString() {
