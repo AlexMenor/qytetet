@@ -53,9 +53,9 @@ public class Casilla {
         por defecto inicializa coste a 0
         */
     
-    Casilla (int numeroCasilla, TipoCasilla tipo, int coste){
+    Casilla (int numeroCasilla, TipoCasilla tipo){
         this.numeroCasilla = numeroCasilla;
-        this.coste = coste;
+        this.coste = Qytetet.COSTE_IMPUESTO;
         this.tipo = tipo;
     }
     
