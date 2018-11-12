@@ -22,8 +22,12 @@ module ModeloQytetet
         @tipo = TipoCasilla::CALLE
       else
         @titulo = nil
-        @coste = 0
         @tipo = titulo_o_tipo
+        if @tipo == ModeloQytetet::TipoCasilla::IMPUESTO
+          @coste = ModeloQytetet::Qytetet.coste_impuesto
+        else
+          @coste = 0
+        end
       end
       @numero_casilla = numero_casilla
     end

@@ -18,11 +18,16 @@ module ModeloQytetet
     @@NUM_CASILLAS = 20
     @@PRECIO_LIBERTAD = 200
     @@SALDO_SALIDA = 1000
+    @@COSTE_IMPUESTO = 500
     
     # Consultores y modificadores
     
     attr_reader:mazo, :dado, :jugadores, :jugador_actual
     attr_accessor:carta_actual, :estado_juego, :tablero
+    
+    def self.coste_impuesto
+      return @@COSTE_IMPUESTO
+    end
     
     # Métodos para inicializar el juego
     
@@ -251,12 +256,12 @@ module ModeloQytetet
       elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::PORJUGADOR)
         @jugadores.each do |jugador|
           if jugador != @jugador_actual
-            jugador.modificarSaldo(@carta_actual.valor)
+            jugador.modificar_saldo(-@carta_actual.valor)
             
             if jugador.saldo < 0
               @estado_juego = ModeloQytetet::EstadoJuego::ALGUNJUGADORENBANCARROTA
             end
-            @jugador_actual.modificarSaldo(-@carta_actual.valor)
+            @jugador_actual.modificar_saldo(@carta_actual.valor)
             
             if @jugador_actual.saldo < 0
               @estado_juego = ModeloQytetet::EstadoJuego::ALGUNJUGADORENBANCARROTA
