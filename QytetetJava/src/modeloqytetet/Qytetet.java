@@ -14,6 +14,7 @@ public class Qytetet {
     
         // Parametros del juego constantes
     
+    static final int COSTE_IMPUESTO = 500;
     public static final int MAX_JUGADORES = 4;
     static final int NUM_SORPRESAS = 10;
     public static final int NUM_CASILLAS = 20;
