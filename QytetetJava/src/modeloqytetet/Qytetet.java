@@ -37,8 +37,6 @@ public class Qytetet {
     private Jugador jugadorActual;
         // Estado del juego
     private EstadoJuego estado;
-        // Número del jugador actual
-    private int numJugadorActual;
     
     
         // Singleton
@@ -168,7 +166,7 @@ public class Qytetet {
     */
     
     public void siguienteJugador (){
-        numJugadorActual = (jugadores.indexOf(jugadorActual)+1) % jugadores.size();
+        int numJugadorActual = (jugadores.indexOf(jugadorActual)+1) % jugadores.size();
         jugadorActual = jugadores.get(numJugadorActual);
                 
         if (jugadorActual.getEncarcelado())
@@ -186,7 +184,7 @@ public class Qytetet {
             jug.setCasillaActual(tablero.getCasillas().get(0));
         }
         
-        numJugadorActual = new Random().nextInt(jugadores.size());
+        int numJugadorActual = new Random().nextInt(jugadores.size());
         jugadorActual = jugadores.get(numJugadorActual);
         
         estado = EstadoJuego.JA_PREPARADO;
