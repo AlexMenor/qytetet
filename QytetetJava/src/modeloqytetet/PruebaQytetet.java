@@ -182,87 +182,87 @@ public class PruebaQytetet {
         System.out.println(juego.getJugadores());
     }
     
-    public static void main(String[] args) {
-        
-            // Declarados para probar los métodos de esta clase
-        
-        juego = Qytetet.getInstance();
-        juego.inicializarJuego(getNombreJugadores());
-       
-        /*
-        ArrayList<Sorpresa> mayoresQueCero, irACasilla, 
-                tipos, mazoCompleto;
-        
-        mazoCompleto = juego.getMazo();
-        
-          
-        System.out.println("Mazo completo: ");
-        System.out.println(mazoCompleto);
-        
-        mayoresQueCero = sorpresaMayorQueCero(mazoCompleto);
-        System.out.println("Mazo mayores de cero: ");
-        System.out.println(mayoresQueCero);
-        
-        irACasilla = esDeIrACasilla(mazoCompleto);
-        System.out.println("Mazo de ir a casilla: ");
-        System.out.println(irACasilla);
-        
-        System.out.println("Mazos de cada tipo: ");
-        for (TipoSorpresa sorp : TipoSorpresa.values()){
-            tipos = esDeTipo(sorp, mazoCompleto);
-            
-            System.out.println(tipos);
-        }
-        
-        System.out.println(juego.getTablero());
-        
-        System.out.println("Jugadores: ");
-        
-        for (Jugador jugador : juego.getJugadores()){
-            System.out.println(jugador.toString());
-        }
-               
-        System.out.println("Juego: ");
-        System.out.println(juego);
-        */
-       
-        boolean sigue = true;
-        while (sigue){
-            System.out.println("Prueba Qytetet: ");
-            System.out.println("Opción 1: Probar Mover");
-            System.out.println("Opción 2: Probar pagar alquiler");
-            System.out.println("Opción 3: Probar Hipotecar");
-            System.out.println("Opción 4: Probar Vender");
-            System.out.println("Opción 5: Probar Edificar");
-            System.out.println("Opción 6: Probar Ranking");
-            
-            String opcion = in.nextLine();
-            
-            switch (opcion){
-                case "1":
-                    probarMover();
-                    break;
-                case "2":
-                    probarPagarAlquiler();
-                    break;
-                case "3":
-                    probarHipotecar();
-                    break;
-                case "4":
-                    probarVender();
-                    break;
-                case "5":
-                    probarEdificar();
-                    break;
-                case "6":
-                    probarRanking();
-                    break;
-                default:
-                    System.out.println("Número incorrecto");
-                    sigue = false;
-                    break;
-            }
-        }
-    }
+//    public static void main(String[] args) {
+//        
+//            // Declarados para probar los métodos de esta clase
+//        
+//        juego = Qytetet.getInstance();
+//        juego.inicializarJuego(getNombreJugadores());
+//       
+//        /*
+//        ArrayList<Sorpresa> mayoresQueCero, irACasilla, 
+//                tipos, mazoCompleto;
+//        
+//        mazoCompleto = juego.getMazo();
+//        
+//          
+//        System.out.println("Mazo completo: ");
+//        System.out.println(mazoCompleto);
+//        
+//        mayoresQueCero = sorpresaMayorQueCero(mazoCompleto);
+//        System.out.println("Mazo mayores de cero: ");
+//        System.out.println(mayoresQueCero);
+//        
+//        irACasilla = esDeIrACasilla(mazoCompleto);
+//        System.out.println("Mazo de ir a casilla: ");
+//        System.out.println(irACasilla);
+//        
+//        System.out.println("Mazos de cada tipo: ");
+//        for (TipoSorpresa sorp : TipoSorpresa.values()){
+//            tipos = esDeTipo(sorp, mazoCompleto);
+//            
+//            System.out.println(tipos);
+//        }
+//        
+//        System.out.println(juego.getTablero());
+//        
+//        System.out.println("Jugadores: ");
+//        
+//        for (Jugador jugador : juego.getJugadores()){
+//            System.out.println(jugador.toString());
+//        }
+//               
+//        System.out.println("Juego: ");
+//        System.out.println(juego);
+//        */
+//       
+//        boolean sigue = true;
+//        while (sigue){
+//            System.out.println("Prueba Qytetet: ");
+//            System.out.println("Opción 1: Probar Mover");
+//            System.out.println("Opción 2: Probar pagar alquiler");
+//            System.out.println("Opción 3: Probar Hipotecar");
+//            System.out.println("Opción 4: Probar Vender");
+//            System.out.println("Opción 5: Probar Edificar");
+//            System.out.println("Opción 6: Probar Ranking");
+//            
+//            String opcion = in.nextLine();
+//            
+//            switch (opcion){
+//                case "1":
+//                    probarMover();
+//                    break;
+//                case "2":
+//                    probarPagarAlquiler();
+//                    break;
+//                case "3":
+//                    probarHipotecar();
+//                    break;
+//                case "4":
+//                    probarVender();
+//                    break;
+//                case "5":
+//                    probarEdificar();
+//                    break;
+//                case "6":
+//                    probarRanking();
+//                    break;
+//                default:
+//                    System.out.println("Número incorrecto");
+//                    sigue = false;
+//                    break;
+//            }
+//        }
+//    }
     
 }
