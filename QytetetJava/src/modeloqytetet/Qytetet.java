@@ -49,6 +49,8 @@ public class Qytetet {
     
         // Consultores
     
+    EstadoJuego getEstadoJuego() {return estado;}
+    
     Tablero getTablero (){return tablero;}
     
     ArrayList <Sorpresa> getMazo () {return mazo;}
