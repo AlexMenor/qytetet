@@ -24,6 +24,17 @@ public class Jugador implements Comparable{
         propiedades = new ArrayList <>();
     }
     
+        // Constructor introducido por la clase Especulador
+    protected Jugador (Jugador otroJugador){
+        this.encarcelado = otroJugador.encarcelado;
+        this.nombre = otroJugador.nombre;
+        this.saldo = otroJugador.saldo;
+        this.cartaLibertad = otroJugador.cartaLibertad;
+        this.casillaActual = otroJugador.casillaActual;
+            // No hace falta realmente clonarlo
+        this.propiedades = new ArrayList <> (otroJugador.propiedades);
+    }
+    
     // Modificadores 
     
     void setCartaLibertad (Sorpresa carta){
@@ -64,6 +75,28 @@ public class Jugador implements Comparable{
     }
     
     // Métodos que se usarán durante el transcurso de la partida
+    
+    // Método para convertirse en especulador
+    
+    protected Especulador convertirme (int fianza){
+        return new Especulador (this, fianza);
+    }
+    
+    // Método que devuelve si debe ir a la cárcel
+    
+    protected boolean deboIrACarcel (){}
+    
+    // Método que devuelve el factor especulador
+    
+    protected int getFactorEspeculador(){}
+    
+    // Devuelve si puede edificar una casa
+    
+    protected boolean puedoEdificarCasa (TituloPropiedad titulo){}
+    
+    // Devuelve si puede edificar un hotel
+    
+    protected boolean puedoEdificarHotel (TituloPropiedad titulo){}
     
     /*
         Pone una casa en una propiedad, siempre
@@ -147,7 +180,7 @@ public class Jugador implements Comparable{
      saldo que la cantidad pasada como parámetro
     */
     
-     private boolean tengoSaldo (int cantidad){
+     protected boolean tengoSaldo (int cantidad){
         return saldo > cantidad;
     }
     
@@ -197,7 +230,7 @@ public class Jugador implements Comparable{
         Se paga el impuesto de la casilla actual
     */
     
-    void pagarImpuesto (){
+    protected void pagarImpuesto (){
         saldo -= casillaActual.getCoste();
     }
     

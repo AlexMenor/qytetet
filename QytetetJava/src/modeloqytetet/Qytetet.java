@@ -142,6 +142,9 @@ public class Qytetet {
         mazo.add (new Sorpresa ("Quedas libres de la cárcel, puedes guardar "
         + " esto para luego", 0, TipoSorpresa.SALIRCARCEL));
         
+        mazo.add (new Sorpresa ("Te conviertes en un especulador", 3000, TipoSorpresa.CONVERTIRME));
+        
+        mazo.add (new Sorpresa ("Te conviertes en un especulador", 5000, TipoSorpresa.CONVERTIRME));
             // Barajamos
         
         Collections.shuffle(mazo);
@@ -388,6 +391,11 @@ public class Qytetet {
                         
                         }
                     }
+                case CONVERTIRME:
+                    Especulador nuevoEspeculador = jugadorActual.convertirme(cartaActual.getValor());
+                    int indice = jugadores.indexOf(jugadorActual);
+                    jugadores.set(indice, nuevoEspeculador);
+                    jugadorActual = nuevoEspeculador;
                     break;
             }
         }
