@@ -11,8 +11,8 @@ public class Especulador extends Jugador {
     }
     
     // Método para obtener el factor de especulador
-    @Override
-    protected int getFactorEspeculador(){}
+//    @Override
+//    protected int getFactorEspeculador(){}
     
     // Constructor de especulador
     
@@ -27,23 +27,23 @@ public class Especulador extends Jugador {
         return this;
     }
     
-    // Método para consultar si el especulador debe ir a la cárcel
-    
-    @Override
-    protected boolean deboIrACarcel(){}
-    
-    // Método privado para pagar la fianza
-    
-    private boolean pagarFianza(){}
-    
-    // Método que sobreescribe el de jugador y devuelve si puede edificar una casa
-    
-    @Override
-    protected boolean puedoEdificarCasa(){}
-    
-    // Método que sobreescribe el de jugador y devuelve si puede edificar una casa
-    
-    @Override
-    protected boolean puedoEdificarHotel(){}
+//    // Método para consultar si el especulador debe ir a la cárcel
+//    
+//    @Override
+//    protected boolean deboIrACarcel(){}
+//    
+//    // Método privado para pagar la fianza
+//    
+//    private boolean pagarFianza(){}
+//    
+//    // Método que sobreescribe el de jugador y devuelve si puede edificar una casa
+//    
+//    @Override
+//    protected boolean puedoEdificarCasa(){}
+//    
+//    // Método que sobreescribe el de jugador y devuelve si puede edificar una casa
+//    
+//    @Override
+//    protected boolean puedoEdificarHotel(){}
     
 }

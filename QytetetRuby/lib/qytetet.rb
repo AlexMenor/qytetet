@@ -351,9 +351,13 @@ module ModeloQytetet
     
     def encarcelar_jugador
       if !@jugador_actual.tengo_carta_libertad
-        casilla_carcel = @tablero.carcel 
-        @jugador_actual.ir_a_carcel(casilla_carcel)
-        @estado_juego = ModeloQytetet::EstadoJuego::JA_ENCARCELADO
+        # Si no tiene carta libertad y no es un especulador 
+        # con dinero suficiente... a la cárcel
+        if !(@jugador_actual.instance_of?(especulador) && @jugador_actual.pagar_fianza)
+          casilla_carcel = @tablero.carcel 
+          @jugador_actual.ir_a_carcel(casilla_carcel)
+          @estado_juego = ModeloQytetet::EstadoJuego::JA_ENCARCELADO
+        end
       else
         carta = @jugador_actual.devolver_carta_libertad
         @mazo << carta

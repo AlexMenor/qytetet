@@ -82,21 +82,21 @@ public class Jugador implements Comparable{
         return new Especulador (this, fianza);
     }
     
-    // Método que devuelve si debe ir a la cárcel
-    
-    protected boolean deboIrACarcel (){}
-    
-    // Método que devuelve el factor especulador
-    
-    protected int getFactorEspeculador(){}
-    
-    // Devuelve si puede edificar una casa
-    
-    protected boolean puedoEdificarCasa (TituloPropiedad titulo){}
-    
-    // Devuelve si puede edificar un hotel
-    
-    protected boolean puedoEdificarHotel (TituloPropiedad titulo){}
+//    // Método que devuelve si debe ir a la cárcel
+//    
+//    protected boolean deboIrACarcel (){}
+//    
+//    // Método que devuelve el factor especulador
+//    
+//    protected int getFactorEspeculador(){}
+//    
+//    // Devuelve si puede edificar una casa
+//    
+//    protected boolean puedoEdificarCasa (TituloPropiedad titulo){}
+//    
+//    // Devuelve si puede edificar un hotel
+//    
+//    protected boolean puedoEdificarHotel (TituloPropiedad titulo){}
     
     /*
         Pone una casa en una propiedad, siempre

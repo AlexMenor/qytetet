@@ -215,40 +215,39 @@ class Jugador
   # en la propiedad pasada como argumento
   
   def edificar_casa (titulo)
-    edificada = false
-    num_casas = titulo.num_casas
+    edificada = puedo_edificar_casa(titulo)
     
-    if (num_casas < 4)
-      coste_edificar_casa = titulo.precio_edificar
-      tengo_saldo = tengo_saldo (coste_edificar_casa)
-      
-      if (tengo_saldo)
+      if (edificada)
         titulo.edificar_casa
         modificar_saldo (coste_edificar_casa)
-        edificada = true
       end
-    end
+    
     return edificada
   end
   
   # Similar a edificar_casa pero con un hotel
   
    def edificar_hotel (titulo)
-     edificado = false
-    num_hoteles = titulo.num_hoteles
-    
-    if (num_hoteles < 4)
-      coste_edificar_hotel = titulo.precio_edificar
-      tengo_saldo = tengo_saldo (coste_edificar_hotel)
+    edificado = puedo_edificar_hotel(titulo)
       
-      if (tengo_saldo)
+      if (edificado)
         titulo.edificar_hotel
         modificar_saldo (coste_edificar_hotel)
-        edificado = true
       end
-    end
+      
     return edificado
   end
+  
+   # Devuelve true si puede edificar una casa en una propiedad
+   def puedo_edificar_casa (titulo)
+    return @saldo >= titulo.precio_edificar && titulo.num_casas < 4
+   end
+   
+    # Devuelve true si puede edificar un hotel en una propiedad
+   def puedo_edificar_hotel (titulo)
+     tengo_suficientes_casillas = @propiedades.size >= 4
+    return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 4 && tengo_suficientes_casillas
+   end
   
    # Paga por su libertad y sale de la cárcel si tiene el saldo necesario 
   
