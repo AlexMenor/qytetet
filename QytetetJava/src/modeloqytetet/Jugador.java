@@ -82,21 +82,27 @@ public class Jugador implements Comparable{
         return new Especulador (this, fianza);
     }
     
-//    // Método que devuelve si debe ir a la cárcel
-//    
-//    protected boolean deboIrACarcel (){}
+    // Método que devuelve si debe ir a la cárcel
+    
+    protected boolean deboIrACarcel (){
+        return tengoCartaLibertad();
+    }
 //    
 //    // Método que devuelve el factor especulador
 //    
 //    protected int getFactorEspeculador(){}
 //    
-//    // Devuelve si puede edificar una casa
-//    
-//    protected boolean puedoEdificarCasa (TituloPropiedad titulo){}
-//    
-//    // Devuelve si puede edificar un hotel
-//    
-//    protected boolean puedoEdificarHotel (TituloPropiedad titulo){}
+    // Devuelve si puede edificar una casa
+    
+    protected boolean puedoEdificarCasa (TituloPropiedad titulo){
+        return (titulo.getNumCasas() < 4 && tengoSaldo(titulo.getPrecioEdificar()));
+    }
+    
+    // Devuelve si puede edificar un hotel
+    
+    protected boolean puedoEdificarHotel (TituloPropiedad titulo){
+        return (titulo.getNumHoteles() < 4 && tengoSaldo(titulo.getPrecioEdificar()) && titulo.getNumCasas() == 4);
+    }
     
     /*
         Pone una casa en una propiedad, siempre
@@ -105,9 +111,7 @@ public class Jugador implements Comparable{
     boolean edificarCasa (TituloPropiedad titulo){
         boolean edificada = false;
         
-        int numCasas = titulo.getNumCasas();
-        
-        if (numCasas < 4){
+        if (puedoEdificarCasa(titulo)){
             int costeEdificarCasa = titulo.getPrecioEdificar();
             if (tengoSaldo(costeEdificarCasa)){
                 titulo.edificarCasa();
@@ -127,9 +131,7 @@ public class Jugador implements Comparable{
     boolean edificarHotel (TituloPropiedad titulo){
         boolean edificado = false;
         
-        int numHoteles = titulo.getNumHoteles();
-        
-        if (numHoteles < 4){
+        if (puedoEdificarHotel(titulo)){
             int costeEdificarHotel = titulo.getPrecioEdificar();
             if (tengoSaldo(costeEdificarHotel)){
                 titulo.edificarHotel();
