@@ -1,10 +1,14 @@
 # encoding: utf-8
 
 class Especulador < Jugador
-  def initialize
-    
+  def self.copia (jug, fianza)
+    super(jug)
+    @fianza = fianza
   end
  
+  def convertirme (fianza)
+    return self
+  end
   # Preguntar a Nuria, pero creo que el protected en Ruby es distinto
   # y hay que ponerlo todo público
   
@@ -36,6 +40,10 @@ class Especulador < Jugador
     return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 8 && tengo_suficientes_casillas
    end
  
+   protected_class_method :copia
+   protected :pagar_impuesto, :puedo_edificar_casa, :puedo_edificar_hotel
+   private :pagar_fianza
+   
   # Añade al to_s de la superclase el campo fianza
   
   def to_s
