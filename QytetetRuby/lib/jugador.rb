@@ -9,13 +9,38 @@ class Jugador
   
   # Constructor con un parámetro
   
-  def initialize (nombre)
-    @encarcelado = false
+  def initialize (encarcelado, nombre, saldo, carta_libertad, casilla_actual, propiedades)
+    @encarcelado = encarcelado
     @nombre = nombre
-    @saldo = 7500
-    @carta_libertad
-    @casilla_actual
-    @propiedades = Array.new
+    @saldo = saldo
+    @carta_libertad = carta_libertad
+    @casilla_actual = casilla_actual
+    @propiedades = propiedades
+  end
+  
+  def self.nuevo(nombre)
+    prop = Array.new
+    Jugador.new(false, nombre, 7500, nil, nil, prop)
+  end
+  
+  def self.copia(jug)
+    Jugador.new(jug.encarcelado, jug.nombre, jug.saldo, jug.carta_libertad, jug.casilla_actual, jug.propiedades)
+  end
+  
+  def convertirme (fianza)
+    return Especulador.new(self, fianza)
+  end
+  
+  def debo_ir_a_carcel
+    
+  end
+  
+  def puedo_edificar_casa (titulo)
+    
+  end
+  
+  def puedo_edificar_hotel (titulo)
+    
   end
   
   # Implementado este operador para poder clasificar a los jugadores
@@ -282,5 +307,6 @@ class Jugador
     
     to_return
   end
-  
+  protected_class_method :copia
+  protected :convertirme, :debo_ir_a_carcel, :puedo_edificar_casa, :puedo_edificar_hotel, :pagar_impuesto, :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
 end
