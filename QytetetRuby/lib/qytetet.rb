@@ -34,7 +34,7 @@ module ModeloQytetet
     def inicializar_jugadores (nombres)
       @jugadores = Array.new
       nombres.each do |nombre|
-        jugadores << Jugador.new(nombre)
+        jugadores << Jugador.nuevo(nombre)
       end
     end
     
@@ -60,6 +60,10 @@ module ModeloQytetet
        -45, TipoSorpresa::PORJUGADOR)  
       @mazo << Sorpresa.new("Quedas libres de la cárcel, puedes guardar esto para luego", 
         0, TipoSorpresa::SALIRCARCEL) 
+      @mazo << Sorpresa.new("Te conviertes en un especulador",
+        3000, TipoSorpresa::CONVERTIRME)
+      @mazo << Sorpresa.new("Te conviertes en un especulador",
+        5000, TipoSorpresa::CONVERTIRME)
       
       @mazo.shuffle!
     end
@@ -268,6 +272,11 @@ module ModeloQytetet
             end
           end
         end
+      elsif (@carta_actual.tipo == ModeloQytetet::TipoSorpresa::CONVERTIRME)
+        nuevo = @jugador_actual.convertirme(@carta_actual.valor)
+        indice = @jugadores.index(@jugador_actual)
+        @jugadores[indice] = nuevo
+        @jugador_actual = nuevo
       end
     end
     
@@ -460,6 +469,6 @@ module ModeloQytetet
     # Los 3 métodos inicializadores son privados y se llaman desde
     # inicializarJuego() que sí es público
     
-    private :carta_actual=, :inicializar_jugadores, :inicializar_cartas_sorpresa, :inicializar_tablero, :salida_jugadores
+    private :carta_actual=, :inicializar_jugadores, :inicializar_cartas_sorpresa, :inicializar_tablero, :salida_jugadores, :encarcelar_jugador
   end
 end
