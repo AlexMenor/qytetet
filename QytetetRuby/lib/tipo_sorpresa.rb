@@ -12,5 +12,6 @@ module ModeloQytetet
       PORCASAHOTEL =:Por_Casa_Hotel
       PORJUGADOR =:Por_Jugador
       SALIRCARCEL =:Salir_Carcel
+      CONVERTIRME =:Convertirme
   end
 end
