@@ -176,6 +176,12 @@ class Jugador
     return comprado
   end
   
+  # Devuelve true si tiene carta libertad
+  
+  def debo_ir_a_carcel
+    return tengo_carta_libertad
+  end
+  
   # Cancela la hipoteca de un titulo
   
   def cancelar_hipoteca(titulo)
@@ -270,8 +276,8 @@ class Jugador
    
     # Devuelve true si puede edificar un hotel en una propiedad
    def puedo_edificar_hotel (titulo)
-     tengo_suficientes_casillas = @propiedades.size >= 4
-    return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 4 && tengo_suficientes_casillas
+     tengo_suficientes_casas = titulo.num_casas == 4
+    return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 4 && tengo_suficientes_casas
    end
   
    # Paga por su libertad y sale de la cárcel si tiene el saldo necesario 

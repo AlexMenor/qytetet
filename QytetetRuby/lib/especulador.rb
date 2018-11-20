@@ -29,6 +29,19 @@ class Especulador < Jugador
     return false
   end
   
+  # Devuelve true si no tiene carta libertad y no puede pagar la fianza
+  
+  def debo_ir_a_carcel
+    if (super)
+      return !pagar_fianza
+    else
+      return true 
+      # Lo hemos hecho así, porque pensamos que si tiene carta y llama a 
+      # pagar fianza y tiene el saldo suficiente, se restaría dinero
+      # del saldo aún teniendo la carta libertad
+    end
+  end
+  
   # Devuelve true si puede edificar una casa en una propiedad
    def puedo_edificar_casa (titulo)
     return @saldo >= titulo.precio_edificar && titulo.num_casas < 8
@@ -36,8 +49,8 @@ class Especulador < Jugador
    
     # Devuelve true si puede edificar un hotel en una propiedad
    def puedo_edificar_hotel (titulo)
-     tengo_suficientes_casillas = @propiedades.size >= 4
-    return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 8 && tengo_suficientes_casillas
+     tengo_suficientes_casas = titulo.num_casas == 4
+    return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 8 && tengo_suficientes_casas
    end
  
    protected_class_method :copia
