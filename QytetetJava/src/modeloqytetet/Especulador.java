@@ -22,7 +22,11 @@ public class Especulador extends Jugador {
     
     @Override
     protected boolean deboIrACarcel(){
-        return super.deboIrACarcel() && !pagarFianza();
+        boolean debe_ir = false;
+        debe_ir = super.deboIrACarcel();
+        if (!debe_ir)
+            debe_ir = !pagarFianza();
+        return debe_ir;
     }
     
     // Método privado para pagar la fianza
