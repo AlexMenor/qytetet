@@ -316,7 +316,8 @@ public class Jugador implements Comparable{
         int costeCompra = casillaActual.getCoste();
         
         if (costeCompra < saldo){
-            TituloPropiedad titulo = casillaActual.asignarPropietario(this);
+            TituloPropiedad titulo = casillaActual.getTitulo();
+            casillaActual.asignarPropietario(this);
             comprado = true;
             propiedades.add (titulo);
             modificarSaldo (-costeCompra);
