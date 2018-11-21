@@ -9,64 +9,41 @@ module ModeloQytetet
     
     # Consultores y modificadores
     
-    attr_reader:numero_casilla, :coste, :tipo
-    attr_accessor:titulo
-
+    attr_reader:numero_casilla 
+    attr_accessor:coste
     
     # Constructor con dos parámetros (en realidad es un constructor "doble")
     
-    def initialize (numero_casilla, titulo_o_tipo)
-      if titulo_o_tipo.instance_of?(ModeloQytetet::TituloPropiedad)
-        @titulo = titulo_o_tipo
-        @coste = titulo_o_tipo.precio_compra
-        @tipo = TipoCasilla::CALLE
-      else
-        @titulo = nil
-        @tipo = titulo_o_tipo
-        if @tipo == ModeloQytetet::TipoCasilla::IMPUESTO
-          @coste = ModeloQytetet::Qytetet.coste_impuesto
-        else
-          @coste = 0
-        end
-      end
+    def initialize (numero_casilla, coste)
       @numero_casilla = numero_casilla
+      @coste = coste
     end
     
-    # Devuelve true solo si la casilla es del tipo calle
+    # Métodos que deberían ser abstractos, pero en ruby no hay abstacto, así
+    # que lanzamos un NotImplementedError
     
     def soy_edificable
-      return @tipo ==ModeloQytetet::TipoCasilla::CALLE
+      raise NotImplementedError
     end
     
-    # Llama al método de mismo nombre de la clase TituloPropiedad
+    def tipo
+      raise NotImplementedError
+    end
+    
+    def titulo
+      raise NotImplementedError
+    end
     
     def tengo_propietario
-      return @titulo.tengo_propietario
-    end
-    
-   # Llama al método de mismo nombre de la clase TituloPropiedad
-    
-    def propietario_encarcelado
-      return @titulo.propietario_encarcelado
-    end
-    
-    def pagar_alquiler
-      coste_alquiler = @titulo.pagar_alquiler
-      
-      return coste_alquiler
+      raise NotImplementedError
     end
     
     # toString()
     
     def to_s
-      to_return = "\nNúmero de casilla: #{@numero_casilla} \ncoste: #{@coste}\ntipo: #{@tipo}" 
-      
-      
-      if !titulo.nil?
-        to_return << ("\ntitulo: " + @titulo.to_s)
-      end
-      
-      to_return << "\n"
+      return "\nNúmero de casilla: #{@numero_casilla} \ncoste: #{@coste}\n"
     end
+    
+    protected :soy_edificable
   end
 end
