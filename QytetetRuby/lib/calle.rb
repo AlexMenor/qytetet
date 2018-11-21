@@ -2,10 +2,10 @@
 
 module ModeloQytetet
   class Calle < Casilla
-    attr_reader :titulo
+    attr_accessor :titulo
   
     def initialize (numero_casilla, titulo)
-      super(numero_casilla, titulo.coste)
+      super(numero_casilla, titulo.precio_compra)
       @titulo = titulo
     end
   
