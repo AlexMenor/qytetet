@@ -67,11 +67,11 @@ public class Especulador extends Jugador {
     
     @Override
     public String toString(){
-        String aDevolver = super.toString();
-        aDevolver += "\nFianza: ";
+        String aDevolver = super.toString().substring(0, super.toString().length()-1);
+        aDevolver += ", Fianza= ";
         aDevolver += fianza;
         
-        return aDevolver;
+        return aDevolver + '}';
     }
     
 }
