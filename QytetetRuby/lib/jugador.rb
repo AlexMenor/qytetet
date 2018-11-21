@@ -24,9 +24,7 @@ module ModeloQytetet
       Jugador.new(false, nombre, 7500, nil, nil, prop)
     end
   
-    def self.copia(jug)
-      Jugador.new(jug.encarcelado, jug.nombre, jug.saldo, jug.carta_libertad, jug.casilla_actual, jug.propiedades)
-    end
+    
   
     def convertirme (fianza)
       return Especulador.new(self, fianza)
@@ -302,7 +300,12 @@ module ModeloQytetet
     
       to_return
     end
-    protected_class_method :copia
+    
+    protected
+    def self.copia(jug)
+      Jugador.new(jug.encarcelado, jug.nombre, jug.saldo, jug.carta_libertad, jug.casilla_actual, jug.propiedades)
+    end
+    
     protected :convertirme, :debo_ir_a_carcel, :puedo_edificar_casa, :puedo_edificar_hotel, :pagar_impuesto, :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
   end
 end
