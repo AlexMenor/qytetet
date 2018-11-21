@@ -31,18 +31,6 @@ class Jugador
     return Especulador.new(self, fianza)
   end
   
-  def debo_ir_a_carcel
-    
-  end
-  
-  def puedo_edificar_casa (titulo)
-    
-  end
-  
-  def puedo_edificar_hotel (titulo)
-    
-  end
-  
   # Implementado este operador para poder clasificar a los jugadores
   
   def <=> (otroJugador)
