@@ -16,6 +16,8 @@ require_relative "estado_juego"
 require_relative "tipo_casilla"
 require_relative "casilla"
 require_relative "titulo_propiedad"
+require_relative "calle"
+require_relative "otra_casilla"
 
 module ModeloQytetet
   
