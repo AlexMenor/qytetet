@@ -40,6 +40,10 @@ module ModeloQytetet
     
     def inicializar_cartas_sorpresa
       @mazo = Array.new
+      @mazo << Sorpresa.new("Te conviertes en un especulador",
+        3000, TipoSorpresa::CONVERTIRME)
+      @mazo << Sorpresa.new("Te conviertes en un especulador",
+        5000, TipoSorpresa::CONVERTIRME)
       @mazo << Sorpresa.new("Te encuentras un billete por la calle, cobra 500 euros", 
         500, TipoSorpresa::PAGARCOBRAR)
       @mazo << Sorpresa.new("Te han pillado superando el límite de velocidad", 
@@ -60,12 +64,8 @@ module ModeloQytetet
        -45, TipoSorpresa::PORJUGADOR)  
       @mazo << Sorpresa.new("Quedas libres de la cárcel, puedes guardar esto para luego", 
         0, TipoSorpresa::SALIRCARCEL) 
-      @mazo << Sorpresa.new("Te conviertes en un especulador",
-        3000, TipoSorpresa::CONVERTIRME)
-      @mazo << Sorpresa.new("Te conviertes en un especulador",
-        5000, TipoSorpresa::CONVERTIRME)
       
-      @mazo.shuffle!
+      #@mazo.shuffle!
     end
     
     def inicializar_tablero
