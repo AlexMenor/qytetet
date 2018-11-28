@@ -103,6 +103,7 @@ public class TituloPropiedad {
     
     void edificarHotel (){
         numHoteles++;
+        numCasas-=4;
     }
     
     /*
