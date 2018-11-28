@@ -27,7 +27,7 @@ module ModeloQytetet
     
   
     def convertirme (fianza)
-      return Especulador.new(self, fianza)
+      return Especulador.copia(self, fianza)
     end
   
     # Implementado este operador para poder clasificar a los jugadores
@@ -301,11 +301,8 @@ module ModeloQytetet
       to_return
     end
     
-    protected
     def self.copia(jug)
-      Jugador.new(jug.encarcelado, jug.nombre, jug.saldo, jug.carta_libertad, jug.casilla_actual, jug.propiedades)
+      new(jug.encarcelado, jug.nombre, jug.saldo, jug.carta_libertad, jug.casilla_actual, jug.propiedades)
     end
-    
-    protected :convertirme, :debo_ir_a_carcel, :puedo_edificar_casa, :puedo_edificar_hotel, :pagar_impuesto, :puedo_edificar_casa, :puedo_edificar_hotel, :tengo_saldo
   end
 end
