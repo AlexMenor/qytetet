@@ -2,7 +2,7 @@
 
 module ModeloQytetet
   class OtraCasilla < Casilla
-    attr_reader :tipo
+    attr_accessor :tipo
     def initialize (numero_casilla, tipo)
       coste = tipo == ModeloQytetet::TipoCasilla::IMPUESTO ? ModeloQytetet::Qytetet.coste_impuesto : 0 
       super(numero_casilla, coste)
