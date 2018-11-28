@@ -43,7 +43,5 @@ module ModeloQytetet
     def to_s
       return "\nNúmero de casilla: #{@numero_casilla} \ncoste: #{@coste}\n"
     end
-    
-    protected :soy_edificable
   end
 end
