@@ -27,11 +27,9 @@ module ModeloQytetet
   
     def to_s
       to_return = super
-      to_return += "\nTipo: #{@tipo}"
+      to_return += "Tipo: #{@tipo}"
       
       return to_return
     end
-    
-    protected :titulo, :soy_edificable, :tipo
   end
 end
