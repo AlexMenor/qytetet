@@ -368,7 +368,6 @@ public class Jugador implements Comparable{
         eliminarDeMisPropiedades (titulo);
         int precioVenta = titulo.calcularPrecioVenta();
         modificarSaldo (precioVenta);
-        casilla.setTitulo(null);
         
         return true;
     }
