@@ -53,8 +53,5 @@ module ModeloQytetet
       
       return to_return
     end
-    
-    protected :soy_edificable, :titulo
-    private :titulo=
   end
 end
