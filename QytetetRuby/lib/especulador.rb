@@ -2,16 +2,16 @@
 
 module ModeloQytetet
   class Especulador < Jugador
+    attr_accessor :fianza
     def self.copia (jug, fianza)
-      super(jug)
-      @fianza = fianza
+      j = super(jug)
+      j.fianza = fianza
+      return j
     end
  
     def convertirme (fianza)
       return self
     end
-    # Preguntar a Nuria, pero creo que el protected en Ruby es distinto
-    # y hay que ponerlo todo público
   
     # Un especulador paga la mitad de impuestos que un jugador normal
     def pagar_impuesto
@@ -54,8 +54,6 @@ module ModeloQytetet
       return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 8 && tengo_suficientes_casas
     end
  
-    protected_class_method :copia
-    protected :pagar_impuesto, :puedo_edificar_casa, :puedo_edificar_hotel
     private :pagar_fianza
    
     # Añade al to_s de la superclase el campo fianza
