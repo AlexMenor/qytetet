@@ -14,6 +14,7 @@ module ControladorQytetet
     
     def initialize
       @modelo = Qytetet.new
+      @nombre_jugadores = Array.new
     end
     def obtener_casillas_validas (opcion)
     

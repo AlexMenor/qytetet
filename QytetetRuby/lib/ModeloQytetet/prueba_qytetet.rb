@@ -194,9 +194,9 @@ module ModeloQytetet
     # Método de instancia de clase Main 
     # para probar el juego
     
-    def self.main
+#    def self.main
       
-      @@juego.inicializar_juego (get_nombre_jugadores)
+#      @@juego.inicializar_juego (get_nombre_jugadores)
       
 #      mazo_completo = @@juego.mazo
 #      
@@ -237,40 +237,40 @@ module ModeloQytetet
 #     
 #      puts @@juego.to_s
      
-     loop do
-      puts "Prueba Qytetet: \n"
-      puts "Opción 1: Probar Mover\n"
-      puts "Opción 2: Probar pagar alquiler\n"
-      puts "Opción 3: Probar Hipotecar\n"
-      puts "Opción 4: Probar Vender\n"
-      puts "Opción 5: Probar Edificar\n"
-      puts "Opción 6: Probar Ranking\n"
+    # loop do
+    #  puts "Prueba Qytetet: \n"
+    #  puts "Opción 1: Probar Mover\n"
+    #  puts "Opción 2: Probar pagar alquiler\n"
+    #  puts "Opción 3: Probar Hipotecar\n"
+    #  puts "Opción 4: Probar Vender\n"
+    # puts "Opción 5: Probar Edificar\n"
+    #  puts "Opción 6: Probar Ranking\n"
 
-      opcion = gets.chomp.to_i
+    #  opcion = gets.chomp.to_i
 
-      case opcion
-      when 1
-        probar_mover()
-      when 2
-        probar_pagar_alquiler()
-      when 3
-        probar_hipotecar()
-      when 4
-        probar_vender()
-      when 5
-        probar_edificar()
-      when 6
-        probar_ranking()
-      else
-        puts "Fin del programa"
-        break
-      end
+    #  case opcion
+    #  when 1
+    #    probar_mover()
+    #  when 2
+    #    probar_pagar_alquiler()
+    #  when 3
+    #    probar_hipotecar()
+    #  when 4
+    #    probar_vender()
+    #  when 5
+    #    probar_edificar()
+    #  when 6
+    #    probar_ranking()
+    #  else
+    #    puts "Fin del programa"
+    #    break
+    #  end
       
      
-     end
+   #  end
      
-    end
+  #  end
 
-  end
-  PruebaQytetet.main
+ end
+ # PruebaQytetet.main
 end
