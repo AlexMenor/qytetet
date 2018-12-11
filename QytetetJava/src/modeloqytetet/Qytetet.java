@@ -49,7 +49,7 @@ public class Qytetet {
     
         // Consultores
     
-    EstadoJuego getEstadoJuego() {return estado;}
+    public EstadoJuego getEstadoJuego() {return estado;}
     
     Tablero getTablero (){return tablero;}
     
