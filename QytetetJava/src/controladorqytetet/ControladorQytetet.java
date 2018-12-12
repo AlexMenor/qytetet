@@ -4,6 +4,7 @@ package controladorqytetet;
 import java.util.ArrayList;
 import modeloqytetet.MetodoSalirCarcel;
 import modeloqytetet.EstadoJuego;
+import modeloqytetet.Casilla;
 
 public class ControladorQytetet {
     // Atributos
@@ -36,7 +37,7 @@ public class ControladorQytetet {
                     validas.add(OpcionMenu.PASARTURNO.ordinal());
                     break;
                 case JA_ENCARCELADOCONOPCIONDELIBERTAD:
-                    validas.add(OpcionMenu.INTENTARSALICARCELTIRANDODADO.ordinal());
+                    validas.add(OpcionMenu.INTENTARSALIRCARCELTIRANDODADO.ordinal());
                     validas.add(OpcionMenu.INTENTARSALIRCARCELPAGANDOLIBERTAD.ordinal());
                     break;
                 case JA_PREPARADO:
@@ -72,6 +73,104 @@ public class ControladorQytetet {
     
     //public ArrayList<int> obtenerCasillasValidas(int opcionMenu){}
     
-    //public String realizarOperacion(int opcionElegida, int casillaElegida){}
+    public String realizarOperacion(int opcionElegida, int casillaElegida){
+        opcion = OpcionMenu.values()[opcionElegida];
+        String mensajeInformativo = "";
+        String nombreJugador = modelo.getJugadorActual().getNombre();
+        Casilla casillaActual = modelo.getJugadorActual().getCasillaActual();
+        Casilla casillaSeleccionada = modelo.getTablero().obtenerCasillaNumero(casillaElegida);
+        
+        switch (opcion){
+            case INICIARJUEGO:
+                modelo.inicializarJuego (nombreJugadores);
+                mensajeInformativo = "¡Ha empezado el juego!";
+                break;
+            case JUGAR:
+                modelo.jugar();
+                mensajeInformativo = "Valor del dado: " + modelo.getValorDado()
+                        + "\nEl jugador " + nombreJugador 
+                        + " ha caído en la casilla: " + casillaActual;
+                break;
+            case APLICARSORPRESA:
+                mensajeInformativo = "Sorpresa: " + modelo.getCartaActual();
+                modelo.aplicarSorpresa();
+                break;
+            case INTENTARSALIRCARCELPAGANDOLIBERTAD:
+                if (modelo.intentarSalirCarcel(MetodoSalirCarcel.PAGANDOLIBERTAD))
+                    mensajeInformativo = nombreJugador + " ha conseguido salir de la cárcel!";
+                else
+                    mensajeInformativo = nombreJugador + " no ha podido pagar su libertad...";
+                
+                break;
+            case INTENTARSALIRCARCELTIRANDODADO:
+                if (modelo.intentarSalirCarcel(MetodoSalirCarcel.TIRANDODADO))
+                    mensajeInformativo = nombreJugador + " ha conseguido salir de la cárcel!";
+                else
+                    mensajeInformativo = nombreJugador + " ha tenido mala suerte con el dado...";
+                
+                break;
+            case COMPRARTITULOPROPIEDAD:
+                if (modelo.comprarTituloPropiedad())
+                    mensajeInformativo = nombreJugador + " ha comprado " + casillaActual;
+                else
+                    mensajeInformativo = "No se ha podido efectuar la compra...";
+                
+                break;
+            case VENDERPROPIEDAD:
+                modelo.venderPropiedad(casillaElegida);
+                mensajeInformativo = nombreJugador + " ha vendido " + 
+                        casillaSeleccionada;
+                break;
+            case HIPOTECARPROPIEDAD:
+                modelo.hipotecarPropiedad(casillaElegida);
+                mensajeInformativo = nombreJugador + " ha hipotecado " +
+                        casillaSeleccionada;
+                break;
+           case CANCELARHIPOTECA:
+                modelo.hipotecarPropiedad(casillaElegida);
+                mensajeInformativo = nombreJugador + " ha cancelado la hipoteca de: " +
+                        casillaSeleccionada;
+                break;
+           case EDIFICARCASA:
+               if (modelo.edificarCasa(casillaElegida))
+                   mensajeInformativo = nombreJugador + " ha edificado una casa en: " +
+                           casillaSeleccionada;
+               else
+                   mensajeInformativo = "No se ha podido edificar la casa ";
+                           
+               break;
+            case EDIFICARHOTEL:
+            if (modelo.edificarHotel(casillaElegida))
+                mensajeInformativo = nombreJugador + " ha edificado un hotel en: " +
+                        casillaSeleccionada;
+            else
+                mensajeInformativo = "No se ha podido edificar el hotel ";
+
+                break;
+            case PASARTURNO:
+                modelo.siguienteJugador();
+                mensajeInformativo = nombreJugador + " ha preferido pasar turno";
+                break;
+            case OBTENERRANKING:
+                modelo.obtenerRanking();
+                mensajeInformativo = "Ranking: " + modelo.getJugadores();
+                break;
+            case TERMINARJUEGO:
+                modelo.obtenerRanking();
+                mensajeInformativo = "Se ha terminado el juego\n Ranking: " + 
+                        modelo.getJugadores();
+                break;
+            case MOSTRARJUGADORACTUAL:
+                mensajeInformativo = "Jugador actual:\n" + modelo.getJugadorActual();
+                break;
+            case MOSTRARJUGADORES:
+                mensajeInformativo = "Jugadores :\n" + modelo.getJugadores();
+                break;
+            case MOSTRARTABLERO:
+                mensajeInformativo = "Tablero:\n" + modelo.getTablero();
+                break;
+        }
     
+        return mensajeInformativo;
+    }
 }

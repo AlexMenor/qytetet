@@ -51,7 +51,7 @@ public class Qytetet {
     
     public EstadoJuego getEstadoJuego() {return estado;}
     
-    Tablero getTablero (){return tablero;}
+    public Tablero getTablero (){return tablero;}
     
     ArrayList <Sorpresa> getMazo () {return mazo;}
     
@@ -59,7 +59,7 @@ public class Qytetet {
     
     Dado getDado() {return dado;}
     
-    Jugador getJugadorActual () {return jugadorActual;}
+    public Jugador getJugadorActual () {return jugadorActual;}
     
     public ArrayList <Jugador> getJugadores () {return jugadores;}
     
@@ -71,7 +71,7 @@ public class Qytetet {
     
     boolean jugadorActualEnCalleLibre () {return jugadorActual.situadoEnCalleLibre();}
     
-    int getValorDado () {return dado.getValor();}
+    public int getValorDado () {return dado.getValor();}
         
         // Modificadores
     
