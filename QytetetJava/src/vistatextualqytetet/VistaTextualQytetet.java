@@ -58,9 +58,9 @@ public class VistaTextualQytetet {
     
     public int elegirCasilla(int opcionMenu){
         
-        ArrayList<int> casillasValidas = controlador.obtenerCasillasValidas(opcionMenu);
+        ArrayList<Integer> casillasValidas = controlador.obtenerCasillasValidas(opcionMenu);
         
-        if (casillasValidas.empty())
+        if (casillasValidas.isEmpty())
             return -1;
         
         ArrayList <String> todasLasCasillas = new ArrayList <> ();

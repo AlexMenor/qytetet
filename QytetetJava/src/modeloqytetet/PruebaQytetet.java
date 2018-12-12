@@ -184,12 +184,12 @@ public class PruebaQytetet {
         System.out.println(juego.getJugadores());
     }
     
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         
             // Declarados para probar los métodos de esta clase
         
         juego = Qytetet.getInstance();
-        juego.inicializarJuego(getNombreJugadores());
+        juego.inicializarJuego(getNombreJugadores());*/
        
         /*
         ArrayList<Sorpresa> mayoresQueCero, irACasilla, 
@@ -227,7 +227,7 @@ public class PruebaQytetet {
         System.out.println("Juego: ");
         System.out.println(juego);
         */
-       
+       /*
         boolean sigue = true;
         while (sigue){
             System.out.println("Prueba Qytetet: ");
@@ -266,5 +266,5 @@ public class PruebaQytetet {
             }
         }
     }
-    
+ */   
 }

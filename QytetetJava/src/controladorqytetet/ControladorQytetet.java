@@ -3,7 +3,6 @@ package controladorqytetet;
 
 import java.util.ArrayList;
 import modeloqytetet.MetodoSalirCarcel;
-import modeloqytetet.EstadoJuego;
 import modeloqytetet.Casilla;
 
 public class ControladorQytetet {
@@ -67,9 +66,34 @@ public class ControladorQytetet {
         return validas;
     }
     
-    //public boolean necesitaElegirCasilla (int opcionMenu){}
+    public boolean necesitaElegirCasilla (int opcionMenu){
+        boolean necesita = opcionMenu == OpcionMenu.HIPOTECARPROPIEDAD.ordinal() ||
+                           opcionMenu == OpcionMenu.CANCELARHIPOTECA.ordinal() ||
+                           opcionMenu == OpcionMenu.EDIFICARCASA.ordinal() ||
+                           opcionMenu == OpcionMenu.EDIFICARHOTEL.ordinal() ||
+                           opcionMenu == OpcionMenu.VENDERPROPIEDAD.ordinal();
+        
+        return necesita;
+    }
     
-    //public ArrayList<int> obtenerCasillasValidas(int opcionMenu){}
+    public ArrayList<Integer> obtenerCasillasValidas(int opcionMenu){
+        ArrayList<Integer> validas = new ArrayList<>();
+        OpcionMenu opt = OpcionMenu.values()[opcionMenu];
+        
+        switch (opt){
+            case HIPOTECARPROPIEDAD:
+                validas = modelo.obtenerPropiedadesJugadorSegunEstadoHipoteca(false);
+            break;
+            case CANCELARHIPOTECA:
+                validas = modelo.obtenerPropiedadesJugadorSegunEstadoHipoteca(true);
+            break;
+            default:
+                validas = modelo.obtenerPropiedadesJugador();
+            break;
+        }
+        
+        return validas;
+    }
     
     public String realizarOperacion(int opcionElegida, int casillaElegida){
         opcion = OpcionMenu.values()[opcionElegida];
