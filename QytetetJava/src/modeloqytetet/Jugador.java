@@ -54,7 +54,7 @@ public class Jugador implements Comparable{
         return cartaLibertad;
     }
     
-    Casilla getCasillaActual (){
+    public Casilla getCasillaActual (){
         return casillaActual;
     }
     
@@ -62,7 +62,7 @@ public class Jugador implements Comparable{
         return encarcelado;
     }
     
-    String getNombre(){
+    public String getNombre(){
         return nombre;
     }
     

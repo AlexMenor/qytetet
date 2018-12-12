@@ -82,7 +82,7 @@ public class Tablero {
     
     // Método para obtener una casilla concreta
     
-    Casilla obtenerCasillaNumero(int numeroCasilla){
+    public Casilla obtenerCasillaNumero(int numeroCasilla){
         return casillas.get(numeroCasilla);
     }
     
