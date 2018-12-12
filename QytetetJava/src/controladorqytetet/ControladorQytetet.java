@@ -87,13 +87,7 @@ public class ControladorQytetet {
             case CANCELARHIPOTECA:
                 validas = modelo.obtenerPropiedadesJugadorSegunEstadoHipoteca(true);
             break;
-            case EDIFICARCASA:
-                validas = modelo.obtenerPropiedadesJugador();
-            break;
-            case EDIFICARHOTEL:
-                validas = modelo.obtenerPropiedadesJugador();
-            break;
-            case VENDERPROPIEDAD:
+            default:
                 validas = modelo.obtenerPropiedadesJugador();
             break;
         }
