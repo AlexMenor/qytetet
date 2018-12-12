@@ -99,7 +99,7 @@ public class VistaTextualQytetet {
     }
     
     public int elegirOperacion(){
-        ArrayList <int> arrayDeOpciones = controlador.obtenerOperacionesJuegoValidas();
+        ArrayList <Integer> arrayDeOpciones = controlador.obtenerOperacionesJuegoValidas();
         
        
         ArrayList <String> todasLasOpciones = new ArrayList <> ();
