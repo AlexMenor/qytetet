@@ -15,8 +15,11 @@ module ControladorQytetet
     def initialize
       @modelo = Qytetet.new
       @nombre_jugadores = Array.new
+      
+      
     end
-    def obtener_casillas_validas ()
+    
+    def obtener_operaciones_juego_validas
       array_de_opciones = Array.new
       
       if @modelo.jugadores.empty?
@@ -64,63 +67,80 @@ module ControladorQytetet
     end 
     
     def necesita_elegir_casilla (opcion)
-    
+      opciones_dependientes_de_casilla = Array.new
+      
+      opciones_dependientes_de_casilla.push(OpcionMenu.index(:HIPOTECARPROPIEDAD))
+      opciones_dependientes_de_casilla.push(OpcionMenu.index(:CANCELARHIPOTECA))
+      opciones_dependientes_de_casilla.push(OpcionMenu.index(:EDIFICARCASA))
+      opciones_dependientes_de_casilla.push(OpcionMenu.index(:EDIFICARHOTEL))
+      opciones_dependientes_de_casilla.push(OpcionMenu.index(:VENDERPROPIEDAD))
+      
+      return opciones_dependientes_de_casilla.include?(opcion)
     end
     
-    def obtener_operaciones_juego_validas
-      
+    def obtener_casillas_validas (opcion)
+       opcion_enumerado = OpcionMenu[opcion]
+       
+      case opcion_enumerado
+      when :HIPOTECARPROPIEDAD
+        return @modelo.obtener_propiedades_jugador_segun_estado_hipoteca(false)
+      when :CANCELARHIPOTECA
+        return @modelo.obtener_propiedades_jugador_segun_estado_hipoteca(true)
+      else
+        return @modelo.obtener_propiedades_jugador
+      end
     end
     
     def realizar_operacion(opcion, casilla)
       a_realizar = OpcionMenu[opcion]
       
       case a_realizar
-      when INICIARJUEGO
+      when :INICIARJUEGO
         @modelo.inicializar_juego(@nombre_jugadores)
         to_return = "\nIniciamos el juego con los jugadores #{@nombre_jugadores}"
-      when JUGAR
+      when :JUGAR
         @modelo.jugar
         to_return = "\nDado: #{@modelo.valor} Casilla: #{@modelo.casilla_actual}"
-      when APLICARSORPRESA
+      when :APLICARSORPRESA
         to_return = "\nLa sorpresa es #{@modelo.carta_actual}"
         @modelo.aplicar_sorpresa
-      when INTENTARSALIRCARCELPAGANDOLIBERTAD
+      when :INTENTARSALIRCARCELPAGANDOLIBERTAD
         encarcelado = @modelo.intentar_salir_carcel(ModeloQytetet::MetodoSalirCarcel::PAGANDOLIBERTAD)
         if (encarcelado)
           to_return = "\nNo se ha salido de la cárcel"
         else
           to_return = "\nSe ha salido de la cárcel"
         end
-      when INTENTARSALIDCARCELTIRANDODADO
+      when :INTENTARSALIDCARCELTIRANDODADO
         encarcelado = @modelo.intentar_salir_carcel(ModeloQytetet::MetodoSalirCarcel::TIRANDODADO)
         if (encarcelado)
           to_return = "\nNo se ha salido de la cárcel"
         else
           to_return = "\nSe ha salido de la cárcel"
         end
-      when COMPRARTITULOPROPIEDAD
+      when :COMPRARTITULOPROPIEDAD
         comprado = @modelo.comprar_titulo_propiedad
         if (!comprado)
           to_return = "\nNo se ha comprado la propiedad #{@modelo.casilla_actual}"
         else
           to_return = "\nSe ha comprado la propiedad #{@modelo.casilla_actual}"
         end
-      when HIPOTECARPROPIEDAD
+      when :HIPOTECARPROPIEDAD
         hipotecada = @modelo.hipotecar_propiedad(casilla)
         if (hipotecada)
           to_return = "\nSe ha hipotecado la propiedad #{casilla}"
         else
           to_return = "\nNo se ha hipotecado la propiedad #{casilla}"
         end
-      when CANCELARHIPOTECA
+      when :CANCELARHIPOTECA
         cancelada = @modelo.cancelar_hipoteca(casilla)
         
-        if (hipotecada)
+        if (cancelada)
           to_return = "\nSe ha cancelado la hipoteca de la propiedad #{casilla}"
         else
           to_return = "\nNo se ha cancelado la hipoteca de la propiedad #{casilla}"
         end
-      when EDIFICARCASA
+      when :EDIFICARCASA
         edificada = @modelo.edificar_casa(casilla)
         
         if (edificada)
@@ -128,7 +148,7 @@ module ControladorQytetet
         else
           to_return = "\nNo se ha edificado una casa en la propiedad #{casilla}"
         end
-      when EDIFICARHOTEL
+      when :EDIFICARHOTEL
         edificada = @modelo.edificar_hotel(casilla)
         
         if (edificada)
@@ -136,7 +156,7 @@ module ControladorQytetet
         else
           to_return = "\nNo se ha edificado un hotel en la propiedad #{casilla}"
         end
-      when VENDERPROPIEDAD
+      when :VENDERPROPIEDAD
         vendida = @modelo.vender_propiedad(casilla)
         
         if (vendida)
@@ -144,20 +164,20 @@ module ControladorQytetet
         else
           to_return = "\nNo se ha vendido la propiedad #{casilla}"
         end
-      when PASARTURNO
+      when :PASARTURNO
         @modelo.siguiente_jugador
         to_return = "\nLe toca a #{@modelo.jugador_actual}"
-      when OBTENERRANKING
+      when :OBTENERRANKING
         @modelo.obtener_ranking
         to_return = "\nLos jugadores ordenados: #{@modelo.jugadores}"
-      when TERMINARJUEGO
+      when :TERMINARJUEGO
         @modelo.obtener_ranking
         to_return = "\nJuego terminado. Ranking: #{@modelo.jugadores}"
-      when MOSTRARJUGADORACTUAL
+      when :MOSTRARJUGADORACTUAL
         to_return = "#{@modelo.jugador_actual}"
-      when MOSTRARJUGADORES
+      when :MOSTRARJUGADORES
         to_return = "#{@modelo.jugadores}"
-      when MOSTRARTABLERO
+      when :MOSTRARTABLERO
         to_return = "#{@modelo.tablero}"
       end
 
