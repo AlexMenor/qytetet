@@ -29,6 +29,7 @@ public class ControladorQytetet {
             validas.add(OpcionMenu.MOSTRARJUGADORACTUAL.ordinal());
             validas.add(OpcionMenu.MOSTRARJUGADORES.ordinal());
             validas.add(OpcionMenu.MOSTRARTABLERO.ordinal());
+            validas.add(OpcionMenu.OBTENERRANKING.ordinal());
             switch(modelo.getEstadoJuego()){
                 case JA_CONSORPRESA:
                     validas.add(OpcionMenu.APLICARSORPRESA.ordinal());
@@ -42,9 +43,6 @@ public class ControladorQytetet {
                     break;
                 case JA_PREPARADO:
                     validas.add(OpcionMenu.JUGAR.ordinal());
-                    break;
-                case ALGUNJUGADORENBANCARROTA:
-                    validas.add(OpcionMenu.OBTENERRANKING.ordinal());
                     break;
                 case JA_PUEDEGESTIONAR:
                     validas.add(OpcionMenu.PASARTURNO.ordinal());
