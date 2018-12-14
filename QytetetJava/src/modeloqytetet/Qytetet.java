@@ -98,6 +98,7 @@ public class Qytetet {
     
     public void inicializarJuego (ArrayList<String> nombres){
         inicializarTablero();
+        dado = Dado.getInstance();
         inicializarCartasSorpresa();
         inicializarJugadores (nombres);
         salidaJugadores();

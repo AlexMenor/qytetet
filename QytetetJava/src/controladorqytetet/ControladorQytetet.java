@@ -9,7 +9,15 @@ public class ControladorQytetet {
     // Atributos
     private OpcionMenu opcion;
     private modeloqytetet.Qytetet modelo;
-    private ArrayList<String> nombreJugadores = new ArrayList<>();
+    private ArrayList<String> nombreJugadores;
+
+    public ControladorQytetet(ArrayList<String> nombreJugadores){
+        modelo = modeloqytetet.Qytetet.getInstance();
+        this.nombreJugadores = nombreJugadores;
+
+        modelo.inicializarJuego(nombreJugadores);
+
+    }
     
     //Métodos públicos
     
@@ -111,7 +119,7 @@ public class ControladorQytetet {
                 modelo.jugar();
                 mensajeInformativo = "Valor del dado: " + modelo.getValorDado()
                         + "\nEl jugador " + nombreJugador 
-                        + " ha caído en la casilla: " + casillaActual;
+                        + " ha caído en la casilla: " + modelo.getJugadorActual().getCasillaActual();
                 break;
             case APLICARSORPRESA:
                 mensajeInformativo = "Sorpresa: " + modelo.getCartaActual();

@@ -1,5 +1,3 @@
-
-
 package vistatextualqytetet;
 
 import java.util.ArrayList;
@@ -36,8 +34,24 @@ public class VistaTextualQytetet {
     // Atributos privados
     private  ControladorQytetet controlador;
     private  modeloqytetet.Qytetet modelo;
+    boolean sigueElJuego;
+
+    public VistaTextualQytetet(){
+
+            /* Puesto que controlador es el que debería comunicarse con el modelo
+            y no la vista, hemos incluido en el constructor de controlador un 
+            parámetro para los nombres y que sea el quien inicialice el modelo
+            a un estado consistente */
+
+        controlador = new ControladorQytetet(obtenerNombreJugadores());
+        modelo = modeloqytetet.Qytetet.getInstance();
+        sigueElJuego = true;
+    }
     
     // Métodos públicos
+
+    public ControladorQytetet getControlador(){return controlador;}
+    public modeloqytetet.Qytetet getModelo(){return modelo;}
     
     public ArrayList<String> obtenerNombreJugadores(){
         System.out.println("Introduzca el número de jugadores: ");
@@ -115,14 +129,19 @@ public class VistaTextualQytetet {
                 
         String valorSeleccionado = leerValorCorrecto(arrayDeStrings);
         
+        sigueElJuego = !valorSeleccionado.equals("Terminar el juego");
+        
         return todasLasOpciones.indexOf(valorSeleccionado);
+    }
+
+    public boolean sigueElJuego(){
+        return sigueElJuego;
     }
 
     public static void main (String [] args){
         VistaTextualQytetet ui = new VistaTextualQytetet();
-        ControladorQytetet controlador = ui.controlador;
+        ControladorQytetet controlador = ui.getControlador();
 
-        controlador.setNombreJugadores(ui.obtenerNombreJugadores());
         int operacionElegida, casillaElegida = 0;
         boolean necesitaElegirCasilla;
         do {
@@ -133,7 +152,7 @@ public class VistaTextualQytetet {
             if (!necesitaElegirCasilla || casillaElegida >= 0)
                 System.out.println(controlador.realizarOperacion(operacionElegida,
                 casillaElegida));
-        } while (true);
+        } while (ui.sigueElJuego());
     }
 }
 
