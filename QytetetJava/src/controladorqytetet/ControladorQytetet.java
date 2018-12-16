@@ -6,24 +6,26 @@ import modeloqytetet.MetodoSalirCarcel;
 import modeloqytetet.Casilla;
 
 public class ControladorQytetet {
+    //Singleton
+    
+    static private ControladorQytetet instance = new ControladorQytetet();
     // Atributos
     private OpcionMenu opcion;
     private modeloqytetet.Qytetet modelo;
     private ArrayList<String> nombreJugadores;
 
-    public ControladorQytetet(ArrayList<String> nombreJugadores){
+    private ControladorQytetet(){
         modelo = modeloqytetet.Qytetet.getInstance();
-        this.nombreJugadores = nombreJugadores;
-
-        modelo.inicializarJuego(nombreJugadores);
-
+    }
+    
+    public static ControladorQytetet getInstance(ArrayList<String> nombreJugadores){
+        instance.nombreJugadores = nombreJugadores;
+        instance.modelo.inicializarJuego(nombreJugadores);
+        
+        return instance;
     }
     
     //Métodos públicos
-    
-    public void setNombreJugadores(ArrayList<String> nombres){
-        nombreJugadores = nombres;
-    }
     
     public ArrayList<Integer> obtenerOperacionesJuegoValidas(){
         ArrayList<Integer> validas = new ArrayList<>();

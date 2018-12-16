@@ -39,11 +39,11 @@ public class VistaTextualQytetet {
     public VistaTextualQytetet(){
 
             /* Puesto que controlador es el que debería comunicarse con el modelo
-            y no la vista, hemos incluido en el constructor de controlador un 
+            y no la vista, hemos incluido en el "constructor" de controlador un 
             parámetro para los nombres y que sea el quien inicialice el modelo
             a un estado consistente */
 
-        controlador = new ControladorQytetet(obtenerNombreJugadores());
+        controlador = ControladorQytetet.getInstance(obtenerNombreJugadores());
         modelo = modeloqytetet.Qytetet.getInstance();
         sigueElJuego = true;
     }

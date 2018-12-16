@@ -113,11 +113,9 @@ public class Jugador implements Comparable{
         
         if (puedoEdificarCasa(titulo)){
             int costeEdificarCasa = titulo.getPrecioEdificar();
-            if (tengoSaldo(costeEdificarCasa)){
-                titulo.edificarCasa();
-                modificarSaldo(-costeEdificarCasa);
-                edificada = true;
-            }
+            titulo.edificarCasa();
+            modificarSaldo(-costeEdificarCasa);
+            edificada = true;
         }
         
         return edificada;
@@ -133,11 +131,10 @@ public class Jugador implements Comparable{
         
         if (puedoEdificarHotel(titulo)){
             int costeEdificarHotel = titulo.getPrecioEdificar();
-            if (tengoSaldo(costeEdificarHotel)){
-                titulo.edificarHotel();
-                modificarSaldo(-costeEdificarHotel);
-                edificado = true;
-            }
+            titulo.edificarHotel();
+            modificarSaldo(-costeEdificarHotel);
+            edificado = true;
+            
         }
         
         return edificado;
