@@ -90,14 +90,12 @@ module ControladorQytetet
     
     def realizar_operacion(opcion, casilla)
       a_realizar = OpcionMenu[opcion]
+      
 
       case a_realizar
-      when :INICIARJUEGO
-        #@modelo.inicializar_juego(@nombre_jugadores)
-        to_return = "\nIniciamos el juego con los jugadores #{@nombre_jugadores}"
       when :JUGAR
         @modelo.jugar
-        to_return = "\nDado: #{@modelo.get_valor_dado} Casilla: #{@modelo.jugador_actual.casilla_actual}"
+        to_return = "\nDado: #{@modelo.get_valor_dado} \nCasilla: #{@modelo.jugador_actual.casilla_actual}"
       when :APLICARSORPRESA
         to_return = "\nLa sorpresa es #{@modelo.carta_actual}"
         @modelo.aplicar_sorpresa

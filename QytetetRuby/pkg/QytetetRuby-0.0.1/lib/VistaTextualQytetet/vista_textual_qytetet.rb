@@ -58,10 +58,16 @@ module VistaTextualQytetet
     end
     
     def leer_valor_correcto (valores_correctos)
-      puts "Seleccione una opción: \n"
+      puts "********* Seleccione una opción: *********\n"
       valores_correctos.each {|v| puts v}
+      
+      first_try = true
       begin
+        if (!first_try)
+          puts "Prueba otra vez..."
+        end
         opcion = gets.chomp
+        first_try = false
       end while(!valores_correctos.include?(opcion))
       
       return opcion
@@ -113,6 +119,11 @@ module VistaTextualQytetet
         end
         if(!necesita_elegir_casilla || casilla_elegida>=0)
           puts controlador.realizar_operacion(operacion_elegida,casilla_elegida)
+          
+        # Esto sirve para no tener que hacer scroll para ver la opción aplicada
+        # y que de tiempo a examinar lo que ha pasado
+        puts "Pulse cualquier tecla para continuar..."
+        gets
         end
       end
     end
