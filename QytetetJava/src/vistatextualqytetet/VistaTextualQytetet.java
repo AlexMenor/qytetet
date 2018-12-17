@@ -22,7 +22,7 @@ public class VistaTextualQytetet {
             "Mostrar jugadores",
             "Mostrar tablero"};
     static String [] casillas = {"0. Salida", "1. Huerto de Calixto y Melibea",
-        "2. Avda de los cipreses", "3. Avda CArmen Martín Gaite", "4. Parking",
+        "2. Avda de los cipreses", "3. Avda Carmen Martín Gaite", "4. Parking",
         "5. Calle Cuarta", "6. Avda Vicente del Bosque", "7. Sorpresa",
         "8. Rana de la universidad", "9. Cárcel", "10. Palacio de Monterrey",
         "11. Plaza de Barcelona", "12. Juez", "13. Ieronimus", "14. Sorpresa",

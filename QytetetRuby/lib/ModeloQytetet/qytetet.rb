@@ -75,7 +75,7 @@ module ModeloQytetet
       @mazo << Sorpresa.new("Quedas libres de la cárcel, puedes guardar esto para luego", 
         0, TipoSorpresa::SALIRCARCEL) 
       
-      #@mazo.shuffle!
+      @mazo.shuffle!
     end
     
     def inicializar_tablero
@@ -377,6 +377,7 @@ module ModeloQytetet
       else
         carta = @jugador_actual.devolver_carta_libertad
         @mazo << carta
+        @jugador_actual.carta_libertad = nil
         @estado_juego = ModeloQytetet::EstadoJuego::JA_PUEDEGESTIONAR
       end
     end

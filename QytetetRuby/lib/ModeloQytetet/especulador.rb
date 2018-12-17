@@ -50,7 +50,7 @@ module ModeloQytetet
    
     # Devuelve true si puede edificar un hotel en una propiedad
     def puedo_edificar_hotel (titulo)
-      tengo_suficientes_casas = titulo.num_casas == 4
+      tengo_suficientes_casas = titulo.num_casas == 8
       return @saldo >= titulo.precio_edificar && titulo.num_hoteles < 8 && tengo_suficientes_casas
     end
  

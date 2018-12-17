@@ -149,8 +149,7 @@ public class Qytetet {
         + " esto para luego", 0, TipoSorpresa.SALIRCARCEL));
         
             // Barajamos
-        /*Comentado para probar CONVERTIRME
-        Collections.shuffle(mazo);*/
+        Collections.shuffle(mazo);
         
     }
     
@@ -326,6 +325,7 @@ public class Qytetet {
         else{
             Sorpresa carta = jugadorActual.getCartaLibertad();
             mazo.add (carta);
+            jugadorActual.setCartaLibertad(null);
             setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
         }
     }
