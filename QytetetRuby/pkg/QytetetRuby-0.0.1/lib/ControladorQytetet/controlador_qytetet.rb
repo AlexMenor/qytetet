@@ -22,13 +22,9 @@ module ControladorQytetet
     
     def obtener_operaciones_juego_validas
       array_de_opciones = Array.new
+     
       
-      if @modelo.jugadores.empty?
-        array_de_opciones.push(OpcionMenu.index(:INICIARJUEGO))
-        return array_de_opciones
-      end
-      
-      array_de_opciones.push(OpcionMenu.index(:TERMINAR_JUEGO))
+      array_de_opciones.push(OpcionMenu.index(:TERMINARJUEGO))
       array_de_opciones.push(OpcionMenu.index(:MOSTRARJUGADORACTUAL))
       array_de_opciones.push(OpcionMenu.index(:MOSTRARJUGADORES))
       array_de_opciones.push(OpcionMenu.index(:MOSTRARTABLERO))

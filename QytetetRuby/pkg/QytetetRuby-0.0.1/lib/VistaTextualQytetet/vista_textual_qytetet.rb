@@ -6,7 +6,7 @@ require_relative "../ControladorQytetet/controlador_qytetet"
 
 module VistaTextualQytetet
   class VistaTextualQytetet
-    attr_reader:controlador, :modelo
+    attr_reader:controlador, :modelo, :sigue_el_juego
     
     include ControladorQytetet
     include ModeloQytetet
@@ -15,6 +15,7 @@ module VistaTextualQytetet
       @controlador = ControladorQytetet.instance
       @controlador.inicializar_modelo(obtener_nombre_jugadores)
       @modelo = Qytetet.instance
+      @sigue_el_juego = true
     end
     
     def obtener_nombre_jugadores
@@ -91,6 +92,8 @@ module VistaTextualQytetet
       end
       
       valor_correcto = leer_valor_correcto(ops)
+      @sigue_el_juego = valor_correcto != "Terminar el juego"
+      
       
       return opciones.index(valor_correcto)
     end
@@ -101,7 +104,7 @@ module VistaTextualQytetet
       operacion_elegida = 0
       casilla_elegida = 0
       
-      loop do
+      while ui.sigue_el_juego
         operacion_elegida = ui.elegir_operacion
         necesita_elegir_casilla = controlador.necesita_elegir_casilla(operacion_elegida)
         
