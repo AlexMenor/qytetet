@@ -85,7 +85,7 @@ public class Jugador implements Comparable{
     // Método que devuelve si debe ir a la cárcel
     
     protected boolean deboIrACarcel (){
-        return tengoCartaLibertad();
+        return !tengoCartaLibertad();
     }
 //    
 //    // Método que devuelve el factor especulador

@@ -1,8 +1,7 @@
 # encoding: utf-8
-
+require_relative "especulador"
 module ModeloQytetet
   class Jugador
-  
     #Modificadores y consultores
   
     attr_reader:saldo,:nombre,:propiedades
@@ -166,7 +165,7 @@ module ModeloQytetet
     # Devuelve true si tiene carta libertad
   
     def debo_ir_a_carcel
-      return tengo_carta_libertad
+      return !tengo_carta_libertad
     end
   
     # Cancela la hipoteca de un titulo
