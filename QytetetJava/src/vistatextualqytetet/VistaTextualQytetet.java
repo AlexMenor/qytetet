@@ -142,9 +142,10 @@ public class VistaTextualQytetet {
         VistaTextualQytetet ui = new VistaTextualQytetet();
         ControladorQytetet controlador = ui.getControlador();
 
-        int operacionElegida, casillaElegida = 0;
+        int operacionElegida, casillaElegida;
         boolean necesitaElegirCasilla;
         do {
+            casillaElegida = 0;
             operacionElegida = ui.elegirOperacion();
             necesitaElegirCasilla = controlador.necesitaElegirCasilla(operacionElegida);
             if (necesitaElegirCasilla)

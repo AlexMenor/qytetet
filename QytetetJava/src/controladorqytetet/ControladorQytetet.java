@@ -88,7 +88,7 @@ public class ControladorQytetet {
     }
     
     public ArrayList<Integer> obtenerCasillasValidas(int opcionMenu){
-        ArrayList<Integer> validas = new ArrayList<>();
+        ArrayList<Integer> validas;
         OpcionMenu opt = OpcionMenu.values()[opcionMenu];
         
         switch (opt){
@@ -164,7 +164,7 @@ public class ControladorQytetet {
                         casillaSeleccionada;
                 break;
            case CANCELARHIPOTECA:
-                modelo.hipotecarPropiedad(casillaElegida);
+                modelo.cancelarHipoteca(casillaElegida);
                 mensajeInformativo = nombreJugador + " ha cancelado la hipoteca de: " +
                         casillaSeleccionada;
                 break;
