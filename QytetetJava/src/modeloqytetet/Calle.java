@@ -28,11 +28,6 @@ public class Calle extends Casilla {
     protected boolean soyEdificable() {
        return true;
     }
-   
-    /* 
-       Devuelve el dinero a pagar por el
-       alquiler de una casilla
-    */
     
     @Override
     public int pagarAlquiler (){

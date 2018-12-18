@@ -7,14 +7,11 @@ import modeloqytetet.Casilla;
 import modeloqytetet.EstadoJuego;
 
 public class ControladorQytetet {
+    
     //Singleton
     
     static private ControladorQytetet instance = new ControladorQytetet();
-    // Atributos
-    private OpcionMenu opcion;
-    private modeloqytetet.Qytetet modelo;
-    private ArrayList<String> nombreJugadores;
-
+    
     private ControladorQytetet(){
         modelo = modeloqytetet.Qytetet.getInstance();
     }
@@ -26,7 +23,16 @@ public class ControladorQytetet {
         return instance;
     }
     
+    // Atributos
+    
+    private OpcionMenu opcion;
+    private modeloqytetet.Qytetet modelo;
+    private ArrayList<String> nombreJugadores;
+    
+  
     //Métodos públicos
+    
+    // Devuelve un array con las opciones disponibles dependiendo del estado del juego
     
     public ArrayList<Integer> obtenerOperacionesJuegoValidas(){
         ArrayList<Integer> validas = new ArrayList<>();
@@ -77,6 +83,8 @@ public class ControladorQytetet {
         return validas;
     }
     
+    // Método helper para saber que operaciones necesita la elección de casilla
+    
     public boolean necesitaElegirCasilla (int opcionMenu){
         boolean necesita = opcionMenu == OpcionMenu.HIPOTECARPROPIEDAD.ordinal() ||
                            opcionMenu == OpcionMenu.CANCELARHIPOTECA.ordinal() ||
@@ -86,6 +94,8 @@ public class ControladorQytetet {
         
         return necesita;
     }
+    
+    // Devuelve un array de enteros con los índices de casillas válidas, dependiendo de la opción elegida
     
     public ArrayList<Integer> obtenerCasillasValidas(int opcionMenu){
         ArrayList<Integer> validas;
@@ -105,6 +115,8 @@ public class ControladorQytetet {
         
         return validas;
     }
+    
+    // Método que devuelve un mensaje feedback tras realizar la operación correspondiente
     
     public String realizarOperacion(int opcionElegida, int casillaElegida){
         opcion = OpcionMenu.values()[opcionElegida];

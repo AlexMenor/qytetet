@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class VistaTextualQytetet {
     
+    // Arrays estáticos para almacenar los Strings de las opciones y casillas
+    
     static String [] opciones = {"Iniciar Juego", "Jugar", "Aplicar sorpresa",
             "Intentar salir de la cárcel pagando precio de libertad",
             "Intentar salir de la cárcel tirando un dado",
@@ -53,6 +55,8 @@ public class VistaTextualQytetet {
     public ControladorQytetet getControlador(){return controlador;}
     public modeloqytetet.Qytetet getModelo(){return modelo;}
     
+    // Helper para obtener el número y el nombre de jugadores de la partida
+    
     public ArrayList<String> obtenerNombreJugadores(){
         System.out.println("Introduzca el número de jugadores: ");
         String line = in.nextLine();
@@ -63,12 +67,14 @@ public class VistaTextualQytetet {
         for (int i = 1; i <= n_jugadores; i++){
             System.out.println("Introduce el jugador " + i);
             String s = in.nextLine ();
-            nombres.add(s);
+            nombres.add(s.toUpperCase());
         }
         
         return nombres;
     
     }
+    
+    // Usa el controlador para generar una lista de opciones válidas y devuelve el índice de la seleccionada
     
     public int elegirCasilla(int opcionMenu){
         
@@ -92,6 +98,8 @@ public class VistaTextualQytetet {
         
     }
     
+    // Método helper para obtener respuestas correctas del usuario
+    
     public String leerValorCorrecto(ArrayList<String> valoresCorrectos){
         
         System.out.println("******** Seleccione una opción: ********\n");
@@ -111,6 +119,8 @@ public class VistaTextualQytetet {
         
         return input;     
     }
+    
+    // Consigue del controlador las operaciones válidas en ese momento y obtiene el índice de la seleccionada
     
     public int elegirOperacion(){
         ArrayList <Integer> arrayDeOpciones = controlador.obtenerOperacionesJuegoValidas();
@@ -134,9 +144,15 @@ public class VistaTextualQytetet {
         return todasLasOpciones.indexOf(valorSeleccionado);
     }
 
+    // Lo utilizamos para acabar el programa una vez se seleccione "Terminar Juego"
+    
     public boolean sigueElJuego(){
         return sigueElJuego;
     }
+    
+    /*
+    ********** MAIN **********
+    */
 
     public static void main (String [] args){
         VistaTextualQytetet ui = new VistaTextualQytetet();
@@ -153,6 +169,9 @@ public class VistaTextualQytetet {
             if (!necesitaElegirCasilla || casillaElegida >= 0)
                 System.out.println(controlador.realizarOperacion(operacionElegida,
                 casillaElegida));
+            if (casillaElegida == -1)
+                System.out.println("La opción seleccionada no es compatible con la situación actual de " 
+                        + ui.modelo.getJugadorActual().getNombre());
             
             System.out.println("Pulse cualquier tecla para continuar...");
             in.nextLine();
