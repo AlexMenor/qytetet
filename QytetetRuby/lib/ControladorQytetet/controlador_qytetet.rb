@@ -16,10 +16,17 @@ module ControladorQytetet
       @modelo = Qytetet.instance
     end
     
+    # Inicializa el modelo desde la vista,
+    # para que no tengan que contactar entre ellos
+    
     def inicializar_modelo (nombres)
        @nombre_jugadores = nombres
        @modelo.inicializar_juego(nombres)
     end
+    
+    # Devuelve un array de enteros con los
+    # índices de las operaciones válidas
+    # dependiendo del estado actual del juego
     
     def obtener_operaciones_juego_validas
       array_de_opciones = Array.new
@@ -64,6 +71,8 @@ module ControladorQytetet
     
     end 
     
+    # Helper para ver si una operación necesita elección de casilla
+    
     def necesita_elegir_casilla (opcion)
       opciones_dependientes_de_casilla = Array.new
       
@@ -75,6 +84,9 @@ module ControladorQytetet
       
       return opciones_dependientes_de_casilla.include?(opcion)
     end
+    
+    # Devuelve un array de índices enteros de casillas válidas
+    # dependiendo de la opción que se pasas como parámetro
     
     def obtener_casillas_validas (opcion)
        opcion_enumerado = OpcionMenu[opcion]
@@ -88,6 +100,9 @@ module ControladorQytetet
         return @modelo.obtener_propiedades_jugador
       end
     end
+    
+    # Método que aplica todas las operaciones seleccionadas
+    # en la vista, y devuelve un mensaje feedback
     
     def realizar_operacion(opcion, casilla)
       a_realizar = OpcionMenu[opcion]

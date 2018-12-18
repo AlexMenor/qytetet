@@ -25,12 +25,16 @@ module VistaTextualQytetet
     include ControladorQytetet
     include ModeloQytetet
     
+    # Constructor
+    
     def initialize
       @controlador = ControladorQytetet.instance
       @controlador.inicializar_modelo(obtener_nombre_jugadores)
       @modelo = Qytetet.instance
       @sigue_el_juego = true
     end
+    
+    # Método helper que devuelve un array de nombres
     
     def obtener_nombre_jugadores
       puts "Introduce el número de jugadores"
@@ -48,6 +52,8 @@ module VistaTextualQytetet
       end
       nombres
     end
+    
+    # Método para elegir una casilla, dada una opción que la necesite
     
     def elegir_casilla (opcion)
       casillas = ["0. Salida", "1. Huerto de Calixto y Melibea",
@@ -72,6 +78,10 @@ module VistaTextualQytetet
       end
     end
     
+    # Método helper para seleccionar un valor, dentro de unas
+    # opciones que se pasan como parámetro
+    
+    
     def leer_valor_correcto (valores_correctos)
       puts "********* Seleccione una opción: *********\n"
       valores_correctos.each {|v| puts v}
@@ -87,6 +97,8 @@ module VistaTextualQytetet
       
       return opcion
     end
+    
+    # Método para seleccionar operación, como un menú
     
     def elegir_operacion
       opciones = ["Iniciar Juego", "Jugar", "Aplicar sorpresa",
@@ -118,6 +130,8 @@ module VistaTextualQytetet
       
       return opciones.index(valor_correcto)
     end
+    
+    #####################  MAIN #############################
     
     def self.main
       ui = VistaTextualQytetet.new

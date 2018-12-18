@@ -173,6 +173,8 @@ public class VistaTextualQytetet {
                 System.out.println("La opción seleccionada no es compatible con la situación actual de " 
                         + ui.modelo.getJugadorActual().getNombre());
             
+            // Para facilitar al usuario ver el resultado de sus acciones
+            
             System.out.println("Pulse cualquier tecla para continuar...");
             in.nextLine();
         } while (ui.sigueElJuego());
