@@ -199,6 +199,7 @@ public class ControladorQytetet {
             case PASARTURNO:
                 modelo.siguienteJugador();
                 mensajeInformativo = nombreJugador + " ha preferido pasar turno";
+                mensajeInformativo += "\nLe toca a " + modelo.getJugadorActual().getNombre();
                 break;
             case OBTENERRANKING:
                 modelo.obtenerRanking();

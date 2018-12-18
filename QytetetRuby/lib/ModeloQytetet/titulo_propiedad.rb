@@ -106,7 +106,9 @@ module ModeloQytetet
     
     def edificar_hotel
       @num_hoteles += 1
-      @num_casas -= 4
+      if (@num_casas>0)
+        @num_casas = 0
+      end
     end
     
     # Cancela la hipoteca de la propiedad

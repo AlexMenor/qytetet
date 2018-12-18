@@ -42,6 +42,7 @@ module VistaTextualQytetet
         
         puts "Introduce el nombre del jugador #{i}"
         cadena = gets.chomp
+        cadena.upcase!
         nombres << cadena
         
       end
@@ -125,6 +126,7 @@ module VistaTextualQytetet
       casilla_elegida = 0
       
       while ui.sigue_el_juego
+        casilla_elegida = 0
         operacion_elegida = ui.elegir_operacion
         necesita_elegir_casilla = controlador.necesita_elegir_casilla(operacion_elegida)
         
@@ -133,12 +135,15 @@ module VistaTextualQytetet
         end
         if(!necesita_elegir_casilla || casilla_elegida>=0)
           puts controlador.realizar_operacion(operacion_elegida,casilla_elegida)
-          
+        end
+        if(casilla_elegida == -1)
+          puts "La opción seleccionada no es compatible con la situación de #{ui.modelo.jugador_actual.nombre}"
+        end
         # Esto sirve para no tener que hacer scroll para ver la opción aplicada
         # y que de tiempo a examinar lo que ha pasado
         puts "Pulse cualquier tecla para continuar..."
         gets
-        end
+        
       end
     end
   main

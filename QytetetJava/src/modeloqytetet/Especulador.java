@@ -55,14 +55,16 @@ public class Especulador extends Jugador {
     
     @Override
     protected boolean puedoEdificarCasa(TituloPropiedad titulo){
-        return (titulo.getNumCasas() < 8 && tengoSaldo(titulo.getPrecioEdificar()));
+        return tengoSaldo(titulo.getPrecioEdificar()) && titulo.getNumCasas() < 8 && titulo.getNumHoteles() == 0;
     }
     
     // Método que sobreescribe el de jugador y devuelve si puede edificar una casa
     
     @Override
     protected boolean puedoEdificarHotel(TituloPropiedad titulo){
-        return (titulo.getNumHoteles() < 8 && tengoSaldo(titulo.getPrecioEdificar()) && titulo.getNumCasas() == 8);
+        boolean tengo_suficientes_casas = titulo.getNumCasas() == 8;
+        return tengoSaldo(titulo.getPrecioEdificar()) && ((titulo.getNumHoteles() == 0 && tengo_suficientes_casas)
+                || (titulo.getNumHoteles() < 8 && titulo.getNumHoteles() > 0));
     }
     
     @Override

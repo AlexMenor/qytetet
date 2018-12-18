@@ -95,13 +95,15 @@ public class Jugador implements Comparable{
     // Devuelve si puede edificar una casa
     
     protected boolean puedoEdificarCasa (TituloPropiedad titulo){
-        return (titulo.getNumCasas() < 4 && tengoSaldo(titulo.getPrecioEdificar()));
+        return tengoSaldo(titulo.getPrecioEdificar()) && titulo.getNumCasas() < 4 && titulo.getNumHoteles() == 0;
     }
     
     // Devuelve si puede edificar un hotel
     
     protected boolean puedoEdificarHotel (TituloPropiedad titulo){
-        return (titulo.getNumHoteles() < 4 && tengoSaldo(titulo.getPrecioEdificar()) && titulo.getNumCasas() == 4);
+        boolean tengo_suficientes_casas = titulo.getNumCasas() == 4;
+        return tengoSaldo(titulo.getPrecioEdificar()) && ((titulo.getNumHoteles() == 0 && tengo_suficientes_casas)
+                || (titulo.getNumHoteles() < 4 && titulo.getNumHoteles() > 0));
     }
     
     /*
