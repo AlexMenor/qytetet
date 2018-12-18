@@ -4,6 +4,7 @@ package controladorqytetet;
 import java.util.ArrayList;
 import modeloqytetet.MetodoSalirCarcel;
 import modeloqytetet.Casilla;
+import modeloqytetet.EstadoJuego;
 
 public class ControladorQytetet {
     //Singleton
@@ -119,7 +120,11 @@ public class ControladorQytetet {
                 break;
             case JUGAR:
                 modelo.jugar();
-                mensajeInformativo = "Valor del dado: " + modelo.getValorDado()
+                if (modelo.getEstadoJuego() == EstadoJuego.JA_ENCARCELADO)
+                    mensajeInformativo = "El jugador " + nombreJugador+ " ha caído en la "
+                            + "casilla juez y tendrá que pasar un tiempo en la cárcel...";
+                else
+                    mensajeInformativo = "Valor del dado: " + modelo.getValorDado()
                         + "\nEl jugador " + nombreJugador 
                         + " ha caído en la casilla: " + modelo.getJugadorActual().getCasillaActual();
                 break;

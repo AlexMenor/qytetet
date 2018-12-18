@@ -317,7 +317,7 @@ public class Qytetet {
     */
     
     private void encarcelarJugador (){
-        if (!jugadorActual.deboIrACarcel()){
+        if (jugadorActual.deboIrACarcel()){
             Casilla casillaCarcel = tablero.getCarcel();
             jugadorActual.irACarcel(casillaCarcel);
             setEstadoJuego (EstadoJuego.JA_ENCARCELADO);

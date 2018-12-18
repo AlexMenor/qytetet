@@ -94,7 +94,7 @@ public class VistaTextualQytetet {
     
     public String leerValorCorrecto(ArrayList<String> valoresCorrectos){
         
-        System.out.println("Seleccione una opción: \n");
+        System.out.println("******** Seleccione una opción: ********\n");
         
         for (String opcion : valoresCorrectos)
             System.out.println(opcion);
@@ -152,6 +152,9 @@ public class VistaTextualQytetet {
             if (!necesitaElegirCasilla || casillaElegida >= 0)
                 System.out.println(controlador.realizarOperacion(operacionElegida,
                 casillaElegida));
+            
+            System.out.println("Pulse cualquier tecla para continuar...");
+            in.nextLine();
         } while (ui.sigueElJuego());
     }
 }
