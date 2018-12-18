@@ -147,7 +147,7 @@ module ControladorQytetet
         if (edificada)
           to_return = "\nSe ha edificado una casa en la propiedad #{casilla}"
         else
-          to_return = "\nNo se ha edificado una casa en la propiedad #{casilla}"
+          to_return = "\nNo se ha podido edificar una casa en la propiedad #{casilla}"
         end
       when :EDIFICARHOTEL
         edificada = @modelo.edificar_hotel(casilla)
@@ -155,7 +155,7 @@ module ControladorQytetet
         if (edificada)
           to_return = "\nSe ha edificado un hotel en la propiedad #{casilla}"
         else
-          to_return = "\nNo se ha edificado un hotel en la propiedad #{casilla}"
+          to_return = "\nNo se ha podido edificar un hotel en la propiedad #{casilla}"
         end
       when :VENDERPROPIEDAD
         vendida = @modelo.vender_propiedad(casilla)
@@ -163,11 +163,11 @@ module ControladorQytetet
         if (vendida)
           to_return = "\nSe ha vendido la propiedad #{casilla}"
         else
-          to_return = "\nNo se ha vendido la propiedad #{casilla}"
+          to_return = "\nNo se ha podido vender la propiedad #{casilla}"
         end
       when :PASARTURNO
         @modelo.siguiente_jugador
-        to_return = "\nLe toca a #{@modelo.jugador_actual}"
+        to_return = "\nLe toca a #{@modelo.jugador_actual.nombre}"
       when :OBTENERRANKING
         @modelo.obtener_ranking
         to_return = "\nLos jugadores ordenados: #{@modelo.jugadores}"
