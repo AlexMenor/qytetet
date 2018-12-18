@@ -57,7 +57,7 @@ public class Qytetet {
     
     public Sorpresa getCartaActual () {return cartaActual;}
     
-    Dado getDado() {return dado;}
+    public Dado getDado() {return dado;}
     
     public Jugador getJugadorActual () {return jugadorActual;}
     

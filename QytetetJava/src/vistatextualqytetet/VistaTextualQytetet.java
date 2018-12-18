@@ -156,6 +156,7 @@ public class VistaTextualQytetet {
             System.out.println("Pulse cualquier tecla para continuar...");
             in.nextLine();
         } while (ui.sigueElJuego());
+        
     }
 }
 

@@ -2,6 +2,7 @@
 
 Dir["../ModeloQytetet/*.rb"].each {|file| require_relative file }
 require_relative "../ModeloQytetet/qytetet.rb"
+require_relative "../ModeloQytetet/metodo_salir_carcel.rb"
 require_relative "opcion_menu"
 require "singleton"
 
@@ -95,19 +96,24 @@ module ControladorQytetet
       case a_realizar
       when :JUGAR
         @modelo.jugar
-        to_return = "\nDado: #{@modelo.get_valor_dado} \nCasilla: #{@modelo.jugador_actual.casilla_actual}"
-      when :APLICARSORPRESA
+        if @modelo.estado_juego == EstadoJuego::JA_ENCARCELADO
+          to_return = "\n El jugador #{@modelo.jugador_actual.nombre} ha caído en la " +  
+                    "casilla juez y tendrá que pasar un tiempo en la cárcel..."
+        else
+          to_return = "\nDado: #{@modelo.get_valor_dado} \nCasilla: #{@modelo.jugador_actual.casilla_actual}"
+        end
+        when :APLICARSORPRESA
         to_return = "\nLa sorpresa es #{@modelo.carta_actual}"
         @modelo.aplicar_sorpresa
       when :INTENTARSALIRCARCELPAGANDOLIBERTAD
-        encarcelado = @modelo.intentar_salir_carcel(ModeloQytetet::MetodoSalirCarcel::PAGANDOLIBERTAD)
+        encarcelado = @modelo.intentar_salir_carcel(MetodoSalirCarcel::PAGANDOLIBERTAD)
         if (encarcelado)
           to_return = "\nNo se ha salido de la cárcel"
         else
           to_return = "\nSe ha salido de la cárcel"
         end
-      when :INTENTARSALIDCARCELTIRANDODADO
-        encarcelado = @modelo.intentar_salir_carcel(ModeloQytetet::MetodoSalirCarcel::TIRANDODADO)
+      when :INTENTARSALIRCARCELTIRANDODADO
+        encarcelado = @modelo.intentar_salir_carcel(MetodoSalirCarcel::TIRANDODADO)
         if (encarcelado)
           to_return = "\nNo se ha salido de la cárcel"
         else

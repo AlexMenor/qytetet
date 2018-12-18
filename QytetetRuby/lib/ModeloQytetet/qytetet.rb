@@ -313,14 +313,14 @@ module ModeloQytetet
     # El jugador prueba suerte para salir de la cárcel con este método
     
     def intentar_salir_carcel (metodo)
-      if (metodo == ModeloQytetet::MetodoSalirCarcel::TIRANDODADO)
+      if (metodo == MetodoSalirCarcel::TIRANDODADO)
         resultado = tirar_dado()
         
         if (resultado >= 5)
           @jugador_actual.encarcelado = false
         end
       
-      elsif (metodo == ModeloQytetet::MetodoSalirCarcel::PAGANDOLIBERTAD)
+      elsif (metodo == MetodoSalirCarcel::PAGANDOLIBERTAD)
         @jugador_actual.pagar_libertad(@@PRECIO_LIBERTAD)
       end
       

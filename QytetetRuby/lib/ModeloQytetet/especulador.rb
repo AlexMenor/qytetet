@@ -1,5 +1,5 @@
 # encoding: utf-8
-require_relative "jugador"
+require_relative "jugador.rb"
 module ModeloQytetet
   class Especulador < Jugador
     attr_accessor :fianza

@@ -13,8 +13,7 @@ module ModeloQytetet
     
     def tirar
       random = Random.new
-      
-      @valor = random.rand(7)
+      @valor = random.rand(6) + 1
       return @valor
     end
     

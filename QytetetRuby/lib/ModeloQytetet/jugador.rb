@@ -276,9 +276,9 @@ module ModeloQytetet
   
     def pagar_libertad (cantidad)
       tengo_saldo = tengo_saldo (cantidad)
-    
+
       if (tengo_saldo)
-        encarcelado = false
+        @encarcelado = false
         modificar_saldo (-cantidad)
       end
     end
