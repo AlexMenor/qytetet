@@ -12,13 +12,14 @@ require_relative "../ModeloQytetet/jugador"
 require_relative "../ModeloQytetet/metodo_salir_carcel"
 require_relative "../ModeloQytetet/otra_casilla"
 require_relative "../ModeloQytetet/sorpresa"
-require_relative "../ModeloQytetet/sorpresa"
 require_relative "../ModeloQytetet/tablero"
 require_relative "../ModeloQytetet/tipo_casilla"
 require_relative "../ModeloQytetet/tipo_sorpresa"
 require_relative "../ModeloQytetet/titulo_propiedad"
 
 module ModeloQytetet
+  class Casilla
+  end
   class OtraCasilla < Casilla
     attr_accessor :tipo
     def initialize (numero_casilla, tipo)
