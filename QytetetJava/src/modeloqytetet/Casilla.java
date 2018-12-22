@@ -25,7 +25,7 @@ public abstract class Casilla {
     
         // Consultores
     
-    int getNumeroCasilla(){return numeroCasilla;}
+    public int getNumeroCasilla(){return numeroCasilla;}
     
     int getCoste(){return coste;}
     

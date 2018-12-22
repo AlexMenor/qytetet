@@ -10,6 +10,8 @@ import java.util.ArrayList;
     
 public class Tablero {
     
+    public static final int NUMERO_CASILLAS = 20;
+    
     // Atributos privados
     
     private ArrayList<Casilla> casillas; // Vector de casillas del tablero
@@ -66,7 +68,7 @@ public class Tablero {
     
     // Consultores
     
-    ArrayList<Casilla> getCasillas(){
+    public ArrayList<Casilla> getCasillas(){
         return casillas;
     }
     
