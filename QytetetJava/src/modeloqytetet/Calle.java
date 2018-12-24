@@ -51,12 +51,18 @@ public class Calle extends Casilla {
         return titulo.propietarioEncarcelado();
     }
 
-    @Override
+    @Override/*
     public String toString() {
         return "Calle{" + " numero casilla =" + super.getNumeroCasilla() +
                 ", coste = " + super.getCoste() +
                 ", titulo = " + titulo + 
                 '}';
+    }*/
+    
+    public String toString(){
+        return "\nNúmero de Casilla: " + super.getNumeroCasilla() +
+                "\nCoste: " + super.getCoste() +
+                "\nTITULO: " + titulo;
     }
     
     

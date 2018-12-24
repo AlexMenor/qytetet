@@ -166,7 +166,7 @@ public class TituloPropiedad {
     // Método toString de la clase
     
     @Override
-    public String toString() {
+    /*public String toString() {
         String toReturn = "TituloPropiedad{" 
                 + "nombre=" + nombre 
                 + ", hipotecada=" + hipotecada 
@@ -184,5 +184,24 @@ public class TituloPropiedad {
                 toReturn += ", propietario=" + propietario.getNombre();
         
         return toReturn + '}';
+    }*/
+    
+    public String toString() {
+        String toReturn = "\nNombre: " + nombre 
+                + "\nHipotecada: " + hipotecada 
+                + "\nPrecio de Compra: " + precioCompra 
+                + "\nAlquiler base: " + alquilerBase 
+                + "\nFactor revalorización: " + factorRevalorizacion 
+                + "\nHipoteca Base: " + hipotecaBase 
+                + "\nPrecio de Edificar: " + precioEdificar 
+                + "\nNúmero de casas: " + numCasas 
+                + "\nNúmero de hoteles: " + numHoteles;
+        
+        // Solución a el problema de la navegabilidad en doble sentido
+        
+        if (propietario != null)
+                toReturn += "\nPropietario: " + propietario.getNombre();
+        
+        return toReturn;
     }
 }

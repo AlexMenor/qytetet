@@ -24,12 +24,18 @@ public class OtraCasilla extends Casilla{
         return false;
     }
 
-    @Override
+    @Override/*
     public String toString() {
         return "OtraCasilla{" + ", numero casilla = " + super.getNumeroCasilla() +
                 ", coste = " + super.getCoste() +
                 ", tipo = " + tipo + 
                 '}';
+    }*/
+    
+    public String toString() {
+        return "\nNúmero de casilla: " + super.getNumeroCasilla() +
+                "\nCoste: " + super.getCoste() +
+                "\nTipo: " + tipo;
     }
     
     /* Implementados para evitar errores de compilación */
