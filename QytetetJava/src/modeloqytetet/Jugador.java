@@ -347,7 +347,7 @@ public class Jugador implements Comparable{
     }
     
     /*
-        Hipotca una propiedad
+        Hipoteca una propiedad
     */
     
     boolean hipotecarPropiedad (TituloPropiedad titulo){
