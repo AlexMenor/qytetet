@@ -279,6 +279,8 @@ public class Qytetet {
         
         if (casilla.tengoPropietario()){
             setEstadoJuego (EstadoJuego.JA_PUEDEGESTIONAR);
+            if (jugadorActual.getSaldo()<0)
+                setEstadoJuego(EstadoJuego.ALGUNJUGADORENBANCARROTA);
         }
         else{
             setEstadoJuego (EstadoJuego.JA_PUEDECOMPRAROGESTIONAR);
@@ -298,6 +300,8 @@ public class Qytetet {
         
         if (casillaActual.getTipo() == TipoCasilla.IMPUESTO){
             jugadorActual.pagarImpuesto();
+            if (jugadorActual.getSaldo() < 0)
+                setEstadoJuego(EstadoJuego.ALGUNJUGADORENBANCARROTA);
         }
         else{
             if (casillaActual.getTipo() == TipoCasilla.JUEZ){
