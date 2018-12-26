@@ -205,7 +205,7 @@ public class Jugador implements Comparable{
         Modifica el saldo del jugador y lo devuelve
     */
      int modificarSaldo (int cantidad){
-         saldo += cantidad;
+        saldo += cantidad;
          
         return saldo;
     }
@@ -400,7 +400,7 @@ public class Jugador implements Comparable{
         
         for (TituloPropiedad t : propiedades){
             to_return += t.getNombre();
-            to_return += " ";
+            to_return += ", ";
         }
         
         return to_return;
