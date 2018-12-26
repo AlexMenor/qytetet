@@ -391,20 +391,10 @@ public class Jugador implements Comparable{
     // Método toString de la clase
     
     @Override
-   /* public String toString() {
-        return "Jugador{" 
-                + "encarcelado=" + encarcelado 
-                + ", nombre=" + nombre 
-                + ", saldo=" + saldo 
-                + ", capital=" + obtenerCapital()
-                + ", cartaLibertad=" + cartaLibertad 
-                + ", casillaActual=" + casillaActual 
-                + ", propiedades=" + propiedades + '}';
-    }  */
-    
     public String toString(){
         String to_return = "\n" + nombre.toUpperCase() +
                            "\nSALDO: " + saldo +
+                           "\nEncarcelado: " + encarcelado +
                            "\nCASILLA ACTUAL: " + casillaActual.getNumeroCasilla() +
                            "\nPROPIEDADES: ";
         

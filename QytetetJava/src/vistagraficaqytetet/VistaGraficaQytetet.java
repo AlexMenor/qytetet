@@ -2,6 +2,7 @@
 package vistagraficaqytetet;
 
 import controladorqytetet.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import modeloqytetet.Qytetet;
 public class VistaGraficaQytetet extends javax.swing.JFrame {
@@ -154,6 +155,10 @@ public class VistaGraficaQytetet extends javax.swing.JFrame {
         areaJugadores.setRows(5);
         jScrollPane5.setViewportView(areaJugadores);
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         areaJugadorActual.setColumns(20);
         areaJugadorActual.setRows(5);
         jScrollPane2.setViewportView(areaJugadorActual);
@@ -167,6 +172,7 @@ public class VistaGraficaQytetet extends javax.swing.JFrame {
         jScrollPane1.setViewportView(areaMensajes);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tablero500x500.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout panelMensajesLayout = new javax.swing.GroupLayout(panelMensajes);
         panelMensajes.setLayout(panelMensajesLayout);
@@ -203,7 +209,7 @@ public class VistaGraficaQytetet extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                             .addComponent(jScrollPane3)))
                     .addComponent(jLabel2))
-                .addContainerGap(523, Short.MAX_VALUE))
+                .addContainerGap(525, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelJugadorActualLayout = new javax.swing.GroupLayout(panelJugadorActual);
@@ -250,10 +256,12 @@ public class VistaGraficaQytetet extends javax.swing.JFrame {
             .addGap(0, 591, Short.MAX_VALUE)
         );
 
-        jMenuOperacion.setText("Operación");
+        jMenuOperacion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jMenuOperacion.setText("Elige operación");
         barraMenu.add(jMenuOperacion);
 
-        jMenuCasilla.setText("Casilla");
+        jMenuCasilla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jMenuCasilla.setText("Casilla a la que aplicar la operación");
         barraMenu.add(jMenuCasilla);
 
         setJMenuBar(barraMenu);

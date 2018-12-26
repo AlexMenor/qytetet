@@ -24,14 +24,7 @@ public class OtraCasilla extends Casilla{
         return false;
     }
 
-    @Override/*
-    public String toString() {
-        return "OtraCasilla{" + ", numero casilla = " + super.getNumeroCasilla() +
-                ", coste = " + super.getCoste() +
-                ", tipo = " + tipo + 
-                '}';
-    }*/
-    
+    @Override
     public String toString() {
         return "\nNúmero de casilla: " + super.getNumeroCasilla() +
                 "\nCoste: " + super.getCoste() +
